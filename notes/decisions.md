@@ -15,9 +15,19 @@ Rozważono dwie wersje:
 - **§7.1 (rozważona, odrzucona):** binarna bramka overlap + tanh relaksacja różnicy Φ, uziemiona
   bezpośrednio w kanonicznym (binarnym) postulacie wykluczenia IIT. Dowodliwie wyklucza Σ<0.
 
-**Decyzja:** zachować §7 jako kanoniczne. Zdolność modelu do wyrażenia netto fragmentacji uznano za
-cenniejszą niż ścisła wierność binarnemu postulatowi IIT. To świadome, nazwane odejście od IIT — nie
-nieporozumienie formalizmu. Do jawnego zaznaczenia w każdej przyszłej pracy.
+**Decyzja (przesądzona, 2026-08-28):** zachować §7 jako kanoniczne. Osiągalne Σ<0 ("netto
+fragmentacja") zostaje jako **zamierzona cecha modelu, nie usterka** — zdolność do jej wyrażenia
+uznano za cenniejszą niż ścisła wierność binarnemu postulatowi IIT. §7.1 zostaje w pracy wyłącznie
+jako udokumentowany, odrzucony wariant. To świadome, nazwane odejście od IIT — nie nieporozumienie
+formalizmu; do jawnego zaznaczenia w każdej przyszłej pracy. Temat zamknięty, nie jest już
+przedmiotem otwartego rozstrzygnięcia przed publikacją.
+
+## Przestrzeń warstw jest dyskretna — usunięto formę całkową (2026-08-28)
+Σ, Γ, A były zapisywane z wariantem całkowym ∫₀ᴸ … dℓ jako "idealizacją ciągłą". Uznano, że oś
+warstw funkcjonalnych ℓ **nie jest** continuum (L to kilka pięter: homeostaza → model świata →
+model siebie), więc forma całkowa wprowadzała fałszywą ogólność i sztuczny artefakt L→0. Wszystkie
+definicje są teraz skończonymi sumami ∑_{ℓ=1}^{L}. Dawną "Patologię L→0" zastąpiono uwagą
+"Dyskretność". Dotyczy `model_sigma.md` §2/§3/§5/§5.1/§6/§7 oraz obu plików .tex.
 
 ## Self- vs. world-modeling (§4.1)
 Dwa niezależne warunki dla genuine self-modelingu: (a) cel predykcji wewnętrzny (stan h_ℓ) vs.
@@ -38,5 +48,6 @@ mierzący, jak silnie kontekst moduluje wagę błędu. Context blindness = χ_�
 
 ## Status ogólny
 Spójna wewnętrznie synteza koncepcyjna, niezweryfikowana recenzyjnie. Otwarte: systematyczny
-przegląd literatury, weryfikacja cytowań źródłowo, rozstrzygnięcie §7 vs §7.1 przed jakąkolwiek
-próbą publikacji, instancja empiryczna poza toy example.
+przegląd literatury, instancja empiryczna poza toy example. Zamknięte: §7 vs §7.1 (zachowano §7,
+patrz wyżej), weryfikacja cytowań źródłowo (zrobiona 2026-08-28, patrz `notes/citations.md`),
+usunięcie formy całkowej (patrz wyżej).

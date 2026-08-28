@@ -64,16 +64,16 @@ Nie znamy wcześniejszej pracy łączącej hierarchiczne $\Phi$, ważenie funkcj
 \section{Formalizm $\Sigma$}
 
 \subsection{Profil hierarchiczny i waga funkcjonalna}
-System $S$ dzielimy na warstwy funkcjonalne $\ell=1,\dots,L$ (np. homeostaza $\to$ percepcja/motoryka $\to$ model świata $\to$ model siebie). Zamiast jednej liczby otrzymujemy profil $\Phi(s)=(\Phi_1(s),\dots,\Phi_L(s))$, zwinięty przez wagę funkcjonalną:
+System $S$ dzielimy na warstwy funkcjonalne $\ell=1,\dots,L$ (np. homeostaza $\to$ percepcja/motoryka $\to$ model świata $\to$ model siebie). Indeks warstwy jest z natury dyskretny: $L$ to mała, skończona liczba całkowita --- kilka pięter funkcjonalnych, nie continuum --- i nie ma granicy $L\to\infty$. Zamiast jednej liczby otrzymujemy profil $\Phi(s)=(\Phi_1(s),\dots,\Phi_L(s))$, zwinięty przez wagę funkcjonalną w skończoną sumę
 \[
-\Sigma(t) = \int_0^L w(\ell,t)\,\Phi(s,\ell,t)\,d\ell \qquad \text{(idealizacja ciągła; w praktyce suma dyskretna, \S\ref{sec:pathology})}.
+\Sigma(t) = \sum_{\ell=1}^{L} w(\ell,t)\,\Phi(s,\ell,t).
 \]
 Człony międzywarstwowe $\Phi_{\ell,\ell-1}$ (sprzężenie strukturalne między sąsiednimi warstwami, liczone tą samą miarą odległości co bazowe $\Phi$) są nieujemne z konstrukcji, będąc same odległością.
 
 \subsection{Dynamika czasowa}
 Różniczkując $\Sigma(t)$ przy ogólnej (czasowo zmiennej) wadze otrzymujemy
 \[
-\frac{d\Sigma}{dt} = \int_0^L \left[\frac{\partial w}{\partial t}\Phi(s,\ell,t) + w(\ell,t)\frac{\partial \Phi}{\partial t}\right]d\ell,
+\frac{d\Sigma}{dt} = \sum_{\ell=1}^{L} \left[\frac{\partial w(\ell,t)}{\partial t}\,\Phi(s,\ell,t) + w(\ell,t)\,\frac{\partial \Phi(s,\ell,t)}{\partial t}\right],
 \]
 rozdzielając zmianę wynikającą ze zmiany istotności funkcjonalnej od zmiany samej integracji.
 
@@ -91,13 +91,13 @@ gdzie $g_\ell=0$ oznacza warstwę liczącą błąd, ale nic z nim nie robiącą 
 \subsection{Stan jako trójka $(\Sigma,\Gamma,A)$}
 Rozważono dwie konstrukcje wagi: (1) $w(\ell,t)=w_0(\ell)+\beta g_\ell(t)e_\ell(t)$, w której $\Sigma$ i miara samo-korekty dzielą składnik i są przez to tautologicznie skorelowane z konstrukcji; (2) $w(\ell,t)=w_0(\ell)$, statyczna, przy której
 \[
-\Sigma(t) = \int_0^L w_0(\ell)\,\Phi(s,\ell,t)\,d\ell, \qquad \Gamma(t) = \int_0^L g_\ell(t)e_\ell(t)\,d\ell
+\Sigma(t) = \sum_{\ell=1}^{L} w_0(\ell)\,\Phi(s,\ell,t), \qquad \Gamma(t) = \sum_{\ell=1}^{L} g_\ell(t)\,e_\ell(t)
 \]
 są niezależne z konstrukcji, więc każda zmierzona korelacja między nimi w realnym systemie jest odkryciem empirycznym, nie artefaktem definicyjnym. Przyjmujemy (2) jako kanoniczne.
 
 Trzecia wielkość wychwytuje, czy samo-korekta zachodzi \emph{tam}, gdzie jest integracja:
 \[
-A(t) = \frac{\mathrm{Cov}_\ell(t)}{\sigma_\Phi(t)\sigma_{ge}(t)} \in [-1,1], \qquad \mathrm{Cov}_\ell(t)=\frac{1}{L}\int_0^L\big[\Phi(s,\ell,t)-\bar\Phi(t)\big]\big[g_\ell(t)e_\ell(t)-\overline{ge}(t)\big]\,d\ell,
+A(t) = \frac{\mathrm{Cov}_\ell(t)}{\sigma_\Phi(t)\sigma_{ge}(t)} \in [-1,1], \qquad \mathrm{Cov}_\ell(t)=\frac{1}{L}\sum_{\ell=1}^{L}\big[\Phi(s,\ell,t)-\bar\Phi(t)\big]\big[g_\ell(t)e_\ell(t)-\overline{ge}(t)\big],
 \]
 z konwencją $A(t):=0$, gdy któryś z profili jest jednorodny (wariancja zero). Ujemne $A$ mimo wysokich $\Sigma,\Gamma$ to architektoniczna sygnatura interpretera Gazzanigi: płynna, aktywna samo-korekta zamknięta w płytkiej warstwie, odcięta od integracyjnego rdzenia systemu.
 
@@ -111,7 +111,7 @@ $w_0(\ell)\ge 0$ dla wszystkich $\ell$.
 Przy A1, $\Sigma(t)\ge 0$.
 \end{theorem}
 \begin{proof}
-$\Phi(s,\ell,t)\ge 0$ (odległość) i $w_0(\ell)\ge 0$ z A1; całka z iloczynu funkcji nieujemnych jest nieujemna.
+$\Phi(s,\ell,t)\ge 0$ (odległość) i $w_0(\ell)\ge 0$ z A1; suma iloczynów składników nieujemnych jest nieujemna.
 \end{proof}
 
 \begin{theorem}[Nieujemność $\Gamma$, bezwarunkowa]
@@ -125,15 +125,15 @@ $g_\ell(t)\in[0,1]$ i $e_\ell(t)\ge 0$ (norma do kwadratu); żaden aksjomat nie 
 $A(t)\in[-1,1]$, z równością wtedy i tylko wtedy, gdy $g_\ell e_\ell$ jest rosnącą (odp. malejącą) funkcją afiniczną $\Phi(s,\ell,t)$ po $\ell$.
 \end{theorem}
 \begin{proof}
-Niech $f(\ell)=\Phi(s,\ell,t)-\bar\Phi(t)$, $h(\ell)=g_\ell(t)e_\ell(t)-\overline{ge}(t)$. Dla dowolnego $\lambda$, $\frac1L\int(\sigma_{ge}f-\sigma_\Phi h)^2 \ge 0$ rozwija się do $\sigma_{ge}^2\sigma_\Phi^2 + \sigma_\Phi^2\sigma_{ge}^2 \ge 2\sigma_\Phi\sigma_{ge}\,\mathrm{Cov}_\ell$, dając $\mathrm{Cov}_\ell\le\sigma_\Phi\sigma_{ge}$, czyli $A\le1$; symetryczny argument z $(\sigma_{ge}f+\sigma_\Phi h)^2\ge0$ daje $A\ge-1$. Równość zachodzi dokładnie wtedy, gdy oba profile są powiązane afinicznie (warunek równości Cauchy'ego--Schwarza).
+Niech $f(\ell)=\Phi(s,\ell,t)-\bar\Phi(t)$ oraz $h(\ell)=g_\ell(t)e_\ell(t)-\overline{ge}(t)$. Wtedy $\frac1L\sum_{\ell}(\sigma_{ge}f(\ell)-\sigma_\Phi h(\ell))^2 \ge 0$ rozwija się do $2\sigma_{ge}^2\sigma_\Phi^2 \ge 2\sigma_\Phi\sigma_{ge}\,\mathrm{Cov}_\ell$, dając $\mathrm{Cov}_\ell\le\sigma_\Phi\sigma_{ge}$, czyli $A\le1$; symetryczny argument z $\frac1L\sum_{\ell}(\sigma_{ge}f(\ell)+\sigma_\Phi h(\ell))^2\ge0$ daje $A\ge-1$. Równość zachodzi dokładnie wtedy, gdy oba profile są powiązane afinicznie (warunek równości Cauchy'ego--Schwarza).
 \end{proof}
 
 \begin{theorem}[Monotoniczność]
 $\partial\Gamma/\partial g_\ell = e_\ell\ge0$, $\partial\Gamma/\partial e_\ell=g_\ell\ge0$, oraz $\partial\Sigma/\partial\Phi(\ell)=w_0(\ell)\ge0$ przy A1: brak kontrintuicyjnych efektów znaku w reakcji którejkolwiek wielkości na swoje wejścia.
 \end{theorem}
 
-\begin{remark}[Patologia continuum]\label{sec:pathology}
-Ciągła formuła całkowa ma artefakt przy $L\to0$: $\Sigma\to0$ niezależnie od tego, jak skoncentrowana jest integracja --- artefakt znikającej miary dziedziny całkowania, nie realna własność jednowarstwowego systemu. W praktyce używamy sumy dyskretnej $\Sigma=\sum_\ell w_0(\ell)\Phi(s,\ell,t)$ (analogicznie dla $\Gamma$), z wersją ciągłą jako idealizacją $L\to\infty$ dla gładkich hierarchii (np. korowych hierarchii w stylu predictive processing).
+\begin{remark}[Dyskretność]
+$\Sigma$, $\Gamma$ i $A$ to skończone sumy po ustalonym, niewielkim zbiorze warstw funkcjonalnych. Oś warstw nie jest continuum: nie ma idealizacji $L\to\infty$ ani postaci całkowej. (Wcześniejsza wersja robocza ją miała; jej zachowanie przy $L\to0$, $\Sigma\to0$ niezależnie od tego, jak skoncentrowana jest integracja, było czystym artefaktem znikającej miary całkowania i tutaj nie występuje.)
 \end{remark}
 
 \subsection{Dynamika dyskretna: asymetria między $\Sigma$ a $\Gamma$}
@@ -276,7 +276,7 @@ Najczystsza znaleziona ilustracja $\Sigma<0$. Przy uszkodzeniu spoidła wielkieg
 
 
 
-To jest spójna wewnętrznie synteza koncepcyjna, nie empirycznie zweryfikowana teoria. Otwarte punkty: systematyczny (nie tylko oparty na wyszukiwarce) przegląd literatury; weryfikacja źródłowa wszystkich cytowań; rozstrzygnięcie napięcia między dwoma mechanizmami wykluczenia (\S\ref{sec:exclusion}), jeśli praca będzie rozwijana w kierunku publikacji; oraz empiryczne zastosowanie na architekturach poza przykładem zabawkowym, zwłaszcza żeby sprawdzić, czy trajektorie $(\Sigma,\Gamma,A)$ śledzą znane markery integracji (np. Perturbational Complexity Index pod znieczuleniem).
+To jest spójna wewnętrznie synteza koncepcyjna, nie empirycznie zweryfikowana teoria. W sprawie mechanizmu wykluczenia (\S\ref{sec:exclusion}) wybór jest przesądzony: kanoniczna jest miękka postać $w_+-w_-$, a osiągalne $\Sigma<0$ (netto fragmentacja) zostaje jako zamierzona cecha, nie usterka; binarna alternatywa z $\Sigma\ge0$ pozostaje wyłącznie jako udokumentowany, odrzucony wariant. Otwarte punkty: systematyczny (nie tylko oparty na wyszukiwarce) przegląd literatury; oraz empiryczne zastosowanie na architekturach poza przykładem zabawkowym, zwłaszcza żeby sprawdzić, czy trajektorie $(\Sigma,\Gamma,A)$ śledzą znane markery integracji (np. Perturbational Complexity Index pod znieczuleniem).
 
 % Cytowania zweryfikowane ze źródłami pierwotnymi, 2026-08-28.
 \begin{thebibliography}{99}

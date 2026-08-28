@@ -23,20 +23,20 @@ examples/
 
 ## Stan projektu
 
-Spójna wewnętrznie synteza koncepcyjna: pełny formalizm statyczny i dynamiczny (Σ, Γ, A),
-dowiedzione własności brzegowe, mechanizm konkurencji/wykluczenia, kanał odczytu R_ℓ,
-wrażliwość kontekstowa bramki g_ℓ, przykład numeryczny, wstępny przegląd literatury,
+Spójna wewnętrznie synteza koncepcyjna: pełny formalizm statyczny i dynamiczny (Σ, Γ, A) —
+skończone sumy po warstwach, bez formy całkowej — dowiedzione własności brzegowe, mechanizm
+konkurencji/wykluczenia (miękki w = w₊ − w₋, dopuszcza Σ<0 jako zamierzoną cechę), kanał odczytu
+R_ℓ, wrażliwość kontekstowa bramki g_ℓ, przykład numeryczny, wstępny przegląd literatury,
 zastosowanie do architektur transformerowych. **Niezweryfikowana recenzyjnie.**
 
 ## Otwarte wątki
 
 - Systematyczny (nie tylko wyszukiwarkowy) przegląd literatury
-- Weryfikacja cytowań źródłowo — część dat/tytułów w bibliografii ma placeholder "Autor(zy)"
-- Rozstrzygnięcie §7 vs §7.1 (mechanizm konkurencji) przed jakąkolwiek próbą publikacji
 - Empiryczna instancja poza toy example — np. przeliczenie (Σ,Γ,A) na realnych danych EEG/fMRI
   (propofol vs. ketamina, PCI pod znieczuleniem) — patrz hipoteza w §16 pracy
 
-Pełny log decyzji i uzasadnień: `notes/decisions.md`.
+Zamknięte: §7 vs §7.1 (zachowano §7, Σ<0 jako cecha), weryfikacja cytowań (`notes/citations.md`),
+usunięcie formy całkowej. Pełny log decyzji i uzasadnień: `notes/decisions.md`.
 
 ## Kompilacja PDF-ów ze źródeł
 

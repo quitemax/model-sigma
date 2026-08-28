@@ -64,16 +64,16 @@ No prior work known to us combines hierarchical $\Phi$, functional weighting, se
 \section{The $\Sigma$ Formalism}
 
 \subsection{Hierarchical profile and functional weight}
-A system $S$ is divided into functional layers $\ell=1,\dots,L$ (e.g.\ homeostasis $\to$ perception/motor $\to$ world-model $\to$ self-model). Instead of one scalar, we obtain a profile $\Phi(s)=(\Phi_1(s),\dots,\Phi_L(s))$, collapsed via a functional weight:
+A system $S$ is divided into functional layers $\ell=1,\dots,L$ (e.g.\ homeostasis $\to$ perception/motor $\to$ world-model $\to$ self-model). The layer index is inherently discrete: $L$ is a small finite integer --- a handful of functional strata, not a continuum --- and there is no $L\to\infty$ limit. Instead of one scalar, we obtain a profile $\Phi(s)=(\Phi_1(s),\dots,\Phi_L(s))$, collapsed via a functional weight into the finite sum
 \[
-\Sigma(t) = \int_0^L w(\ell,t)\,\Phi(s,\ell,t)\,d\ell \qquad \text{(continuum idealization; discrete sum in practice, \S\ref{sec:pathology})}.
+\Sigma(t) = \sum_{\ell=1}^{L} w(\ell,t)\,\Phi(s,\ell,t).
 \]
 Inter-layer terms $\Phi_{\ell,\ell-1}$ (structural coupling between adjacent layers, computed via the same distance measure as base $\Phi$) are non-negative by construction, being themselves a distance.
 
 \subsection{Temporal dynamics}
 Differentiating $\Sigma(t)$ under the general (time-varying) weight yields
 \[
-\frac{d\Sigma}{dt} = \int_0^L \left[\frac{\partial w}{\partial t}\Phi(s,\ell,t) + w(\ell,t)\frac{\partial \Phi}{\partial t}\right]d\ell,
+\frac{d\Sigma}{dt} = \sum_{\ell=1}^{L} \left[\frac{\partial w(\ell,t)}{\partial t}\,\Phi(s,\ell,t) + w(\ell,t)\,\frac{\partial \Phi(s,\ell,t)}{\partial t}\right],
 \]
 separating change due to shifting functional relevance from change due to shifting integration itself.
 
@@ -91,13 +91,13 @@ where $g_\ell=0$ marks a layer that computes the error but does not act on it (d
 \subsection{State as a triple $(\Sigma,\Gamma,A)$}
 Two designs for the weight were considered: (1) $w(\ell,t)=w_0(\ell)+\beta g_\ell(t)e_\ell(t)$, in which $\Sigma$ and a self-correction measure share a term and are therefore tautologically correlated by construction; (2) $w(\ell,t)=w_0(\ell)$, static, under which
 \[
-\Sigma(t) = \int_0^L w_0(\ell)\,\Phi(s,\ell,t)\,d\ell, \qquad \Gamma(t) = \int_0^L g_\ell(t)e_\ell(t)\,d\ell
+\Sigma(t) = \sum_{\ell=1}^{L} w_0(\ell)\,\Phi(s,\ell,t), \qquad \Gamma(t) = \sum_{\ell=1}^{L} g_\ell(t)\,e_\ell(t)
 \]
 are independent by construction, so any measured correlation between them in a real system is an empirical finding, not a definitional artifact. We adopt (2) as canonical.
 
 A third quantity captures whether self-correction occurs \emph{where} integration is:
 \[
-A(t) = \frac{\mathrm{Cov}_\ell(t)}{\sigma_\Phi(t)\sigma_{ge}(t)} \in [-1,1], \qquad \mathrm{Cov}_\ell(t)=\frac{1}{L}\int_0^L\big[\Phi(s,\ell,t)-\bar\Phi(t)\big]\big[g_\ell(t)e_\ell(t)-\overline{ge}(t)\big]\,d\ell,
+A(t) = \frac{\mathrm{Cov}_\ell(t)}{\sigma_\Phi(t)\sigma_{ge}(t)} \in [-1,1], \qquad \mathrm{Cov}_\ell(t)=\frac{1}{L}\sum_{\ell=1}^{L}\big[\Phi(s,\ell,t)-\bar\Phi(t)\big]\big[g_\ell(t)e_\ell(t)-\overline{ge}(t)\big],
 \]
 with the convention $A(t):=0$ when either profile is uniform (variance zero). A negative $A$ despite high $\Sigma,\Gamma$ is the architectural signature of a Gazzaniga interpreter: fluent, active self-correction confined to a shallow layer, decoupled from the system's integrative core.
 
@@ -111,7 +111,7 @@ $w_0(\ell)\ge 0$ for all $\ell$.
 Under A1, $\Sigma(t)\ge 0$.
 \end{theorem}
 \begin{proof}
-$\Phi(s,\ell,t)\ge 0$ (a distance) and $w_0(\ell)\ge 0$ by A1; the integral of a product of non-negative functions is non-negative.
+$\Phi(s,\ell,t)\ge 0$ (a distance) and $w_0(\ell)\ge 0$ by A1; a sum of products of non-negative terms is non-negative.
 \end{proof}
 
 \begin{theorem}[Non-negativity of $\Gamma$, unconditional]
@@ -125,15 +125,15 @@ $g_\ell(t)\in[0,1]$ and $e_\ell(t)\ge 0$ (a squared norm); no axiom is needed.
 $A(t)\in[-1,1]$, with equality iff $g_\ell e_\ell$ is an increasing (resp.\ decreasing) affine function of $\Phi(s,\ell,t)$ over $\ell$.
 \end{theorem}
 \begin{proof}
-Let $f(\ell)=\Phi(s,\ell,t)-\bar\Phi(t)$, $h(\ell)=g_\ell(t)e_\ell(t)-\overline{ge}(t)$. For any $\lambda$, $\frac1L\int(\sigma_{ge}f-\sigma_\Phi h)^2 \ge 0$ expands to $\sigma_{ge}^2\sigma_\Phi^2 + \sigma_\Phi^2\sigma_{ge}^2 \ge 2\sigma_\Phi\sigma_{ge}\,\mathrm{Cov}_\ell$, giving $\mathrm{Cov}_\ell\le\sigma_\Phi\sigma_{ge}$, i.e.\ $A\le1$; the symmetric argument with $(\sigma_{ge}f+\sigma_\Phi h)^2\ge0$ gives $A\ge-1$. Equality holds exactly when the two profiles are affinely related (Cauchy--Schwarz equality condition).
+Let $f(\ell)=\Phi(s,\ell,t)-\bar\Phi(t)$ and $h(\ell)=g_\ell(t)e_\ell(t)-\overline{ge}(t)$. Then $\frac1L\sum_{\ell}(\sigma_{ge}f(\ell)-\sigma_\Phi h(\ell))^2 \ge 0$ expands to $2\sigma_{ge}^2\sigma_\Phi^2 \ge 2\sigma_\Phi\sigma_{ge}\,\mathrm{Cov}_\ell$, giving $\mathrm{Cov}_\ell\le\sigma_\Phi\sigma_{ge}$, i.e.\ $A\le1$; the symmetric argument with $\frac1L\sum_{\ell}(\sigma_{ge}f(\ell)+\sigma_\Phi h(\ell))^2\ge0$ gives $A\ge-1$. Equality holds exactly when the two profiles are affinely related (Cauchy--Schwarz equality condition).
 \end{proof}
 
 \begin{theorem}[Monotonicity]
 $\partial\Gamma/\partial g_\ell = e_\ell\ge0$, $\partial\Gamma/\partial e_\ell=g_\ell\ge0$, and $\partial\Sigma/\partial\Phi(\ell)=w_0(\ell)\ge0$ under A1: no counter-intuitive sign effects in either quantity's response to its inputs.
 \end{theorem}
 
-\begin{remark}[Continuum pathology]\label{sec:pathology}
-The continuous integral formulation has an artifact at $L\to0$: $\Sigma\to0$ regardless of how concentrated the integration is, an artifact of the measure of the integration domain vanishing, not a real property of a single-layer system. In practice we use the discrete sum $\Sigma=\sum_\ell w_0(\ell)\Phi(s,\ell,t)$ (similarly for $\Gamma$), with the continuum as the $L\to\infty$ idealization for smooth hierarchies (e.g.\ predictive-processing-style cortical hierarchies).
+\begin{remark}[Discreteness]
+$\Sigma$, $\Gamma$ and $A$ are finite sums over a fixed, small set of functional layers. The layer axis is not a continuum: there is no $L\to\infty$ idealization and no integral form. (An earlier draft carried one; its $L\to0$ behaviour, $\Sigma\to0$ irrespective of how concentrated the integration is, was a pure artifact of the vanishing integration measure and is absent here.)
 \end{remark}
 
 \subsection{Discrete dynamics: an asymmetry between $\Sigma$ and $\Gamma$}
@@ -276,7 +276,7 @@ The cleanest found illustration of $\Sigma<0$. With damage to the corpus callosu
 
 
 
-This is a self-consistent conceptual synthesis, not an empirically validated theory. Open items: a systematic (not merely search-driven) literature review; source verification of all citations; resolution of the tension between the two exclusion mechanisms (\S\ref{sec:exclusion}) if the work is developed toward publication; and empirical instantiation on architectures beyond the toy example, particularly to test whether $(\Sigma,\Gamma,A)$ trajectories track known markers of integration (e.g.\ the Perturbational Complexity Index under anesthesia).
+This is a self-consistent conceptual synthesis, not an empirically validated theory. On the exclusion mechanism (\S\ref{sec:exclusion}) the choice is settled: the soft $w_+-w_-$ form is canonical and reachable $\Sigma<0$ (net fragmentation) is kept as an intended feature, not a defect; the binary, $\Sigma\ge0$ alternative is retained only as the documented, rejected option. Open items: a systematic (not merely search-driven) literature review; and empirical instantiation on architectures beyond the toy example, particularly to test whether $(\Sigma,\Gamma,A)$ trajectories track known markers of integration (e.g.\ the Perturbational Complexity Index under anesthesia).
 
 % Citations verified against primary sources, 2026-08-28. Items marked [unverified]
 % could not be confirmed against an authoritative record and need a final check.

@@ -34,13 +34,13 @@ Inspiracja rozszerzenia: postulat Agüera y Arcasa, że "to, co system oblicza, 
 
 ## 2. Profil hierarchiczny i pierwsza wersja Σ
 
-System *S* dzielimy na warstwy funkcjonalne ℓ = 1,...,L (homeostaza → percepcja/motoryka → model świata → model siebie). Zamiast jednej liczby — profil:
+System *S* dzielimy na warstwy funkcjonalne ℓ = 1,...,L (homeostaza → percepcja/motoryka → model świata → model siebie). Indeks warstwy jest z natury dyskretny: L to mała, skończona liczba pięter funkcjonalnych, nie continuum — nie ma i nie potrzeba granicy L→∞. Zamiast jednej liczby — profil:
 
 $$\Phi(s) = \big(\Phi_1(s),\dots,\Phi_L(s)\big)$$
 
-Zwinięte wagą funkcjonalną w(ℓ), dyskretnie lub (dla gładkiej hierarchii, np. predictive processing) w wersji ciągłej:
+Zwinięty wagą funkcjonalną w(ℓ) w skończoną sumę:
 
-$$\Sigma(s) = \sum_\ell w(\ell)\Phi_\ell(s) \quad\longrightarrow\quad \Sigma(t) = \int_0^L w(\ell,t)\,\Phi(s,\ell,t)\,d\ell$$
+$$\Sigma(t) = \sum_{\ell=1}^{L} w(\ell,t)\,\Phi(s,\ell,t)$$
 
 ### 2.1 Człon między-warstwowy Φ_{ℓ,ℓ-1}
 
@@ -54,7 +54,7 @@ Rozróżnienie kluczowe dla interpretacji: płynna autonarracja (analogia interp
 
 Rozróżnienie notacyjne, którego brakowało pierwszej wersji: indeks (ℓ,ℓ-1) to *warstwa*, nie *czas*. Dynamika czasowa to osobny obiekt, wyprowadzony z pełnej pochodnej Σ:
 
-$$\frac{d\Sigma}{dt} = \int_0^L \left[\frac{\partial w}{\partial t}\Phi(s,\ell,t) + w(\ell,t)\frac{\partial\Phi}{\partial t}\right]d\ell$$
+$$\frac{d\Sigma}{dt} = \sum_{\ell=1}^{L} \left[\frac{\partial w(\ell,t)}{\partial t}\,\Phi(s,\ell,t) + w(\ell,t)\,\frac{\partial\Phi(s,\ell,t)}{\partial t}\right]$$
 
 Rozdziela dwa jakościowo różne źródła zmiany: ∂Φ/∂t (czy integracja na warstwie rośnie/maleje — może być ±, np. zapadanie/wynurzanie ze znieczulenia) i ∂w/∂t (czy istotność warstwy dla samo-modelowania rośnie/maleje).
 
@@ -76,11 +76,11 @@ Rozważono dwie opcje dla w(ℓ,t):
 - **Opcja 1** — w(ℓ,t) = w₀(ℓ) + β·g_ℓ(t)e_ℓ(t): Σ i Γ dzielą składnik, korelacja *tautologiczna* (wbudowana w definicję)
 - **Opcja 2 (przyjęta jako kanoniczna)** — w(ℓ,t) = w₀(ℓ), statyczne: Σ i Γ formalnie niezależne (budowane z rozłącznych zmiennych), więc zmierzona korelacja między nimi w realnym systemie jest odkryciem empirycznym, nie artefaktem definicji
 
-$$\Sigma(t) = \int_0^L w_0(\ell)\,\Phi(s,\ell,t)\,d\ell, \qquad \Gamma(t) = \int_0^L g_\ell(t)e_\ell(t)\,d\ell$$
+$$\Sigma(t) = \sum_{\ell=1}^{L} w_0(\ell)\,\Phi(s,\ell,t), \qquad \Gamma(t) = \sum_{\ell=1}^{L} g_\ell(t)\,e_\ell(t)$$
 
 ### 5.1 Trzecia wielkość — wyrównanie przestrzenne A(t)
 
-$$A(t) = \frac{\mathrm{Cov}_\ell(t)}{\sigma_\Phi(t)\,\sigma_{ge}(t)} \in[-1,1], \qquad \mathrm{Cov}_\ell(t) = \frac{1}{L}\int_0^L[\Phi(s,\ell,t)-\bar\Phi(t)][g_\ell(t)e_\ell(t)-\overline{ge}(t)]\,d\ell$$
+$$A(t) = \frac{\mathrm{Cov}_\ell(t)}{\sigma_\Phi(t)\,\sigma_{ge}(t)} \in[-1,1], \qquad \mathrm{Cov}_\ell(t) = \frac{1}{L}\sum_{\ell=1}^{L}[\Phi(s,\ell,t)-\bar\Phi(t)][g_\ell(t)e_\ell(t)-\overline{ge}(t)]$$
 
 Konwencja brzegowa: gdy σ_Φ=0 lub σ_ge=0 (profil jednorodny), A(t):=0.
 
@@ -89,10 +89,10 @@ Konwencja brzegowa: gdy σ_Φ=0 lub σ_ge=0 (profil jednorodny), A(t):=0.
 ## 6. Dowiedzione własności brzegowe
 
 1. **Σ(t) ≥ 0** — warunkowe: wymaga aksjomatu **A1: w₀(ℓ) ≥ 0 ∀ℓ** (nie wynika automatycznie z niczego innego; semantycznie: ujemna waga bazowa nie miałaby dobrej interpretacji bez dodatkowego mechanizmu — patrz §7)
-2. **Γ(t) ≥ 0** — bezwarunkowe: g_ℓ∈[0,1], e_ℓ≥0 (norma²), iloczyn i całka nieujemnych funkcji
-3. **A(t) ∈ [-1,1]** — dowód przez nierówność Cauchy'ego-Schwarza na profilach f=Φ-Φ̄, h=ge-ge̅. Warunek równości: A=1 ⟺ g_ℓe_ℓ jest rosnącą funkcją afiniczną Φ(s,ℓ,t) po ℓ; A=-1 dla malejącej
+2. **Γ(t) ≥ 0** — bezwarunkowe: g_ℓ∈[0,1], e_ℓ≥0 (norma²), suma iloczynów składników nieujemnych
+3. **A(t) ∈ [-1,1]** — dowód przez nierówność Cauchy'ego-Schwarza na profilach (skończonych wektorach) f=Φ-Φ̄, h=ge-ge̅. Warunek równości: A=1 ⟺ g_ℓe_ℓ jest rosnącą funkcją afiniczną Φ(s,ℓ,t) po ℓ; A=-1 dla malejącej
 4. **Monotoniczność:** ∂Γ/∂g_ℓ = e_ℓ ≥ 0, ∂Γ/∂e_ℓ = g_ℓ ≥ 0, ∂Σ/∂Φ(ℓ) = w₀(ℓ) ≥ 0 (przy A1) — brak kontrintuicyjnych efektów ubocznych
-5. **Patologia L→0:** wersja ciągła ma artefakt (Σ→0 przy L→0 niezależnie od skoncentrowanej integracji). W implementacji: wersja dyskretna (sumy zamiast całek) jako podstawowa, wersja ciągła jako granica L→∞ dla gładkich hierarchii (np. predictive processing)
+5. **Dyskretność:** Σ, Γ, A to skończone sumy po ustalonym, niewielkim zbiorze warstw — oś ℓ nie jest continuum, nie ma granicy L→∞ ani postaci całkowej. (Wcześniejsza wersja robocza miała formę całkową; jej artefakt przy L→0, Σ→0 niezależnie od skoncentrowanej integracji, wynikał ze znikającej miary całkowania i tutaj nie występuje.)
 
 ## 7. Warstwy przeszkadzające — rozszerzenie o konkurencję/wykluczenie
 
@@ -112,7 +112,7 @@ $$w_-(\ell,t) = \begin{cases}0 & \ell=\ell^*(t)\\ \gamma\cdot\text{overlap}(\ell
 
 **Ograniczenie na Σ(t) z konkurencją:**
 
-$$\int_{\ell\neq\ell^*}[w_+(\ell)-\gamma]\Phi(\ell,t)\,d\ell + w_+(\ell^*)\Phi(\ell^*,t) \;\leq\; \Sigma(t) \;\leq\; \Sigma_+(t)$$
+$$\sum_{\ell\neq\ell^*}[w_+(\ell)-\gamma]\Phi(\ell,t) + w_+(\ell^*)\Phi(\ell^*,t) \;\leq\; \Sigma(t) \;\leq\; \Sigma_+(t)$$
 
 (γ=0 odtwarza stare, bezkonkurencyjne Σ₊ jako przypadek graniczny — sanity check).
 
