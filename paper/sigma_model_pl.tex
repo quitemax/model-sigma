@@ -156,8 +156,12 @@ w_-(\ell,t) = \begin{cases} 0 & \ell=\ell^*(t) \\ \gamma\cdot\text{overlap}(\ell
 \]
 
 \begin{proposition}[Dokładny próg liniowy]
-$\Sigma(\gamma) = \Sigma_+ - \gamma K$, gdzie $K=\sum_{\ell\neq\ell^*}\text{overlap}(\ell,\ell^*)\Phi(\ell)^2$ (uwaga na kwadrat: odejmowany człon to $w_-(\ell)\Phi(\ell)=\gamma\cdot\text{overlap}\cdot\Phi(\ell)^2$), a $\Sigma_+$ to wartość bezkonkurencyjna ($\gamma=0$). Próg krytyczny to $\gamma_{\text{krit}}=\Sigma_+/K$; dla $\gamma>\gamma_{\text{krit}}$, $\Sigma(t)<0$ --- netto fragmentacja --- staje się osiągalne.
+$\Sigma(\gamma) = \Sigma_+ - \gamma K$, gdzie $K=\sum_{\ell\neq\ell^*}\text{overlap}(\ell,\ell^*)\Phi(\ell)^2\ge0$ (uwaga na kwadrat: wkład odejmowany od warstwy to $w_-(\ell)\Phi(\ell)=\gamma\cdot\text{overlap}\cdot\Phi(\ell)^2$), a $\Sigma_+$ to wartość bezkonkurencyjna ($\gamma=0$). Netto fragmentacja ($\Sigma<0$) jest osiągalna \emph{wtedy i tylko wtedy, gdy} $\gamma>\gamma_{\text{crit}}=\Sigma_+/K$ --- jedno porównanie skalarne, nie widełki (jeśli $K=0$, żadna warstwa niebędąca zwycięzcą nie nakłada się na $\ell^*$, więc $\Sigma\equiv\Sigma_+$ i fragmentacja jest nieosiągalna). Zastąpienie każdego overlap jego maksimum $1$ daje tylko luźne widełki $\Sigma_+-\gamma\sum_{\ell\neq\ell^*}\Phi(\ell)^2\le\Sigma(\gamma)\le\Sigma_+$, ciasne jedynie dla w pełni zagnieżdżonych substratów.
 \end{proposition}
+
+\begin{remark}[Nieciągłość przy przełączeniu $\ell^*$]
+$\ell^*(t)$ to $\arg\max$, więc gdy zmienia się warstwa maksymalna, $\ell^*$ --- a z nią $w_-$ i $\Sigma(t)$ --- skacze (\S\ref{sec:example} pokazuje takie przełączenie). To jest zamierzone: nagła zmiana tego, który kompleks ,,wygrywa'', to dokładnie zdarzenie dysocjacyjne, które mechanizm ma reprezentować, a nie nieciągłość do wygładzenia.
+\end{remark}
 
 \subsection*{Odrzucona, wierniejsza IIT alternatywa}
 Sformalizowaliśmy też wersję uziemioną bezpośrednio w rzeczywistym (binarnym) mechanizmie wykluczenia IIT: binarna bramka nakładania się plus gładka relaksacja samej konkurencji, $s(\ell,t)=\tanh\!\big(\tfrac{\kappa}{2}[\Phi(\ell^*,t)-\Phi(\ell,t)]\big)$, tłumiąca bezpośrednio $\Phi$ (jak w kanonicznym IIT), nie wagę. Ten mechanizm dowodliwie wyklucza $\Sigma<0$ (czynnik tłumienia leży w $(0,1]$) i dokładnie odtwarza kanoniczne, twarde wykluczenie przy $\kappa\to\infty$. Świadomie go odrzucamy: zdolność modelu do wyrażenia netto fragmentacji uznajemy za cenniejszą niż ścisła wierność binarnemu postulatowi IIT, dlatego mechanizm $w_+-w_-$ powyżej pozostaje kanoniczny. To świadome, uzasadnione odejście od IIT, nie jego nieporozumienie, i tak należy je nazwać w każdej przyszłej pracy.
@@ -176,7 +180,7 @@ Z konkurencją ($\gamma=0{,}5$, overlap$(2,3)=0{,}4$) & 0,668 & --- & --- \\
 \bottomrule
 \end{tabular}
 \end{center}
-Przedział z mechanizmu konkurencji $[0{,}34;0{,}74]$ poprawnie zawiera zaobserwowane 0,668. Przy binarnych overlapach Jaccarda $\{0;0{,}4\}$, $K=0{,}144$, więc $\gamma_{\text{krit}}\approx5{,}14$; potwierdzone numerycznie ($\Sigma(5{,}14)=0$, $\Sigma(6)=-0{,}124$).
+Przy overlapach Jaccarda $\{0;0{,}4\}$, $K=0{,}4\times0{,}6^2=0{,}144$, więc dokładna tożsamość daje $\Sigma(0{,}5)=0{,}740-0{,}5\times0{,}144=0{,}668$ (luźne widełki $[0{,}34;0{,}74]$ też ją zawierają, ale są niedopięte, bo $\text{overlap}(1,3)=0$), a $\gamma_{\text{crit}}=0{,}740/0{,}144\approx5{,}14$ --- potwierdzone numerycznie ($\Sigma(5{,}14)\approx0$, $\Sigma(6)=-0{,}124$). Netto fragmentacja wymaga tu siły konkurencji $\sim5\times$ bazowej wagi modelu siebie.
 
 Dwuchwilowy scenariusz dysocjacji (konkurująca podnarracja w warstwie 2 przejmuje rolę $\ell^*$ od warstwy 3) daje $(\Sigma,\Gamma,A)$: $(0{,}740;0{,}840;0{,}90)\to(0{,}575;0{,}680;0{,}96)$. Zauważalnie $A$ \emph{rośnie}, mimo że $\Sigma,\Gamma$ obie maleją --- ilustrując, że $A$ odpowiada na inne pytanie (czy samo-korekta nadąża za aktualnym centrum integracyjnym?) niż pytania o wielkość, na które odpowiadają $\Sigma,\Gamma$.
 
@@ -225,14 +229,18 @@ Niech $M(t)$ będzie osobnym substratem eferentnym (jednostki ruchowe/komunikacy
 \[
 R_\ell(t) = D\big(p(m'\mid s_\ell,m)\,\|\,p(m'\mid m)\big),
 \]
-tj. o ile znajomość stanu warstwy $\ell$ zmienia przewidywalność przyszłego stanu efektorów, ponad to, co daje sama znajomość aktualnego stanu efektorów. Strukturalnie identyczne z $\Phi_{\ell,\ell-1}$ (\S3.1), tylko skierowane na kanał warstwa$\to$wyjście. $R_\ell(t)\ge0$ z tego samego argumentu odległościowego, bez dodatkowego aksjomatu. Szczególnie istotne jest $R_L(t)$ --- kanał z najwyższej, samo-modelującej warstwy do efektorów.
+tj. o ile znajomość stanu warstwy $\ell$ zmienia przewidywalność przyszłego stanu efektorów, ponad to, co daje sama znajomość aktualnego stanu efektorów. Strukturalnie identyczne z $\Phi_{\ell,\ell-1}$ (\S3.1), tylko skierowane na kanał warstwa$\to$wyjście. Szczególnie istotne jest $R_L(t)$ --- kanał z najwyższej, samo-modelującej warstwy do efektorów.
+
+\begin{proposition}[Własności kanału odczytu]
+$R_\ell(t)\ge0$ (dywergencja), oraz $R_\ell(t)=0$ wtedy i tylko wtedy, gdy $s_\ell(t)\perp m'\mid m(t)$ --- odczyt znika dokładnie wtedy, gdy warstwa jest warunkowo nieistotna dla przyszłego stanu efektorów przy danym aktualnym, tj. nie ma w ogóle kanału do wyjścia. Jeśli $D$ odczytać jako dywergencję KL (więc $R_\ell=I(s_\ell;m'\mid m)$), zachodzi nierówność przetwarzania danych: jeśli każda ścieżka przyczynowa z warstwy $\ell$ do $M$ przechodzi przez pewną warstwę $\ell'$, to $R_\ell\le R_{\ell'}$.
+\end{proposition}
 
 \subsection*{Obserwowalne vs.\ rzeczywiste}
-To, co widzi klinicysta ($\Sigma_{\text{obs}}$ --- ,,widoczna'' świadomość, z zachowania) jest wąskim gardłem przez $R_L$, niezależnie od faktycznego $\Sigma$:
+To, co widzi klinicysta ($\Sigma_{\text{obs}}$ --- ,,widoczna'' świadomość, wnioskowana z zachowania) jest wąskim gardłem przez $R_L$, niezależnie od faktycznego $\Sigma$:
 \[
-\Sigma_{\text{obs}}(t) \le \kappa\cdot R_L(t) \quad \text{dla pewnego } \kappa>0.
+\Sigma_{\text{obs}}(t) \le \beta\big(R_L(t)\big), \qquad \beta:[0,\infty)\to[0,\infty)\ \text{niemalejąca},\ \beta(0)=0,
 \]
-Jeśli $R_L(t)=0$, $\Sigma_{\text{obs}}(t)=0$ \emph{niezależnie od tego, jak wysokie jest rzeczywiste $\Sigma(t)$} --- formalizacja ryzyka mylenia $\Sigma_{\text{obs}}$ z $\Sigma$.
+poziom widoczny zdominowany przez niemalejącą funkcję odczytu, znikającą razem z nim. Kształt $\beta$ zostaje otwarty (zależy od punktacji zachowania); nośna konsekwencja to punkt końcowy: $R_L(t)=0 \Rightarrow \Sigma_{\text{obs}}(t)=0$ \emph{niezależnie od tego, jak wysokie jest rzeczywiste $\Sigma(t)$} --- formalizacja ryzyka mylenia $\Sigma_{\text{obs}}$ z $\Sigma$. (Wcześniejsza wersja robocza pisała $\Sigma_{\text{obs}}\le\kappa\cdot R_L$ ,,dla pewnego $\kappa>0$'', co jest jałowe.)
 
 \subsection*{Mapowanie kliniczne}
 \textbf{Zespół zamknięcia:} $\Sigma,\Gamma,A$ normalne; $R_L\approx0$ z powodu strukturalnego uszkodzenia dróg eferentnych (np. udar brzusznej części mostu) $\to\Sigma_{\text{obs}}\approx0$ mimo wysokiego $\Sigma$. \textbf{Sen REM:} $\Sigma,\Gamma,A$ względnie zachowane (PCI$\approx$czuwanie); $R_L$ aktywnie stłumione przez znany, odwracalny mechanizm fizjologiczny --- atonia REM, hamowanie neuronów ruchowych rdzenia przez jądro podsinawe --- potwierdzając, że $R_\ell$ ma realny substrat neuronalny, nie tylko teoretyczną wygodę. \textbf{Cognitive motor dissociation} (część pacjentów w stanie wegetatywnym, paradygmaty Owena): $R_L$ częściowe --- wystarcza na modulację odpowiedzi w neuroobrazowaniu na polecenie, nie wystarcza do mięśni. \textbf{Prawdziwy stan wegetatywny (bez ukrytej świadomości):} i $\Sigma$, i $R_L$ niskie --- różnica, którą PCI miało rozstrzygnąć.
@@ -246,7 +254,11 @@ Jeśli $R_L(t)=0$, $\Sigma_{\text{obs}}(t)=0$ \emph{niezależnie od tego, jak wy
 \[
 g_\ell(t) = h\big(e_\ell(t), C(t)\big), \qquad \chi_\ell(t) = \left|\frac{\partial g_\ell}{\partial C}\right| \ge 0,
 \]
-gdzie $C(t)$ to sygnał kontekstowy, a $\chi_\ell(t)$ --- nowy parametr --- mierzy, jak silnie kontekst moduluje wagę błędu. $\chi_\ell(t)\ge0$ trywialnie (wartość bezwzględna), bez górnego ograniczenia bez dalszych założeń o kształcie $h$ (analogicznie do $R_\ell$).
+gdzie $C(t)$ to sygnał kontekstowy, a $\chi_\ell(t)$ --- nowy parametr --- mierzy, jak silnie kontekst moduluje wagę błędu. $\chi_\ell(t)\ge0$ trywialnie.
+
+\begin{proposition}[Ograniczona całkowita modulacja]
+Ponieważ $g_\ell\in[0,1]$, wzdłuż dowolnej ścieżki kontekstu $C_0\to C_1$, na której $g_\ell$ jest monotoniczne, $\int_{C_0}^{C_1}\chi_\ell\,dC = |g_\ell(C_1)-g_\ell(C_0)|\le 1$. Wrażliwość kontekstowa to skończony budżet: wysokie $\chi_\ell$ na jednym odcinku wymusza niskie $\chi_\ell$ (względną context blindness) gdzie indziej, gdy $g_\ell$ nasyci się przy $0$ lub $1$.
+\end{proposition}
 
 \subsection*{Dwa reżimy}
 \textbf{Normalna, kontekstowo czuła precyzja} ($\chi_\ell>0$): znane, kontekstowo nieistotne sygnały dostają automatycznie niższą wagę --- $g_\ell$ spada niezależnie od surowej wielkości $e_\ell$. \textbf{Context blindness} ($\chi_\ell\approx0$): $g_\ell(t)\approx\hat g_\ell(e_\ell(t))$, sztywna funkcja samego błędu; kontekst nic nie zmienia. Efekt: sygnały, które kontekst normalnie by wyciszył, dalej dostają pełną wagę --- formalny odpowiednik ,,zbyt intensywnego świata'' (Intense World Theory, Markram \& Markram 2010): nic nie jest domyślnie tłumione jako ,,już przewidziane w tym kontekście''.

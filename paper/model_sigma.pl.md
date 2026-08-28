@@ -113,15 +113,30 @@ $$\text{overlap}(\ell,\ell^{\ast}) = \frac{|S_\ell\cap S_{\ell^{\ast}}|}{|S_\ell
 
 $$w_-(\ell,t) = \begin{cases}0 & \ell=\ell^{\ast}(t)\\ \gamma\cdot\text{overlap}(\ell,\ell^{\ast}(t))\cdot\Phi(s,\ell,t) & \ell\neq\ell^{\ast}(t)\end{cases}, \quad \gamma\geq 0$$
 
-**Ograniczenie na Σ(t) z konkurencją:**
+**Wpływ na Σ(t) — dokładny, nie tylko ograniczenie.** Ponieważ w₋(ℓ,t) jest liniowe w γ, Σ też:
 
-$$\sum_{\ell\neq\ell^{\ast}}[w_+(\ell)-\gamma]\Phi(\ell,t) + w_+(\ell^{\ast})\Phi(\ell^{\ast},t) \;\leq\; \Sigma(t) \;\leq\; \Sigma_+(t)$$
+$$\Sigma(\gamma) = \Sigma_+ - \gamma K, \qquad K = \sum_{\ell\neq\ell^{\ast}}\text{overlap}(\ell,\ell^{\ast})\,\Phi(s,\ell,t)^2 \;\ge\; 0$$
 
-(γ=0 odtwarza stare, bezkonkurencyjne Σ₊ jako przypadek graniczny — sanity check).
+(K niesie Φ², bo wkład odejmowany od warstwy to w₋(ℓ)·Φ(ℓ) = γ·overlap·Φ(ℓ)².) Przy γ=0
+wracamy do bezkonkurencyjnego Σ₊.
 
-**Interpretacja progowa:** γ vs. inf_ℓ w₊(ℓ) działa jak parametr porządku:
-- γ ≤ inf w₊(ℓ) → Σ(t) pozostaje ≥0 zawsze; system strukturalnie odporny na fragmentację
-- γ > inf w₊(ℓ) → Σ(t)<0 realnie osiągalne = "netto fragmentacja" systemu
+**Dokładny próg fragmentacji.** Σ(γ) przecina zero przy
+
+$$\gamma_{\text{crit}} = \frac{\Sigma_+}{K},$$
+
+więc netto fragmentacja (Σ<0) jest osiągalna **wtedy i tylko wtedy, gdy γ > γ_crit** — jedno
+porównanie skalarne przy znanym profilu overlap, nie widełki (przypadek zdegenerowany K=0: żadna
+warstwa niebędąca zwycięzcą nie nakłada się na ℓ\*, więc Σ ≡ Σ₊ i fragmentacja jest nieosiągalna).
+Grubszy warunek wystarczający,
+niepotrzebujący profilu: jeśli γ ≤ inf_ℓ w₊(ℓ), to każda waga efektywna w₊(ℓ)−w₋(ℓ) pozostaje
+nieujemna i Σ ≥ 0 niezależnie od reszty. Zastąpienie każdego overlap jego maksimum, 1, daje
+luźne widełki $\Sigma_+ - \gamma\sum_{\ell\neq\ell^{\ast}}\Phi(\ell)^2 \le \Sigma(\gamma) \le \Sigma_+$,
+ciasne tylko przy w pełni zagnieżdżonych substratach.
+
+**Nieciągłość przy przełączeniu ℓ\*.** ℓ\*(t) to argmax, więc gdy zmienia się warstwa maksymalna,
+ℓ\*(t) — a z nią w₋ i Σ(t) — skacze. §9.2 pokazuje takie przełączenie. To jest zamierzone: nagła
+zmiana tego, który kompleks „wygrywa" (przełączenie dysocjacyjne) to dokładnie zdarzenie, które
+mechanizm ma reprezentować, a nie nieciągłość do wygładzenia.
 
 Γ(t) i A(t) nie zależą od w₀/w₊/w₋ — rozszerzenie jest lokalne, nie narusza pozostałych definicji.
 
@@ -131,7 +146,7 @@ Rozważono wersję ściślej uziemioną w kanonicznym postulacie wykluczenia IIT
 
 **Odrzucona świadomie**, bo strukturalnie **wyklucza Σ<0** (przegrywający kandydat ma najwyżej φ=0, nigdy φ<0 — tak jak w prawdziwym IIT). To wprost sprzeczne z tym, co chcemy zachować: możliwość "netto fragmentacji" systemu (analogia ze stałą kosmologiczną, warstwy realnie *odejmujące* od podmiotowości, nie tylko tracące swój wkład). Decyzja: **priorytet ma zdolność modelu do wyrażenia zjawiska, nie ścisła wierność kanonicznemu postulatowi wykluczenia IIT.** To świadome, jawne odejście od IIT — do wprost nazwania w każdej przyszłej pracy, żeby recenzent nie odczytał tego jako nieporozumienie formalizmu.
 
-**Kanoniczna pozostaje wersja z §7** (w=w₊−w₋, ciągły indeks Jaccarda, w₋=γ·overlap·Φ, dokładny próg γ_krit z §9.1) — dopuszcza Σ<0, co jest tu traktowane jako cecha modelu, nie usterka.
+**Kanoniczna pozostaje wersja z §7** (w=w₊−w₋, ciągły indeks Jaccarda, w₋=γ·overlap·Φ, z dokładnym progiem γ_crit = Σ₊/K z §7) — dopuszcza Σ<0, co jest tu traktowane jako cecha modelu, nie usterka.
 
 ## 9. Toy example — układ 3-warstwowy
 
@@ -145,15 +160,15 @@ Warstwy: ℓ=1 (homeostaza), ℓ=2 (model świata), ℓ=3 (model siebie).
 
 **Bez konkurencji:** Σ=0.74, Γ=0.84, A≈0.90 — wysoka integracja, wysoka aktywność konstytutywna, dobrze wyrównane przestrzennie (sanity check: model daje intuicyjny wynik na intuicyjnie skonstruowanym przykładzie).
 
-**Z konkurencją (§7):** substraty S₁={a,b}, S₂={b,c,d}, S₃={c,d,e,f}; ℓ\*=argmax Φ = warstwa 3. overlap(1,3)=0, overlap(2,3)=0.4. Przy γ=0.5: Σ=0.668, poprawnie wewnątrz przedziału [0.34, 0.74] wyprowadzonego w §7, bliżej górnej granicy (bo faktyczny overlap(1,3)=0 << worst-case=1 założone w dowodzie dolnej granicy — granica jest poprawna, ale nie ciasna dla konkretnych danych).
+**Z konkurencją (§7):** substraty S₁={a,b}, S₂={b,c,d}, S₃={c,d,e,f}; ℓ\*=argmax Φ = warstwa 3. overlap(1,3)=0, overlap(2,3)=0.4, więc K = 0×0.2² + 0.4×0.6² = 0.144. Dokładna tożsamość z §7 daje Σ(0.5) = 0.74 − 0.5×0.144 = **0.668**. Luźne widełki worst-case [0.34, 0.74] też ją zawierają, ale są tu niedopięte, bo overlap(1,3)=0.
 
-### 9.1 Poprawka do §7 — dokładny próg krytyczny γ
+### 9.1 Próg fragmentacji dla tego przykładu
 
-Ponieważ w₋(ℓ)=γ·overlap(ℓ,ℓ\*)·Φ(ℓ) jest liniowe w γ, Σ(γ) jest **dokładnie liniowe**, nie tylko ograniczone:
+Tożsamość Σ(γ) = Σ₊ − γK z §7, przy K = 0.144:
 
-$$\Sigma(\gamma) = \Sigma_+ - \gamma\sum_{\ell\neq\ell^{\ast}}\text{overlap}(\ell,\ell^{\ast})\,\Phi(\ell)^2, \qquad \gamma_{\text{krit}} = \frac{\Sigma_+}{\sum_{\ell\neq\ell^{\ast}}\text{overlap}(\ell,\ell^{\ast})\Phi(\ell)^2}$$
+$$\gamma_{\text{crit}} = \frac{\Sigma_+}{K} = \frac{0.74}{0.144} \approx 5.14$$
 
-(uwaga: odejmowany człon to w₋(ℓ)·Φ(ℓ) = γ·overlap·Φ(ℓ)², czyli Φ do kwadratu — nie do pierwszej potęgi). Dla przykładu: γ_krit = 0.74/(0.4×0.6²) = 0.74/0.144 ≈ **5.139**, potwierdzone numerycznie (Σ(5.139)=0, Σ(6)=−0.124). To ostrzejszy wynik niż same nierówności — przy znanym profilu overlap można podać dokładny próg fragmentacji, nie tylko widełki.
+potwierdzone numerycznie (Σ(5.14) ≈ 0, Σ(6) = −0.124). Czyli dla tego układu netto fragmentacja wymaga siły konkurencji ponad ok. 5× większej niż bazowa waga modelu siebie — mechanizm nie wpada w Σ<0 dla umiarkowanych γ.
 
 ### 9.2 Scenariusz dynamiczny — dysocjacja, ℓ\* się przesuwa
 
@@ -243,15 +258,17 @@ Wyróżniamy osobny substrat eferentny M(t) (jednostki odpowiedzialne za ruch/ko
 
 $$R_\ell(t) = D\big(p(m' \mid s_\ell, m) \,\|\, p(m' \mid m)\big)$$
 
-— o ile znajomość stanu warstwy ℓ zmienia przewidywalność przyszłego stanu efektorów, ponad to, co daje sama znajomość aktualnego stanu efektorów. Strukturalnie identyczne z definicją Φ_{ℓ,ℓ-1} (§2.1), tylko skierowane na kanał warstwa→wyjście. **R_ℓ(t) ≥ 0** z tego samego argumentu (dystans), bez dodatkowych założeń. Szczególnie istotne: **R_L(t)** — kanał z najwyższej, samo-modelującej warstwy do efektorów.
+— o ile znajomość stanu warstwy ℓ zmienia przewidywalność przyszłego stanu efektorów, ponad to, co daje sama znajomość aktualnego stanu efektorów. Strukturalnie identyczne z definicją Φ_{ℓ,ℓ-1} (§2.1), tylko skierowane na kanał warstwa→wyjście. Szczególnie istotne: **R_L(t)** — kanał z najwyższej, samo-modelującej warstwy do efektorów.
+
+**Własność.** R_ℓ(t) ≥ 0 (dywergencja), oraz R_ℓ(t) = 0 **wtedy i tylko wtedy, gdy** s_ℓ(t) ⊥ m′ | m(t) — odczyt znika dokładnie wtedy, gdy stan warstwy jest warunkowo nieistotny dla przyszłego stanu efektorów przy danym stanie aktualnym, tj. gdy warstwa nie ma w ogóle kanału do wyjścia. Jeśli D odczytać jako dywergencję KL, tak że R_ℓ = I(s_ℓ ; m′ | m), zachodzi **nierówność przetwarzania danych** (data-processing): jeśli każda ścieżka przyczynowa z warstwy ℓ do M przechodzi przez pewną warstwę ℓ′, to R_ℓ ≤ R_ℓ′ — warstwy nie da się odczytać bardziej niż warstwy pośredniczącej na całej jej drodze do efektorów.
 
 ### 17.2 Obserwowalne vs. rzeczywiste
 
-To, co widzi klinicysta (Σ_obs — "widoczna" świadomość, z zachowania) jest wąskim gardłem przez R_L, niezależnie od faktycznego Σ:
+To, co widzi klinicysta (Σ_obs — "widoczna" świadomość, wnioskowana z zachowania) jest wąskim gardłem przez R_L, niezależnie od faktycznego Σ. Zapisujemy to jako
 
-$$\Sigma_{\text{obs}}(t) \le \kappa \cdot R_L(t) \quad \text{dla pewnego } \kappa > 0$$
+$$\Sigma_{\text{obs}}(t) \le \beta\big(R_L(t)\big), \qquad \beta:[0,\infty)\to[0,\infty)\ \text{niemalejąca},\ \beta(0)=0$$
 
-Jeśli R_L(t)=0, Σ_obs(t)=0 **niezależnie od tego, jak wysokie jest rzeczywiste Σ(t)** — formalizacja ryzyka mylenia Σ_obs z Σ.
+— poziom widoczny jest zdominowany przez niemalejącą funkcję odczytu, która znika razem z nim. Kształt β zostaje otwarty (zależy od tego, jak punktuje się zachowanie); nośna konsekwencja to punkt końcowy: **R_L(t)=0 ⟹ Σ_obs(t)=0, niezależnie od tego, jak wysokie jest rzeczywiste Σ(t)** — formalizacja ryzyka mylenia Σ_obs z Σ. (Wcześniejsza wersja robocza pisała Σ_obs ≤ κ·R_L „dla pewnego κ>0", co jest jałowe: spełnia to każda wielkość nieujemna.)
 
 ### 17.3 Mapowanie kliniczne
 
@@ -270,7 +287,13 @@ Jeśli R_L(t)=0, Σ_obs(t)=0 **niezależnie od tego, jak wysokie jest rzeczywist
 
 $$g_\ell(t) = h\big(e_\ell(t),\, C(t)\big), \qquad \chi_\ell(t) = \left|\frac{\partial g_\ell}{\partial C}\right| \ge 0$$
 
-gdzie C(t) to sygnał kontekstowy, a χ_ℓ(t) — **nowy parametr** — mierzy, jak silnie kontekst moduluje wagę błędu. **χ_ℓ(t) ≥ 0** trywialnie (wartość bezwzględna), bez dodatkowych założeń — analogicznie do R_ℓ, nie zakładamy górnego ograniczenia bez dalszych aksjomatów o kształcie h.
+gdzie C(t) to sygnał kontekstowy, a χ_ℓ(t) — **nowy parametr** — mierzy, jak silnie kontekst moduluje wagę błędu. χ_ℓ(t) ≥ 0 trywialnie (wartość bezwzględna).
+
+**Własność (ograniczona całkowita modulacja).** Ponieważ g_ℓ ∈ [0,1], wzdłuż dowolnej ścieżki kontekstu C₀→C₁, na której g_ℓ jest monotoniczne,
+
+$$\int_{C_0}^{C_1}\chi_\ell\,dC = \big|g_\ell(C_1) - g_\ell(C_0)\big| \le 1.$$
+
+Wrażliwość kontekstowa to skończony budżet: bramki nie da się ostro modulować kontekstem w całym zakresie kontekstu — wysokie χ_ℓ na jednym odcinku wymusza niskie χ_ℓ (względną context blindness) gdzie indziej, gdy g_ℓ nasyci się przy 0 lub 1. Context blindness w jednym reżimie i ostre bramkowanie kontekstem w innym to dwie strony tego samego ograniczenia.
 
 ### 18.2 Dwa reżimy
 

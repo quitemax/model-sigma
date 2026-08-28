@@ -193,15 +193,29 @@ $$\text{overlap}(\ell,\ell^{\ast}) = \frac{|S_\ell\cap S_{\ell^{\ast}}|}{|S_\ell
 
 $$w_-(\ell,t) = \begin{cases}0 & \ell=\ell^{\ast}(t)\\ \gamma\cdot\text{overlap}(\ell,\ell^{\ast}(t))\cdot\Phi(s,\ell,t) & \ell\neq\ell^{\ast}(t)\end{cases}, \quad \gamma\geq 0$$
 
-**Bound on Σ(t) with competition:**
+**Effect on Σ(t) — exact, not just bounded.** Because w₋(ℓ,t) is linear in γ, so is Σ:
 
-$$\sum_{\ell\neq\ell^{\ast}}[w_+(\ell)-\gamma]\Phi(\ell,t) + w_+(\ell^{\ast})\Phi(\ell^{\ast},t) \;\leq\; \Sigma(t) \;\leq\; \Sigma_+(t)$$
+$$\Sigma(\gamma) = \Sigma_+ - \gamma K, \qquad K = \sum_{\ell\neq\ell^{\ast}}\text{overlap}(\ell,\ell^{\ast})\,\Phi(s,\ell,t)^2 \;\ge\; 0$$
 
-(γ=0 recovers the old, competition-free Σ₊ as a limiting case — a sanity check).
+(K carries Φ², because the contribution removed from a layer is w₋(ℓ)·Φ(ℓ) = γ·overlap·Φ(ℓ)².)
+Setting γ=0 gives back the competition-free Σ₊.
 
-**Threshold interpretation:** γ vs. inf_ℓ w₊(ℓ) acts as an order parameter:
-- γ ≤ inf w₊(ℓ) → Σ(t) stays ≥0 always; the system is structurally resistant to fragmentation
-- γ > inf w₊(ℓ) → Σ(t)<0 becomes genuinely reachable = "net fragmentation" of the system
+**Exact fragmentation threshold.** Σ(γ) crosses zero at
+
+$$\gamma_{\text{crit}} = \frac{\Sigma_+}{K},$$
+
+so net fragmentation (Σ<0) is reachable **iff γ > γ_crit** — a single scalar comparison given
+the overlap profile, not a range (degenerate case K=0: no non-winner layer overlaps ℓ\*, so
+Σ ≡ Σ₊ and fragmentation is unreachable). A cruder sufficient condition that needs no profile: if
+γ ≤ inf_ℓ w₊(ℓ) then every effective weight w₊(ℓ)−w₋(ℓ) stays non-negative and Σ ≥ 0
+regardless. Replacing each overlap by its maximum, 1, gives the loose bracket
+$\Sigma_+ - \gamma\sum_{\ell\neq\ell^{\ast}}\Phi(\ell)^2 \le \Sigma(\gamma) \le \Sigma_+$, tight
+only when the substrates are fully nested.
+
+**Discontinuity at a switch of ℓ\*.** ℓ\*(t) is an argmax, so when the maximal layer changes,
+ℓ\*(t) — and with it w₋ and Σ(t) — jump. §9.2 exhibits such a switch. This is intended: an
+abrupt change in which complex "wins" (a dissociative switch) is exactly the event the
+mechanism is built to represent, not a non-smoothness to be regularized away.
 
 Γ(t) and A(t) do not depend on w₀/w₊/w₋ — the extension is local and does not touch the other
 definitions.
@@ -223,8 +237,8 @@ be named outright in any future write-up so a reviewer does not read it as a mis
 of the formalism.
 
 **The canonical version remains the one from §7** (w=w₊−w₋, continuous Jaccard index,
-w₋=γ·overlap·Φ, the exact threshold γ_krit from §9.1) — it allows Σ<0, which is treated here as
-a feature of the model, not a bug.
+w₋=γ·overlap·Φ, with the exact threshold γ_crit = Σ₊/K from §7) — it allows Σ<0, which is
+treated here as a feature of the model, not a bug.
 
 ## 9. Toy example — a 3-layer system
 
@@ -241,23 +255,19 @@ activity, well spatially aligned (sanity check: the model gives an intuitive res
 intuitively constructed example).
 
 **With competition (§7):** substrates S₁={a,b}, S₂={b,c,d}, S₃={c,d,e,f}; ℓ\*=argmax Φ = layer
-3. overlap(1,3)=0, overlap(2,3)=0.4. At γ=0.5: Σ=0.668, correctly inside the interval
-[0.34, 0.74] derived in §7, closer to the upper bound (because the actual overlap(1,3)=0 <<
-worst-case=1 assumed in the lower-bound proof — the bound is correct but not tight for these
-particular data).
+3. overlap(1,3)=0, overlap(2,3)=0.4, so K = 0×0.2² + 0.4×0.6² = 0.144. The exact identity of §7
+gives Σ(0.5) = 0.74 − 0.5×0.144 = **0.668**. The loose worst-case bracket [0.34, 0.74] contains
+it too, but is slack here because overlap(1,3)=0.
 
-### 9.1 Correction to §7 — the exact critical threshold γ
+### 9.1 Fragmentation threshold for this example
 
-Since w₋(ℓ)=γ·overlap(ℓ,ℓ\*)·Φ(ℓ) is linear in γ, Σ(γ) is **exactly linear**, not merely
-bounded:
+The identity Σ(γ) = Σ₊ − γK from §7, with K = 0.144:
 
-$$\Sigma(\gamma) = \Sigma_+ - \gamma\sum_{\ell\neq\ell^{\ast}}\text{overlap}(\ell,\ell^{\ast})\,\Phi(\ell)^2, \qquad \gamma_{\text{krit}} = \frac{\Sigma_+}{\sum_{\ell\neq\ell^{\ast}}\text{overlap}(\ell,\ell^{\ast})\Phi(\ell)^2}$$
+$$\gamma_{\text{crit}} = \frac{\Sigma_+}{K} = \frac{0.74}{0.144} \approx 5.14$$
 
-(note: the subtracted term is w₋(ℓ)·Φ(ℓ) = γ·overlap·Φ(ℓ)², i.e. Φ squared — not to the first
-power). For the example: γ_krit = 0.74/(0.4×0.6²) = 0.74/0.144 ≈ **5.139**, confirmed
-numerically (Σ(5.139)=0, Σ(6)=−0.124). This is a sharper result than the inequalities alone —
-given a known overlap profile one can state the exact fragmentation threshold, not just a
-range.
+confirmed numerically (Σ(5.14) ≈ 0, Σ(6) = −0.124). So for this system net fragmentation needs a
+competition strength more than about 5× the baseline self-model weight — the mechanism does not
+tip into Σ<0 for modest γ.
 
 ### 9.2 Dynamic scenario — dissociation, ℓ\* shifts
 
@@ -442,19 +452,28 @@ $$R_\ell(t) = D\big(p(m' \mid s_\ell, m) \,\|\, p(m' \mid m)\big)$$
 
 — how much knowing layer ℓ's state changes the predictability of the effectors' future state,
 beyond what knowing the effectors' current state alone provides. Structurally identical to the
-definition of Φ_{ℓ,ℓ-1} (§2.1), just directed at the layer→output channel. **R_ℓ(t) ≥ 0** by
-the same argument (a distance), with no extra assumptions. Of particular importance:
-**R_L(t)** — the channel from the topmost, self-modelling layer to the effectors.
+definition of Φ_{ℓ,ℓ-1} (§2.1), just directed at the layer→output channel. Of particular
+importance: **R_L(t)** — the channel from the topmost, self-modelling layer to the effectors.
+
+**Property.** R_ℓ(t) ≥ 0 (a divergence), and R_ℓ(t) = 0 **iff** s_ℓ(t) ⊥ m′ | m(t) — the
+readout vanishes exactly when the layer's state is conditionally irrelevant to the effectors'
+next state given their current one, i.e. when the layer has no channel to output at all. If D
+is read as a KL divergence, so that R_ℓ = I(s_ℓ ; m′ | m), a **data-processing inequality**
+holds: if every causal path from layer ℓ to M runs through some layer ℓ′, then R_ℓ ≤ R_ℓ′ — a
+layer cannot be read out more than a layer that mediates its whole route to the effectors.
 
 ### 17.2 Observable vs. actual
 
-What the clinician sees (Σ_obs — "visible" consciousness, from behaviour) is bottlenecked by
-R_L, independent of the actual Σ:
+What the clinician sees (Σ_obs — "visible" consciousness, inferred from behaviour) is
+bottlenecked by R_L, independent of the actual Σ. Write this as
 
-$$\Sigma_{\text{obs}}(t) \le \kappa \cdot R_L(t) \quad \text{for some } \kappa > 0$$
+$$\Sigma_{\text{obs}}(t) \le \beta\big(R_L(t)\big), \qquad \beta:[0,\infty)\to[0,\infty)\ \text{non-decreasing},\ \beta(0)=0$$
 
-If R_L(t)=0, then Σ_obs(t)=0 **regardless of how high the actual Σ(t) is** — a formalization of
-the risk of conflating Σ_obs with Σ.
+— the visible level is dominated by a non-decreasing function of the readout that vanishes with
+it. The shape of β is left open (it depends on how behaviour is scored); the load-bearing
+consequence is the endpoint: **R_L(t)=0 ⟹ Σ_obs(t)=0, no matter how high the actual Σ(t) is**
+— a formalization of the risk of conflating Σ_obs with Σ. (An earlier draft wrote
+Σ_obs ≤ κ·R_L "for some κ>0", which is vacuous: every non-negative quantity satisfies it.)
 
 ### 17.3 Clinical mapping
 
@@ -490,9 +509,17 @@ modulate that weight. Extension:
 $$g_\ell(t) = h\big(e_\ell(t),\, C(t)\big), \qquad \chi_\ell(t) = \left|\frac{\partial g_\ell}{\partial C}\right| \ge 0$$
 
 where C(t) is a contextual signal and χ_ℓ(t) — a **new parameter** — measures how strongly
-context modulates the error's weight. **χ_ℓ(t) ≥ 0** trivially (an absolute value), with no
-extra assumptions — as with R_ℓ, we assume no upper bound without further axioms about the
-shape of h.
+context modulates the error's weight. χ_ℓ(t) ≥ 0 trivially (an absolute value).
+
+**Property (bounded total modulation).** Because g_ℓ ∈ [0,1], along any context path C₀→C₁ on
+which g_ℓ is monotone,
+
+$$\int_{C_0}^{C_1}\chi_\ell\,dC = \big|g_\ell(C_1) - g_\ell(C_0)\big| \le 1.$$
+
+Context-sensitivity is a finite budget: the gate cannot be sharply context-modulated across
+the whole context range — high χ_ℓ over one span forces low χ_ℓ (relative context-blindness)
+elsewhere, once g_ℓ saturates at 0 or 1. Context blindness in one regime and sharp
+context-gating in another are two sides of the same constraint.
 
 ### 18.2 Two regimes
 
