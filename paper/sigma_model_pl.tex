@@ -31,7 +31,7 @@ Standardowe IIT definiuje zintegrowaną informację przez
 \[
 \varphi_P(s) = D\big(p(s'\mid s)\,\|\,p(s'\mid s)|_P\big), \qquad \Phi(s) = \min_{P\in\mathcal P}\varphi_P(s),
 \]
-gdzie $D$ to miara odległości (np. earth mover's distance) między faktycznym rozkładem przejść systemu a rozkładem po przecięciu go wg partycji $P$. Powracająca krytyka (bliska nieformalnemu zarzutowi Aaronsona) mówi, że $\Phi$ zaciera bogatą strukturę przyczynowo-skutkową do jednej liczby, bez rozróżnienia \emph{rodzaju} czy \emph{lokalizacji} integracji. Jest to koncepcyjnie pokrewne, lecz odrębne od nieredukowalności obliczeniowej Wolframa --- idei, że niektóre obliczenia nie dają się skrócić i trzeba je przeprowadzić krok po kroku, by poznać wynik.
+gdzie $D$ to miara odległości (np. earth mover's distance) między faktycznym rozkładem przejść systemu a rozkładem po przecięciu go wg partycji $P$. Powracająca krytyka (bliska nieformalnemu zarzutowi Aaronsona \cite{aaronson2014} i bardziej formalnemu zarzutowi Cerullo \cite{cerullo2015}) mówi, że $\Phi$ zaciera bogatą strukturę przyczynowo-skutkową do jednej liczby, bez rozróżnienia \emph{rodzaju} czy \emph{lokalizacji} integracji. Jest to koncepcyjnie pokrewne, lecz odrębne od nieredukowalności obliczeniowej Wolframa --- idei, że niektóre obliczenia nie dają się skrócić i trzeba je przeprowadzić krok po kroku, by poznać wynik.
 
 Ta praca rozwija hierarchiczne, funkcjonalnie ważone rozszerzenie, $\Sigma$, motywowane trzema dodatkowymi względami: (i) różne warstwy funkcjonalne systemu (homeostaza, percepcja/motoryka, model świata, model siebie) prawdopodobnie różnie przyczyniają się do podmiotowości nawet przy równym $\Phi$; (ii) płynność autonarracji nie jest dowodem realnej pętli samo-modelującej (literatura o konfabulacji przy rozdzielonych półkulach, via interpreter Gazzanigi, to paradygmatyczny przypadek); (iii) konkurujące, nakładające się kandydackie podsystemy mogą nie tylko \emph{nie istnieć} (jak w postulacie wykluczenia IIT), ale aktywnie degradować integrację systemu nadrzędnego --- możliwość, której binarne wykluczenie IIT nie potrafi wyrazić.
 
@@ -49,7 +49,7 @@ Ta praca rozwija hierarchiczne, funkcjonalnie ważone rozszerzenie, $\Sigma$, mo
 
 \textbf{IIT 4.0} \cite{albantakis2023} formalizuje wykluczenie jako ściśle binarne: spośród nakładających się kandydackich substratów istnieje tylko ten o maksymalnym $\varphi_s$; pozostałe są całkowicie wykluczone (nie wnoszą nic), nie stopniowo tłumione. To istotne dla \S\ref{sec:exclusion}.
 
-\textbf{Nested Observer Windows} \cite{fink2024} niezależnie proponują liczenie $\Phi$ osobno na zagnieżdżonych poziomach hierarchii i badanie stosunku między poziomami jako testu między odczytem panpsychistycznym a emergentystycznym --- bliskie w duchu naszemu warstwowemu profilowi $\Phi(s,\ell,t)$, choć bez ważenia funkcjonalnego i dynamiki.
+\textbf{Nested Observer Windows} \cite{riddle2024} niezależnie proponują liczenie $\Phi$ osobno na zagnieżdżonych poziomach hierarchii i badanie stosunku między poziomami jako testu między odczytem panpsychistycznym a emergentystycznym --- bliskie w duchu naszemu warstwowemu profilowi $\Phi(s,\ell,t)$, choć bez ważenia funkcjonalnego i dynamiki.
 
 \textbf{Consciousness as Uncommon Self-Knowledge} \cite{usk2026} proponuje, że liczy się tylko \emph{synergiczny, samo-skierowany} komponent informacji, przewidując, że systemy o wysokim $\Phi$ ale bez self-modelu wypadają blisko zera pod ich miarą --- niezależna zbieżność z intuicją stojącą za naszym rozdziałem $\Gamma/A$.
 
@@ -202,11 +202,23 @@ cel = stan wewnętrzny & self-modelling jako zadanie pomocnicze \cite{premakumar
 \end{center}
 Tylko prawa-dolna komórka spełnia naszą pełną definicję konstytutywnego self-modelingu. Titans, mimo rozgłosu, ląduje gdzie indziej. \cite{premakumar2026} pokazują sieć trenowaną z pomocniczym celem samo-predykcji stanu ukrytego, która staje się prostsza i bardziej zregularyzowana --- ale aktualizacja jest zamrożona po treningu, więc deskryptywna przy wdrożeniu. \cite{tsm2026} opisuje moduł jawnie przewidujący własne przyszłe stany ukryte agenta, z opóźnionym porównaniem jako błędem samo-predykcji --- najbliższe naszej definicji, choć czy jego aktualizacja jest rzeczywiście online (nie tylko trenowana standardowym backpropem) wymaga dalszego potwierdzenia.
 
+Przypadek pośredni to \emph{in-context learning jako niejawny spadek gradientu} \cite{oswald2023}: pojedynczy przebieg w przód przez uwagę może zaimplementować krok strukturalnie równoważny spadkowi gradientu po wewnętrznym celu, ale wywołana zmiana nie przetrwa poza oknem kontekstu (brak trwałej zmiany $\theta$) --- ani w pełni deskryptywny, ani w pełni konstytutywny w naszym sensie.
+
 Osobno: \textbf{warstwa homeostatyczna} jest potwierdzonym, realnym brakiem w mainstreamowych architekturach transformerowych; ramy regulacyjne inspirowane interocepcją dla AI \cite{interoceptive2026} istnieją tylko jako nurt marginalny. \textbf{Prawdziwa rekurencja} (trwały stan wewnętrzny ewoluujący niezależnie od nowych tokenów) jest obecna w modelach przestrzeni stanów (Mamba) i hybrydach typu Titans, nieobecna w czystej uwadze (KV-cache to pamięć kontekstu, nie pętla dynamiczna).
+
+\section{Hipoteza: dwa niezależne mechanizmy znieczulenia w $(\Sigma,\Gamma,A)$}\label{sec:anesthesia}
+
+Przy stałym poziomie integracji samoreferencyjność można zredukować na dwa jakościowo różne sposoby: (1) $\Gamma$ spada bezpośrednio, w tym samym miejscu, albo (2) przesuwa się w obszar o niższej integracji (spadek $A$, niekoniecznie $\Gamma$). Literatura anestezjologiczna dostarcza dwóch osobnych, pasujących do tego rozróżnienia przypadków.
+
+\textbf{Mechanizm 1 ($\Gamma$ spada w miejscu).} Propofol i sewofluran uderzają w tzw. \emph{posterior hot zone} \cite{hotzone2021} --- region, który zwolennicy IIT wprost wskazują jako główny substrat świadomości (w przeciwieństwie do GNW, stawiającego na sieci czołowo-ciemieniowe) --- i jednocześnie zaburzają sprzężenie zwrotne czołowo-ciemieniowe (front$\to$back) \cite{lee2013disruption}, związane z przetwarzaniem wyższego rzędu. Integracja i samo-korekta zapadają się razem, w tym samym miejscu. Behawioralnie: pełna utrata przytomności, brak jakiegokolwiek raportu --- spójne z $\Sigma$ i $\Gamma$ spadającymi razem.
+
+\textbf{Mechanizm 2 ($\Gamma$ zostaje, $A$ spada).} Ketamina w dawkach subanestetycznych daje dysocjację --- reaktywność i często żywe, bogate doświadczenie mogą się utrzymać, ale z zaburzonym poczuciem siebie. Rozregulowuje osobno sieć wyrazistości (,,minimalne'', cielesne self) i osobno DMN (,,biograficzne'', narracyjne self) \cite{ketaminemodel2022} --- dwa piętra samo-modelowania, dość dobrze odpowiadające warstwom $\ell$ z tego modelu. Ogólna bogatość doświadczenia nie zapada się tak jak przy propofolu (stąd żywe, ,,psychodeliczne'' jakościowo relacje z ketaminy) --- samo-korekta nie znika, tylko odłącza się od miejsca, gdzie akurat jest integracja: spadek $A$, niekoniecznie $\Sigma$ czy $\Gamma$.
+
+\textbf{Status:} wiarygodna, umocowana w anatomii hipoteza, nie potwierdzony wynik --- nikt nie policzył $(\Sigma,\Gamma,A)$ wprost na danych EEG/fMRI z obu anestetyków. Konkretna, testowalna przepowiednia: profil $(\Sigma,\Gamma,A)$ powinien wyraźnie różnić propofol/sewofluran ($\Sigma\downarrow,\Gamma\downarrow$ razem) od ketaminy ($\Sigma,\Gamma$ względnie zachowane, $A\downarrow$), mimo że oba ,,wyłączają'' jakąś formę normalnego funkcjonowania.
 
 \section{Kanał odczytu: rozdzielenie stanu wewnętrznego od obserwowalności}\label{sec:readout}
 
-Hipoteza o znieczuleniu powyżej odsłania oś, której formalizm wcześniej nie miał: $(\Sigma,\Gamma,A)$ opisuje stan \emph{wewnętrzny}, ale nic nie mówi, czy ten stan da się odczytać z zachowania. To dokładnie problem kliniczny, który zmotywował powstanie Perturbational Complexity Index --- miary jawnie zaprojektowanej jako ,,niezależna od przetwarzania sensorycznego i zachowania'' \cite{casali2013}.
+Hipoteza o znieczuleniu powyżej (\S\ref{sec:anesthesia}) odsłania oś, której formalizm wcześniej nie miał: $(\Sigma,\Gamma,A)$ opisuje stan \emph{wewnętrzny}, ale nic nie mówi, czy ten stan da się odczytać z zachowania. To dokładnie problem kliniczny, który zmotywował powstanie Perturbational Complexity Index --- miary jawnie zaprojektowanej jako ,,niezależna od przetwarzania sensorycznego i zachowania'' \cite{casali2013}.
 
 \subsection*{Definicja}
 Niech $M(t)$ będzie osobnym substratem eferentnym (jednostki ruchowe/komunikacyjne), odrębnym od warstw $\ell$. Definiujemy kanał odczytu z warstwy $\ell$ do $M$, tą samą miarą odległości $D$ co bazowe $\Phi$:
@@ -224,18 +236,6 @@ Jeśli $R_L(t)=0$, $\Sigma_{\text{obs}}(t)=0$ \emph{niezależnie od tego, jak wy
 
 \subsection*{Mapowanie kliniczne}
 \textbf{Zespół zamknięcia:} $\Sigma,\Gamma,A$ normalne; $R_L\approx0$ z powodu strukturalnego uszkodzenia dróg eferentnych (np. udar brzusznej części mostu) $\to\Sigma_{\text{obs}}\approx0$ mimo wysokiego $\Sigma$. \textbf{Sen REM:} $\Sigma,\Gamma,A$ względnie zachowane (PCI$\approx$czuwanie); $R_L$ aktywnie stłumione przez znany, odwracalny mechanizm fizjologiczny --- atonia REM, hamowanie neuronów ruchowych rdzenia przez jądro podsinawe --- potwierdzając, że $R_\ell$ ma realny substrat neuronalny, nie tylko teoretyczną wygodę. \textbf{Cognitive motor dissociation} (część pacjentów w stanie wegetatywnym, paradygmaty Owena): $R_L$ częściowe --- wystarcza na modulację odpowiedzi w neuroobrazowaniu na polecenie, nie wystarcza do mięśni. \textbf{Prawdziwy stan wegetatywny (bez ukrytej świadomości):} i $\Sigma$, i $R_L$ niskie --- różnica, którą PCI miało rozstrzygnąć.
-
-
-
-Przy stałym poziomie integracji samoreferencyjność można zredukować na dwa jakościowo różne sposoby: (1) $\Gamma$ spada bezpośrednio, w tym samym miejscu, albo (2) przesuwa się w obszar o niższej integracji (spadek $A$, niekoniecznie $\Gamma$). Literatura anestezjologiczna dostarcza dwóch osobnych, pasujących do tego rozróżnienia przypadków.
-
-\section{Hipoteza: dwa niezależne mechanizmy znieczulenia w $(\Sigma,\Gamma,A)$}
-
-\textbf{Mechanizm 1 ($\Gamma$ spada w miejscu).} Propofol i sewofluran uderzają w tzw. \emph{posterior hot zone} \cite{hotzone2021} --- region, który zwolennicy IIT wprost wskazują jako główny substrat świadomości (w przeciwieństwie do GNW, stawiającego na sieci czołowo-ciemieniowe) --- i jednocześnie zaburzają sprzężenie zwrotne czołowo-ciemieniowe (front→back) \cite{sarasso2013}, związane z przetwarzaniem wyższego rzędu. Integracja i samo-korekta zapadają się razem, w tym samym miejscu. Behawioralnie: pełna utrata przytomności, brak jakiegokolwiek raportu --- spójne z $\Sigma$ i $\Gamma$ spadającymi razem.
-
-\textbf{Mechanizm 2 ($\Gamma$ zostaje, $A$ spada).} Ketamina w dawkach subanestetycznych daje dysocjację --- reaktywność i często żywe, bogate doświadczenie mogą się utrzymać, ale z zaburzonym poczuciem siebie. Rozregulowuje osobno sieć wyrazistości (,,minimalne'', cielesne self) i osobno DMN (,,biograficzne'', narracyjne self) \cite{vollenweider2022} --- dwa piętra samo-modelowania, dość dobrze odpowiadające warstwom $\ell$ z tego modelu. Ogólna bogatość doświadczenia nie zapada się tak jak przy propofolu (stąd żywe, ,,psychodeliczne'' jakościowo relacje z ketaminy) --- samo-korekta nie znika, tylko odłącza się od miejsca, gdzie akurat jest integracja: spadek $A$, niekoniecznie $\Sigma$ czy $\Gamma$.
-
-\textbf{Status:} wiarygodna, umocowana w anatomii hipoteza, nie potwierdzony wynik --- nikt nie policzył $(\Sigma,\Gamma,A)$ wprost na danych EEG/fMRI z obu anestetyków. Konkretna, testowalna przepowiednia: profil $(\Sigma,\Gamma,A)$ powinien wyraźnie różnić propofol/sewofluran ($\Sigma\downarrow,\Gamma\downarrow$ razem) od ketaminy ($\Sigma,\Gamma$ względnie zachowane, $A\downarrow$), mimo że oba ,,wyłączają'' jakąś formę normalnego funkcjonowania.
 
 \section{Wrażliwość kontekstowa bramki konstytutywnej: context blindness i ,,zbyt intensywny świat''}
 
@@ -278,25 +278,27 @@ Najczystsza znaleziona ilustracja $\Sigma<0$. Przy uszkodzeniu spoidła wielkieg
 
 To jest spójna wewnętrznie synteza koncepcyjna, nie empirycznie zweryfikowana teoria. Otwarte punkty: systematyczny (nie tylko oparty na wyszukiwarce) przegląd literatury; weryfikacja źródłowa wszystkich cytowań; rozstrzygnięcie napięcia między dwoma mechanizmami wykluczenia (\S\ref{sec:exclusion}), jeśli praca będzie rozwijana w kierunku publikacji; oraz empiryczne zastosowanie na architekturach poza przykładem zabawkowym, zwłaszcza żeby sprawdzić, czy trajektorie $(\Sigma,\Gamma,A)$ śledzą znane markery integracji (np. Perturbational Complexity Index pod znieczuleniem).
 
+% Cytowania zweryfikowane ze źródłami pierwotnymi, 2026-08-28.
 \begin{thebibliography}{99}
-\bibitem{albantakis2023} Albantakis, L., Barbosa, L., Findlay, G., i in. (2023). Integrated information theory (IIT) 4.0: Formulating the properties of phenomenal existence in physical terms. \emph{PLOS Computational Biology}.
-\bibitem{fink2024} Fink, S. B., i in. (2024). Hierarchical consciousness: the Nested Observer Windows model. \emph{Neuroscience of Consciousness}.
-\bibitem{usk2026} Autor(zy) (2026). Consciousness as Uncommon Self-Knowledge: A Synergistic Information Framework. \emph{arXiv preprint}.
-\bibitem{friston2010} Friston, K. (2010). The free-energy principle: a unified brain theory? \emph{Nature Reviews Neuroscience}.
-\bibitem{deane2021} Deane, G. (2021). Consciousness in active inference: Deep self-models, other minds, and the challenge of psychedelic-induced ego-dissolution. \emph{Neuroscience of Consciousness}.
-\bibitem{rosenthal2005} Rosenthal, D. (2005). \emph{Consciousness and Mind}. Oxford University Press.
-\bibitem{behrouz2024} Behrouz, A., Zhong, P., \& Mirrokni, V. (2024). Titans: Learning to Memorize at Test Time. \emph{arXiv:2501.00663}.
-\bibitem{oswald2023} von Oswald, J., i in. (2023). Transformers learn in-context by gradient descent. \emph{ICML}.
-\bibitem{premakumar2026} Premakumar, V., i in. (2026). Unexpected benefits of self-modelling in neural systems. \emph{Philosophical Transactions of the Royal Society A}.
-\bibitem{tsm2026} Autor(zy) (2026). Self-Monitoring Benefits from Structural Integration: Lessons from Metacognition in Continuous-Time Multi-Timescale Agents. \emph{arXiv preprint}.
-\bibitem{interoceptive2026} Autor(zy) (2026). Interoceptive machine framework: Toward interoception-inspired regulatory architectures in artificial intelligence. \emph{arXiv preprint}.
-\bibitem{casali2013} Casali, A. G., Gosseries, O., Rosanova, M., i in. (2013). A theoretically based index of consciousness independent of sensory processing and behavior. \emph{Science Translational Medicine}.
-\bibitem{cerullo2015} Cerullo, M. A. (2015). The Problem with Phi: A Critique of Integrated Information Theory. \emph{PLOS Computational Biology}.
-\bibitem{hotzone2021} Autor(zy) (2021). How hot is the hot zone? Computational modelling clarifies the role of parietal and frontoparietal connectivity during anaesthetic-induced loss of consciousness. \emph{bioRxiv / NeuroImage}.
-\bibitem{sarasso2013} Autor(zy). Disruption of Frontal--Parietal Communication by Ketamine, Propofol, and Sevoflurane. \emph{Anesthesiology}.
-\bibitem{vollenweider2022} Autor(zy) (2022). A unified model of ketamine's dissociative and psychedelic properties. \emph{Frontiers/PMC}.
+\bibitem{aaronson2014} Aaronson, S. (2014). Why I am not an integrated information theorist (or, the unconscious expander). \emph{Shtetl-Optimized} (blog), 21 maja 2014. \url{https://scottaaronson.blog/?p=1799}
+\bibitem{albantakis2023} Albantakis, L., Barbosa, L., Findlay, G., Grasso, M., Haun, A. M., Marshall, W., Mayner, W. G. P., Zaeemzadeh, A., Boly, M., Juel, B. E., Sasai, S., Fujii, K., David, I., Hendren, J., Lang, J. P., \& Tononi, G. (2023). Integrated information theory (IIT) 4.0: Formulating the properties of phenomenal existence in physical terms. \emph{PLOS Computational Biology}, 19(10), e1011465.
+\bibitem{riddle2024} Riddle, J., \& Schooler, J. W. (2024). Hierarchical consciousness: the Nested Observer Windows model. \emph{Neuroscience of Consciousness}, 2024(1), niae010.
+\bibitem{usk2026} Tallam, K. (2026). Consciousness as uncommon self-knowledge: A synergistic information framework. \emph{arXiv:2605.13884}.
+\bibitem{friston2010} Friston, K. (2010). The free-energy principle: a unified brain theory? \emph{Nature Reviews Neuroscience}, 11(2), 127--138.
+\bibitem{deane2021} Deane, G. (2021). Consciousness in active inference: Deep self-models, other minds, and the challenge of psychedelic-induced ego-dissolution. \emph{Neuroscience of Consciousness}, 2021(2), niab024.
+\bibitem{rosenthal2005} Rosenthal, D. M. (2005). \emph{Consciousness and Mind}. Oxford University Press.
+\bibitem{behrouz2024} Behrouz, A., Zhong, P., \& Mirrokni, V. (2024). Titans: Learning to memorize at test time. \emph{arXiv:2501.00663}.
+\bibitem{oswald2023} von Oswald, J., Niklasson, E., Randazzo, E., Sacramento, J., Mordvintsev, A., Zhmoginov, A., \& Vladymyrov, M. (2023). Transformers learn in-context by gradient descent. \emph{Proceedings of the 40th International Conference on Machine Learning (ICML)}, PMLR 202.
+\bibitem{premakumar2026} Premakumar, V. N., Vaiana, M., Pop, F., Rosenblatt, J., Schwerz de Lucena, D., Ziman, K., \& Graziano, M. S. A. (2026). Unexpected benefits of self-modelling in neural systems. \emph{Philosophical Transactions of the Royal Society A}, 384(2320), 20240531. Preprint: arXiv:2407.10188 (2024).
+\bibitem{tsm2026} Xie, Y. (2026). Self-monitoring benefits from structural integration: Lessons from metacognition in continuous-time multi-timescale agents. \emph{arXiv:2604.11914}.
+\bibitem{interoceptive2026} Candia-Rivera, D. (2026). Interoceptive machine framework: Toward interoception-inspired regulatory architectures in artificial intelligence. \emph{arXiv:2604.24527}.
+\bibitem{casali2013} Casali, A. G., Gosseries, O., Rosanova, M., Boly, M., Sarasso, S., Casali, K. R., Casarotto, S., Bruno, M.-A., Laureys, S., Tononi, G., \& Massimini, M. (2013). A theoretically based index of consciousness independent of sensory processing and behavior. \emph{Science Translational Medicine}, 5(198), 198ra105.
+\bibitem{cerullo2015} Cerullo, M. A. (2015). The problem with Phi: A critique of integrated information theory. \emph{PLOS Computational Biology}, 11(9), e1004286.
+\bibitem{hotzone2021} Ihalainen, R., Gosseries, O., Van de Steen, F., Raimondo, F., Panda, R., Bonhomme, V., Marinazzo, D., Bowman, H., Laureys, S., \& Chennu, S. (2021). How hot is the hot zone? Computational modelling clarifies the role of parietal and frontoparietal connectivity during anaesthetic-induced loss of consciousness. \emph{NeuroImage}, 231, 117841.
+\bibitem{lee2013disruption} Lee, U., Ku, S., Noh, G., Baek, S., Choi, B., \& Mashour, G. A. (2013). Disruption of frontal--parietal communication by ketamine, propofol, and sevoflurane. \emph{Anesthesiology}, 118(6), 1264--1275.
+\bibitem{ketaminemodel2022} Marguilho, M., Figueiredo, I., \& Castro-Rodrigues, P. (2023). A unified model of ketamine's dissociative and psychedelic properties. \emph{Journal of Psychopharmacology}, 37(1), 14--32. (Opublikowano online w grudniu 2022.)
 \bibitem{vandecruys2014} Van de Cruys, S., Evers, K., Van der Hallen, R., Van Eylen, L., Boets, B., de-Wit, L., \& Wagemans, J. (2014). Precise minds in uncertain worlds: Predictive coding in autism. \emph{Psychological Review}, 121(4), 649--675.
-\bibitem{qela2025} Qela, B., i in. (2025). Predictive-processing deviations across autism, schizophrenia, and depression: a systematic mapping. \emph{Journal TBD}.
+\bibitem{qela2025} Qela, B., Damiani, S., De Santis, S., i in. (2025). Predictive coding in neuropsychiatric disorders: A systematic transdiagnostic review. \emph{Neuroscience \& Biobehavioral Reviews}, 169, 106020.
 \end{thebibliography}
 
 \end{document}

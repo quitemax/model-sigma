@@ -1,0 +1,47 @@
+name: build-paper
+
+on:
+  push:
+    paths:
+      - 'paper/**'
+      - 'examples/**'
+      - '.github/workflows/build-paper.yml'
+  pull_request:
+    paths:
+      - 'paper/**'
+      - 'examples/**'
+  workflow_dispatch:
+
+jobs:
+  latex:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Compile sigma_model_en.tex
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: sigma_model_en.tex
+          working_directory: paper
+
+      - name: Compile sigma_model_pl.tex
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: sigma_model_pl.tex
+          working_directory: paper
+
+      - name: Upload freshly built PDFs
+        uses: actions/upload-artifact@v4
+        with:
+          name: paper-pdfs
+          path: paper/sigma_model_*.pdf
+
+  toy-example:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install numpy
+      - run: python examples/toy_example.py

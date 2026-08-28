@@ -7,15 +7,18 @@ robocza synteza koncepcyjna wypracowana w dialogu z Claude (Anthropic), sierpie�
 
 ```
 paper/
-  model_sigma.md      — pełna wersja robocza (19 sekcji), źródło prawdy
-  sigma_en.tex         — źródło LaTeX, wersja angielska
-  sigma_pl.tex         — źródło LaTeX, wersja polska
-  sigma_model_en.pdf   — skompilowany PDF (EN)
-  sigma_model_pl.pdf   — skompilowany PDF (PL)
+  model_sigma.md        — pełna wersja robocza (19 sekcji), źródło prawdy
+  sigma_model_en.tex    — źródło LaTeX, wersja angielska
+  sigma_model_pl.tex    — źródło LaTeX, wersja polska
+  sigma_model_en.pdf    — skompilowany PDF (EN), artefakt builda — regenerować przez `make`
+  sigma_model_pl.pdf    — skompilowany PDF (PL), artefakt builda — regenerować przez `make`
+  Makefile              — `make` buduje oba PDF-y, `make clean` czyści pliki pomocnicze
 notes/
-  decisions.md         — log kluczowych rozstrzygnięć (dlaczego, nie tylko co)
+  decisions.md          — log kluczowych rozstrzygnięć (dlaczego, nie tylko co)
 examples/
-  toy_example.py       — wszystkie przeliczenia numeryczne z pracy, w jednym miejscu
+  toy_example.py        — wszystkie przeliczenia numeryczne z pracy, w jednym miejscu
+.github/workflows/
+  build-paper.yml       — CI: kompiluje oba PDF-y i uruchamia toy_example.py
 ```
 
 ## Stan projektu
@@ -37,11 +40,24 @@ Pełny log decyzji i uzasadnień: `notes/decisions.md`.
 
 ## Kompilacja PDF-ów ze źródeł
 
+Wymaga dystrybucji TeX (TeX Live / MiKTeX):
+
 ```
 cd paper
-pdflatex sigma_en.tex && pdflatex sigma_en.tex   # dwa przebiegi dla referencji
-pdflatex sigma_pl.tex && pdflatex sigma_pl.tex
+make            # buduje sigma_model_en.pdf i sigma_model_pl.pdf (po dwa przebiegi)
+make clean      # usuwa pliki pomocnicze (.aux/.log/.out/.toc)
 ```
+
+Bez `make` (np. czysty MiKTeX na Windows):
+
+```
+cd paper
+pdflatex sigma_model_en.tex && pdflatex sigma_model_en.tex
+pdflatex sigma_model_pl.tex && pdflatex sigma_model_pl.tex
+```
+
+Skompilowane PDF-y w repo to artefakty builda — po edycji źródeł trzeba je
+przebudować (`make`) albo pobrać z artefaktów CI (workflow `build-paper`).
 
 ## Uruchomienie przykładu numerycznego
 
