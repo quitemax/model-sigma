@@ -10,7 +10,7 @@ working conceptual synthesis developed in dialogue with Claude (Anthropic), Augu
 - **Start here:** [`paper/model_sigma.md`](paper/model_sigma.md) — the full working draft (19 sections), **the source of truth**
 - Polish translation: [`paper/model_sigma.pl.md`](paper/model_sigma.pl.md)
 - Typeset versions: [PDF EN](paper/sigma_model_en.pdf) · [PDF PL](paper/sigma_model_pl.pdf) (sources: [`sigma_model_en.tex`](paper/sigma_model_en.tex) · [`sigma_model_pl.tex`](paper/sigma_model_pl.tex))
-- Why it is the way it is: [`notes/decisions.md`](notes/decisions.md)
+- Why it is the way it is: [`notes/decisions.md`](notes/decisions.md) · literature map: [`notes/literature.md`](notes/literature.md)
 - Bibliography with abstracts: [`references/`](references/) ([index](references/README.md)) · citation audit: [`notes/citations.md`](notes/citations.md)
 - The paper's numbers, executable: [`examples/toy_example.py`](examples/toy_example.py)
 - [Project status](#project-status) · [Open threads](#open-threads) · [Building the PDFs](#building-the-pdfs) · [Running the example](#running-the-numerical-example)
@@ -26,6 +26,7 @@ working conceptual synthesis developed in dialogue with Claude (Anthropic), Augu
 - [`notes/`](notes/)
   - [`decisions.md`](notes/decisions.md) — a log of the key decisions (the why, not just the what)
   - [`citations.md`](notes/citations.md) — citation audit (what was verified / corrected)
+  - [`literature.md`](notes/literature.md) — claim-by-claim precedent map; what's new vs. already done
 - [`references/`](references/) — one `.md` file per bibliography entry (details, link, abstract, role in Σ); [index](references/README.md)
 - [`examples/`](examples/)
   - [`toy_example.py`](examples/toy_example.py) — every numerical result from the paper, in one place

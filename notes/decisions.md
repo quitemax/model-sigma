@@ -50,8 +50,24 @@ Added after coming across a source linking Friston (2010) to Intense World Theor
 blindness" in autism. g_ℓ(t) = h(e_ℓ(t), C(t)), χ_ℓ(t) = |∂g_ℓ/∂C| ≥ 0 as a new parameter
 measuring how strongly context modulates the error's weight. Context blindness = χ_ℓ≈0.
 
+## Literature review — second pass (2026-08-28)
+The §12 review was search-only. A claim-by-claim precedent map is now in
+[`literature.md`](literature.md). Key outcomes that the paper still needs to absorb:
+- The *multidimensional* framing is **Bayne, Hohwy & Owen (2016)** — not new; (Σ,Γ,A) is an
+  IIT-grounded instance of it.
+- The IIT+FEP+functionalism synthesis ambition is largely **Safron's IWMT (2020)** — needs an
+  explicit "vs IWMT" contrast.
+- **Negative integrated information already exists** (ΦID / whole-minus-parts, as redundancy);
+  §7's Σ<0 is a different sense (an active anti-weight) and must be distinguished.
+- The exclusion postulate is independently under formal attack (**Hanson & Walker 2023**) —
+  this *supports* replacing it.
+- Surviving novelties: the w₊−w₋ construction + exact threshold, Γ's specific form, χ_ℓ, the
+  triple as a package.
+Still not exhaustive: no PhilPapers/PhilSci-Archive sweep; ΦID literature read via abstracts only.
+
 ## Overall status
-An internally consistent conceptual synthesis, not peer-reviewed. Open: a systematic literature
-review, an empirical instance beyond the toy example. Settled: §7 vs §7.1 (§7 kept, see above),
-source verification of citations (done 2026-08-28, see [`citations.md`](citations.md)), removal
-of the integral form (see above).
+An internally consistent conceptual synthesis, not peer-reviewed. Open: an exhaustive literature
+review (second pass done, see above), an empirical instance beyond the toy example, and folding
+the second-pass findings into §12 / §7. Settled: §7 vs §7.1 (§7 kept, see above), source
+verification of citations (done 2026-08-28, see [`citations.md`](citations.md)), removal of the
+integral form (see above).

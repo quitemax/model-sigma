@@ -10,7 +10,7 @@ robocza synteza koncepcyjna wypracowana w dialogu z Claude (Anthropic), sierpie�
 - **Zacznij tu:** [`paper/model_sigma.md`](paper/model_sigma.md) — pełna wersja robocza (19 sekcji), **źródło prawdy** (angielski)
 - Tłumaczenie polskie: [`paper/model_sigma.pl.md`](paper/model_sigma.pl.md)
 - Wersje sformatowane: [PDF EN](paper/sigma_model_en.pdf) · [PDF PL](paper/sigma_model_pl.pdf) (źródła: [`sigma_model_en.tex`](paper/sigma_model_en.tex) · [`sigma_model_pl.tex`](paper/sigma_model_pl.tex))
-- Dlaczego tak, a nie inaczej: [`notes/decisions.md`](notes/decisions.md)
+- Dlaczego tak, a nie inaczej: [`notes/decisions.md`](notes/decisions.md) · mapa literatury: [`notes/literature.md`](notes/literature.md)
 - Bibliografia z abstraktami: [`references/`](references/) ([indeks](references/README.md)) · audyt cytowań: [`notes/citations.md`](notes/citations.md)
 - Liczby z pracy, wykonywalne: [`examples/toy_example.py`](examples/toy_example.py)
 - [Stan projektu](#stan-projektu) · [Otwarte wątki](#otwarte-wątki) · [Kompilacja PDF-ów](#kompilacja-pdf-ów-ze-źródeł) · [Uruchomienie przykładu](#uruchomienie-przykładu-numerycznego)
@@ -26,6 +26,7 @@ robocza synteza koncepcyjna wypracowana w dialogu z Claude (Anthropic), sierpie�
 - [`notes/`](notes/)
   - [`decisions.md`](notes/decisions.md) — log kluczowych rozstrzygnięć (dlaczego, nie tylko co)
   - [`citations.md`](notes/citations.md) — audyt poprawności cytowań (co zweryfikowano / poprawiono)
+  - [`literature.md`](notes/literature.md) — mapa literatury per-teza; co jest nowe, a co już zrobione
 - [`references/`](references/) — jeden plik `.md` na pozycję bibliografii (dane, link, abstrakt, rola w Σ); [indeks](references/README.md)
 - [`examples/`](examples/)
   - [`toy_example.py`](examples/toy_example.py) — wszystkie przeliczenia numeryczne z pracy, w jednym miejscu

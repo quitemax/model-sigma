@@ -336,10 +336,15 @@ bilinear by nature (g×e), is not.
   removing the self-model abolishes metacognitive calibration while leaving task performance
   intact — an empirical counterpart of the descriptive/constitutive distinction of §2.7 (a good
   source for a testability section).
-- **INTREPID** (Templeton World Charity Foundation; Tononi, Friston, Pennartz) — an ongoing
-  formal adversarial collaboration IIT vs. predictive processing — confirms that R_ℓ(i) gated
-  by Wolfram irreducibility (bridging IIT with a predictive hierarchy) is an active, unresolved
-  research front.
+- **INTREPID** (Templeton World Charity Foundation; Tononi, Friston, Pennartz) — a formal
+  adversarial collaboration IIT vs. predictive processing; its output is the review
+  "Integrated information and predictive processing theories of consciousness: an adversarial
+  collaborative review" (2026, *Neurosci. Biobehav. Rev.*; arXiv:2509.00555). Confirms that
+  bridging IIT with a predictive hierarchy is an active, unresolved research front.
+- **Integrated World Modeling Theory (IWMT)** — Safron (2020), *Frontiers in AI* 3:30 —
+  combines IIT + Global Neuronal Workspace + the Free Energy Principle + active inference. The
+  nearest existing analogue of Model Σ's ambition; see the "Assessment" note below and
+  `notes/literature.md` for the intended contrast.
 
 **Important correction to §7:** the official exclusion postulate in IIT 4.0 is **binary**
 ("winner takes all" — substrates with lower φ are excluded entirely, φ=0), not gradable. Our
@@ -348,12 +353,22 @@ departure from the canonical postulate, not its direct interpretation — this m
 outright in the paper, otherwise a reviewer will read it as a misunderstanding of the IIT
 formalism.
 
-**Assessment:** the Σ synthesis (hierarchical + functionally weighted + self-prediction-error
-dynamics + soft exclusion) has no direct counterpart in the literature found — the components
-exist separately (NOW, USK, INTREPID), their combination into one formalism with proven
-boundary properties appears original. The review is still preliminary — PhilPapers/PhilSci-
-Archive and older work (2015–2023) beyond what was found by search have not been checked
-systematically.
+**Assessment.** A second-pass, claim-by-claim precedent map is in `notes/literature.md`. Its
+headline findings, which this section still needs to absorb: (i) the *multidimensional* move —
+consciousness as several dimensions rather than one scalar — is **Bayne, Hohwy & Owen (2016)**,
+not new; (Σ,Γ,A) should be framed as an IIT-grounded, dynamical instance of that program.
+(ii) The IIT + predictive-processing + functionalism synthesis ambition is largely
+**Safron's Integrated World Modeling Theory (2020)**; Model Σ differs by being a formalism with
+a computed triple and proven boundary properties, and that difference must be stated. (iii)
+**Negative integrated information already exists** in the whole-minus-parts / Integrated
+Information Decomposition literature (Barrett & Mediano 2019; Mediano, Rosas et al.), where it
+means net *redundancy*; §7's Σ<0 is a different notion (a competing layer's weight actively
+subtracts) and must be distinguished. (iv) The exclusion postulate is under independent formal
+attack (**Hanson & Walker 2023**, non-uniqueness), which *supports* replacing it. What survives
+as genuinely new: the w₊−w₋ soft-exclusion construction with the exact threshold γ_crit = Σ₊/K,
+the specific form of Γ (Σ g_ℓ e_ℓ with the constitutivity gate), the parameter χ_ℓ, and the
+triple as a package. The review is still not exhaustive — no PhilPapers/PhilSci-Archive sweep,
+and the ΦID literature has only been read via abstracts.
 
 ## 14. Application to transformer architectures
 
