@@ -15,6 +15,9 @@ paper/
   Makefile              — `make` buduje oba PDF-y, `make clean` czyści pliki pomocnicze
 notes/
   decisions.md          — log kluczowych rozstrzygnięć (dlaczego, nie tylko co)
+  citations.md          — audyt poprawności cytowań (co zweryfikowano / poprawiono)
+references/
+  <klucz>.md            — jeden plik na pozycję bibliografii: dane, link, abstrakt, rola w Σ
 examples/
   toy_example.py        — wszystkie przeliczenia numeryczne z pracy, w jednym miejscu
 .github/workflows/

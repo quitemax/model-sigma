@@ -39,6 +39,11 @@ Przegląd wszystkich pozycji bibliografii z `paper/sigma_model_en.tex` /
 preprint arXiv:2407.10188) · `casali2013` (Sci Transl Med 5(198):198ra105) ·
 `vandecruys2014` (Psychol Rev 121(4):649–675).
 
+## Lokalna biblioteka
+
+Pełne notatki do każdej pozycji (dane, link, abstrakt, "Rola w Model Σ") są w `references/` —
+jeden plik `.md` na klucz cytowania, indeks w `references/README.md`.
+
 ## Do sprawdzenia przy dalszej pracy
 
 - `hotzone2021`: tom/strona (231, 117841) z rekordów wtórnych — potwierdzić na stronie
