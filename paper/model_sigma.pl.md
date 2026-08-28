@@ -48,9 +48,18 @@ Zamiast jednej liczby — profil:
 
 $$\Phi(s) = \big(\Phi_1(s),\dots,\Phi_L(s)\big)$$
 
-Zwinięty wagą funkcjonalną w(ℓ) w skończoną sumę:
+zwinięty wagą funkcjonalną w(ℓ), będącą **wagą probabilistyczną** (w₀(ℓ) ≥ 0, ∑ w₀ = 1), w Σ
+jako *efektywny poziom integracji* systemu — ważoną średnią potęgową (Höldera):
 
-$$\Sigma(t) = \sum_{\ell=1}^{L} w(\ell,t)\,\Phi(s,\ell,t)$$
+$$\Sigma(t) = \Big(\sum_{\ell=1}^{L} w_0(\ell)\,\Phi(s,\ell,t)^{\rho}\Big)^{1/\rho}, \qquad \rho\in\mathbb{R}$$
+
+**Parametr komplementarności ρ** ustala, jak dalece warstwy się zastępują. ρ = 1 to ważona
+średnia arytmetyczna (luka w jednej warstwie w pełni kompensowana przez inną; najmniej
+zobowiązujące, użyte w toy example). ρ → 0: ważona średnia geometryczna (Σ = 0, gdy któraś
+ważona warstwa ma Φ_ℓ = 0). ρ → −∞: ważone minimum (system jest tak zintegrowany, jak jego
+najsłabsza ważona warstwa). ρ → +∞: ważone maksimum. Wiarygodny reżim dla podmiotowości to
+ρ ≤ 1; ρ to wolny parametr, nie ustalany tutaj. (Ta sama postać ważonej średniej potęgowej co
+indeks TCCI w Grounded Duality Theory — `notes/related-theories.md`.)
 
 ### 2.1 Człon między-warstwowy Φ_{ℓ,ℓ-1}
 
@@ -62,11 +71,11 @@ Rozróżnienie kluczowe dla interpretacji: płynna autonarracja (analogia interp
 
 ## 3. Dynamika czasowa
 
-Rozróżnienie notacyjne, którego brakowało pierwszej wersji: indeks (ℓ,ℓ-1) to *warstwa*, nie *czas*. Dynamika czasowa to osobny obiekt, wyprowadzony z pełnej pochodnej Σ:
+Rozróżnienie notacyjne, którego brakowało pierwszej wersji: indeks (ℓ,ℓ-1) to *warstwa*, nie *czas*. Dynamika czasowa to osobny obiekt. Przy ρ = 1 (przypadek ważonej średniej) pełna pochodna Σ to:
 
 $$\frac{d\Sigma}{dt} = \sum_{\ell=1}^{L} \left[\frac{\partial w(\ell,t)}{\partial t}\,\Phi(s,\ell,t) + w(\ell,t)\,\frac{\partial\Phi(s,\ell,t)}{\partial t}\right]$$
 
-Rozdziela dwa jakościowo różne źródła zmiany: ∂Φ/∂t (czy integracja na warstwie rośnie/maleje — może być ±, np. zapadanie/wynurzanie ze znieczulenia) i ∂w/∂t (czy istotność warstwy dla samo-modelowania rośnie/maleje).
+(dla ρ ≠ 1 reguła łańcuchowa przez średnią potęgową dokłada czynnik $\Sigma^{1-\rho}$ i $\Phi_\ell^{\rho-1}$ w środku — te same dwa źródła zmiany, ale nie rozseparowane addytywnie). Rozdziela ∂Φ/∂t (czy integracja na warstwie rośnie/maleje — może być ±, np. zapadanie/wynurzanie ze znieczulenia) od ∂w/∂t (czy istotność warstwy dla samo-modelowania rośnie/maleje).
 
 ## 4. w(ℓ,t) i błąd samo-predykcji
 
@@ -83,9 +92,9 @@ Genuine self-modeling wymaga **dwóch niezależnych warunków**, nie jednego: (a
 
 Waga funkcjonalna jest statyczna, w(ℓ,t) = w₀(ℓ). Stan systemu to wtedy trójka skalarów zbudowanych z rozłącznych zmiennych:
 
-$$\Sigma(t) = \sum_{\ell=1}^{L} w_0(\ell)\,\Phi(s,\ell,t), \qquad \Gamma(t) = \sum_{\ell=1}^{L} g_\ell(t)\,e_\ell(t)$$
+$$\Sigma(t) = \Big(\sum_{\ell=1}^{L} w_0(\ell)\,\Phi(s,\ell,t)^{\rho}\Big)^{1/\rho}, \qquad \Gamma(t) = \sum_{\ell=1}^{L} g_\ell(t)\,e_\ell(t)$$
 
-Σ to architektonicznie ważona zintegrowana informacja; Γ to całkowita aktywność konstytutywnej samo-korekty. Ponieważ w₀ nie zależy od g_ℓ ani e_ℓ, Σ i Γ nie dzielą żadnego składnika: każda korelacja między nimi zmierzona w realnym systemie jest odkryciem empirycznym, nie artefaktem definicyjnym. (Waga sprzężona jako w₀(ℓ) + β·g_ℓ(t)e_ℓ(t) sprawiłaby, że Σ i Γ korelują tautologicznie — stąd forma statyczna.)
+Σ to **efektywny poziom integracji** systemu — ważona średnia potęgowa profilu warstw (§2), z parametrem komplementarności ρ (ρ = 1 = ważona średnia). Γ to **suma** aktywności konstytutywnej samo-korekty (nie średnia — więcej aktywności w warstwach się dodaje). Ponieważ w₀ nie zależy od g_ℓ ani e_ℓ, Σ i Γ nie dzielą żadnej zmiennej: każda korelacja między nimi zmierzona w realnym systemie jest odkryciem empirycznym, nie artefaktem definicyjnym. (Waga sprzężona jako w₀(ℓ) + β·g_ℓ(t)e_ℓ(t) sprawiłaby, że Σ i Γ korelują tautologicznie — stąd forma statyczna.)
 
 Świadomość jako kilka wymiarów, a nie jedna liczba, idzie za Bayne, Hohwy & Owen (2016); (Σ, Γ, A) to ugruntowana w IIT, dynamiczna instancja tego programu.
 
@@ -97,15 +106,23 @@ Konwencja brzegowa: gdy σ_Φ=0 lub σ_ge=0 (profil jednorodny), A(t):=0.
 
 **Interpretacja trójki (Σ, Γ, A):** Σ — ile zintegrowanej informacji, ważonej architektonicznie; Γ — ile realnej samo-korekty zachodzi w systemie *w ogóle*; A — czy ta samo-korekta zachodzi *tam*, gdzie faktycznie jest integracja. Przypadek A≈-1 mimo wysokich Σ i Γ = sygnatura "Gazzaniga-interpretera": aktywna, płynna autonarracja żyjąca w płytkiej warstwie, odcięta od rdzenia integracyjnego systemu.
 
-## 6. Dowiedzione własności brzegowe
+## 6. Zachowanie brzegowe
 
-1. **Σ(t) ≥ 0** — warunkowe: wymaga aksjomatu **A1: w₀(ℓ) ≥ 0 ∀ℓ** (nie wynika automatycznie z niczego innego; semantycznie: ujemna waga bazowa nie miałaby dobrej interpretacji bez dodatkowego mechanizmu — patrz §7)
-2. **Γ(t) ≥ 0** — bezwarunkowe: g_ℓ∈[0,1], e_ℓ≥0 (norma²), suma iloczynów składników nieujemnych
+To sprawdza, czy wielkości zachowują się sensownie pod swoimi definicjami; to konsekwencje wyborów definicyjnych, nie tezy empiryczne.
+
+1. **Σ w obrębie profilu** — Σ to ważona średnia potęgowa nieujemnych Φ_ℓ pod wagą probabilistyczną (w₀ ≥ 0, ∑ w₀ = 1), więc **min_ℓ Φ_ℓ ≤ Σ(t) ≤ max_ℓ Φ_ℓ** (stąd Σ ≥ 0), Σ jest **niemalejące w ρ**, a ∂Σ/∂Φ_ℓ ≥ 0. Dla ρ ≤ 0 przyjmujemy Σ := 0, gdy któraś ważona warstwa ma Φ_ℓ = 0.
+2. **Γ(t) ≥ 0** — bezwarunkowe: g_ℓ∈[0,1], e_ℓ≥0 (norma²), suma iloczynów składników nieujemnych. ∂Γ/∂g_ℓ = e_ℓ ≥ 0, ∂Γ/∂e_ℓ = g_ℓ ≥ 0.
 3. **A(t) ∈ [-1,1]** — dowód przez nierówność Cauchy'ego-Schwarza na profilach (skończonych wektorach) f=Φ-Φ̄, h=ge-ge̅. Warunek równości: A=1 ⟺ g_ℓe_ℓ jest rosnącą funkcją afiniczną Φ(s,ℓ,t) po ℓ; A=-1 dla malejącej
-4. **Monotoniczność:** ∂Γ/∂g_ℓ = e_ℓ ≥ 0, ∂Γ/∂e_ℓ = g_ℓ ≥ 0, ∂Σ/∂Φ(ℓ) = w₀(ℓ) ≥ 0 (przy A1) — brak kontrintuicyjnych efektów ubocznych
-5. **Dyskretność:** Σ, Γ, A to skończone sumy po ustalonym, niewielkim zbiorze warstw — oś ℓ nie jest continuum, nie ma granicy L→∞ ani postaci całkowej. (Wcześniejsza wersja robocza miała formę całkową; jej artefakt przy L→0, Σ→0 niezależnie od skoncentrowanej integracji, wynikał ze znikającej miary całkowania i tutaj nie występuje.)
+4. **Dyskretność:** Σ, Γ, A nad ustalonym, niewielkim zbiorem warstw — oś ℓ nie jest continuum, nie ma granicy L→∞ ani postaci całkowej. (Wcześniejsza wersja robocza miała formę całkową; jej artefakt przy L→0, Σ→0 niezależnie od skoncentrowanej integracji, wynikał ze znikającej miary całkowania i tutaj nie występuje.)
 
 ## 7. Warstwy przeszkadzające — rozszerzenie o konkurencję/wykluczenie
+
+> **Zapis eksploracyjny.** Ta sekcja poprzedza średnią potęgową Σ i wagę probabilistyczną z
+> §2/§5. Działa na starej formie liniowej Σ₊ = ∑ w₀(ℓ)Φ_ℓ ze znakowaną wagą w = w₊ − w₋. Pod
+> kanonicznym Σ (średnia potęgowa nieujemnych Φ_ℓ, Σ ≥ 0 z konstrukcji) „netto fragmentacja"
+> nie jest wyrażalna przez ważenie — patrz zdegradowany akapit-kierunek pracy. Zachowane tu
+> jako zapis pełniejszej eksploracji; liczby poniżej odtwarza `examples/toy_example.py` na
+> formie liniowej.
 
 Pytanie otwierające: czy w₀(ℓ) musi być nieujemne, czy mogą istnieć warstwy, które *aktywnie szkodzą* integracji globalnej (analogia do znaku stałej kosmologicznej)? Kandydaci empiryczni: konkurujące podnarracje (split-brain, dysocjacja, konfabulacja), interpreter Gazzanigi w trybie nadpisywania/zniekształcania zamiast biernego opisu.
 

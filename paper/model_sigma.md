@@ -104,9 +104,18 @@ Instead of a single number — a profile:
 
 $$\Phi(s) = \big(\Phi_1(s),\dots,\Phi_L(s)\big)$$
 
-collapsed by the functional weight w(ℓ) into a finite sum:
+collapsed by the functional weight w(ℓ), a **probability weight** (w₀(ℓ) ≥ 0, ∑ w₀ = 1), into
+Σ as the system's *effective integration level* — a weighted power (Hölder) mean:
 
-$$\Sigma(t) = \sum_{\ell=1}^{L} w(\ell,t)\,\Phi(s,\ell,t)$$
+$$\Sigma(t) = \Big(\sum_{\ell=1}^{L} w_0(\ell)\,\Phi(s,\ell,t)^{\rho}\Big)^{1/\rho}, \qquad \rho\in\mathbb{R}$$
+
+The **complementarity parameter ρ** sets how far layers substitute for one another. ρ = 1 is
+the weighted average (a gap in one layer is fully offset by another; least-committal, used in
+the toy example). ρ → 0: weighted geometric mean (Σ = 0 if any weighted layer has Φ_ℓ = 0).
+ρ → −∞: weighted minimum (the system is only as integrated as its weakest weighted layer).
+ρ → +∞: weighted maximum. The plausible regime for subjecthood is ρ ≤ 1; ρ is a free parameter,
+not fixed here. (Same weighted-power-mean form as the TCCI index of Grounded Duality Theory —
+`notes/related-theories.md`.)
 
 ### 2.1 The inter-layer term Φ_{ℓ,ℓ-1}
 
@@ -125,13 +134,16 @@ architectures).
 ## 3. Temporal dynamics
 
 A notational distinction the first version lacked: the index (ℓ,ℓ-1) is a *layer*, not
-*time*. Temporal dynamics is a separate object, derived from the full derivative of Σ:
+*time*. Temporal dynamics is a separate object. At ρ = 1 (the weighted-average case), the full
+derivative of Σ is:
 
 $$\frac{d\Sigma}{dt} = \sum_{\ell=1}^{L} \left[\frac{\partial w(\ell,t)}{\partial t}\,\Phi(s,\ell,t) + w(\ell,t)\,\frac{\partial\Phi(s,\ell,t)}{\partial t}\right]$$
 
-It separates two qualitatively different sources of change: ∂Φ/∂t (whether integration at a
-layer is rising/falling — can be ±, e.g. going under / emerging from anaesthesia) and ∂w/∂t
-(whether the layer's relevance for self-modelling is rising/falling).
+(for ρ ≠ 1 the chain rule through the power mean adds a $\Sigma^{1-\rho}$ prefactor and
+$\Phi_\ell^{\rho-1}$ inside — same two sources of change, not additively separable). It
+separates ∂Φ/∂t (whether integration at a layer is rising/falling — can be ±, e.g. going under
+/ emerging from anaesthesia) from ∂w/∂t (whether the layer's relevance for self-modelling is
+rising/falling).
 
 ## 4. w(ℓ,t) and the self-prediction error
 
@@ -155,10 +167,12 @@ satisfies the full definition of e_ℓ(t), g_ℓ(t) from this section.
 The functional weight is static, w(ℓ,t) = w₀(ℓ). System state is then a triple of scalars built
 from disjoint variables:
 
-$$\Sigma(t) = \sum_{\ell=1}^{L} w_0(\ell)\,\Phi(s,\ell,t), \qquad \Gamma(t) = \sum_{\ell=1}^{L} g_\ell(t)\,e_\ell(t)$$
+$$\Sigma(t) = \Big(\sum_{\ell=1}^{L} w_0(\ell)\,\Phi(s,\ell,t)^{\rho}\Big)^{1/\rho}, \qquad \Gamma(t) = \sum_{\ell=1}^{L} g_\ell(t)\,e_\ell(t)$$
 
-Σ is architecturally-weighted integrated information; Γ is total constitutive self-correction
-activity. Because w₀ does not depend on g_ℓ or e_ℓ, Σ and Γ share no term: any correlation
+Σ is the system's **effective integration level** — a weighted power mean of the layer profile
+(§2), with complementarity parameter ρ (ρ = 1 = weighted average). Γ is the **total**
+constitutive self-correction activity (a sum, not a mean — more activity across layers adds
+up). Because w₀ does not depend on g_ℓ or e_ℓ, Σ and Γ share no variable: any correlation
 between them measured in a real system is an empirical finding, not a definitional artifact. (A
 weight coupled as w₀(ℓ) + β·g_ℓ(t)e_ℓ(t) would make Σ and Γ correlate tautologically, which is
 why the static form is used.)
@@ -178,24 +192,33 @@ whether that self-correction occurs *where* integration actually is. The case A�
 high Σ and Γ = the signature of the "Gazzaniga interpreter": active, fluent self-narration
 living in a shallow layer, cut off from the system's integrative core.
 
-## 6. Proven boundary properties
+## 6. Boundary behaviour
 
-1. **Σ(t) ≥ 0** — conditional: requires axiom **A1: w₀(ℓ) ≥ 0 ∀ℓ** (does not follow
-   automatically from anything else; semantically: a negative base weight would have no good
-   interpretation without an additional mechanism — see §7)
+These check the quantities behave sanely under their definitions; they are consequences of the
+definitional choices, not empirical claims.
+
+1. **Σ within the profile** — Σ is a weighted power mean of non-negative Φ_ℓ under a
+   probability weight (w₀ ≥ 0, ∑ w₀ = 1), so **min_ℓ Φ_ℓ ≤ Σ(t) ≤ max_ℓ Φ_ℓ** (hence Σ ≥ 0),
+   Σ is **non-decreasing in ρ**, and ∂Σ/∂Φ_ℓ ≥ 0. For ρ ≤ 0 we set Σ := 0 when any weighted
+   layer has Φ_ℓ = 0.
 2. **Γ(t) ≥ 0** — unconditional: g_ℓ∈[0,1], e_ℓ≥0 (squared norm), a sum of products of
-   non-negative terms
+   non-negative terms. ∂Γ/∂g_ℓ = e_ℓ ≥ 0, ∂Γ/∂e_ℓ = g_ℓ ≥ 0.
 3. **A(t) ∈ [-1,1]** — proof via the Cauchy–Schwarz inequality on the profiles (finite
    vectors) f=Φ-Φ̄, h=ge-ge̅. Equality condition: A=1 ⟺ g_ℓe_ℓ is an increasing affine function
    of Φ(s,ℓ,t) over ℓ; A=-1 for a decreasing one
-4. **Monotonicity:** ∂Γ/∂g_ℓ = e_ℓ ≥ 0, ∂Γ/∂e_ℓ = g_ℓ ≥ 0, ∂Σ/∂Φ(ℓ) = w₀(ℓ) ≥ 0 (under A1)
-   — no counter-intuitive side effects
-5. **Discreteness:** Σ, Γ, A are finite sums over a fixed, small set of layers — the ℓ axis is
+4. **Discreteness:** Σ, Γ, A are over a fixed, small set of layers — the ℓ axis is
    not a continuum, there is no L→∞ limit and no integral form. (An earlier draft carried an
    integral form; its L→0 artifact — Σ→0 regardless of how concentrated the integration is —
    came from the vanishing integration measure and does not occur here.)
 
 ## 7. Interfering layers — extension with competition/exclusion
+
+> **Exploratory record.** This section predates the power-mean Σ and the probability-weight
+> constraint of §2/§5. It works on the old linear form Σ₊ = ∑ w₀(ℓ)Φ_ℓ with a signed weight
+> w = w₊ − w₋. Under the canonical Σ (a power mean of non-negative Φ_ℓ, Σ ≥ 0 by construction)
+> "net fragmentation" is not expressible via the weighting — see the paper's demoted
+> "competing layers: a direction". Kept here as a record of the fuller exploration; the
+> numbers below are reproduced by `examples/toy_example.py` on the linear form.
 
 Opening question: must w₀(ℓ) be non-negative, or can there be layers that *actively harm*
 global integration (analogy to the sign of the cosmological constant)? Empirical candidates:

@@ -36,13 +36,15 @@ robocza synteza koncepcyjna wypracowana w dialogu z Claude (Anthropic), sierpie�
 ## Stan projektu
 
 Spójna wewnętrznie synteza koncepcyjna. Rdzeń: trójka stanu **(Σ, Γ, A)** po małym, ustalonym
-zbiorze warstw funkcjonalnych — zintegrowana informacja, aktywność konstytutywnej samo-korekty
-(błąd samo-predykcji, który napędza aktualizację parametrów online, nie tylko raport) oraz ich
-wyrównanie — zbudowane z rozłącznych zmiennych. Najostrzejsza konsekwencja: Γ ≡ 0 dla dowolnego
-zamrożonego LLM przy inferencji, z definicji. Do tego kanał odczytu R_ℓ, przykład numeryczny,
-przegląd literatury. Materiał o warstwach konkurujących / Σ<0 zostaje tylko jako szkicowany
-kierunek. **Niezweryfikowana recenzyjnie; bez instancji empirycznej; dziedziczy problemy
-fundamentalne IIT.**
+zbiorze warstw funkcjonalnych — Σ = *efektywny poziom integracji* (ważona średnia potęgowa
+profilu warstw, z gałką komplementarności ρ; ρ=1 = ważona średnia); Γ = *suma* aktywności
+konstytutywnej samo-korekty (błąd samo-predykcji napędzający aktualizację parametrów online,
+nie tylko raport); A = ich wyrównanie — wszystko z rozłącznych zmiennych. Najostrzejsza
+konsekwencja: Γ ≡ 0 dla dowolnego zamrożonego LLM przy inferencji, z definicji. Do tego
+kryterium wyprowadzania warstw (pasma czasowe + przepływ predykcji/błędu), kanał odczytu R_ℓ,
+przykład numeryczny, przegląd literatury. Materiał o warstwach konkurujących / Σ<0 zostaje
+tylko jako szkicowany kierunek. **Niezweryfikowana recenzyjnie; bez instancji empirycznej;
+dziedziczy problemy fundamentalne IIT.**
 
 ## Otwarte wątki
 

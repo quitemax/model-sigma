@@ -3,6 +3,28 @@
 A chronological record of the calls made, so they don't have to be reconstructed from memory on
 every return to the project.
 
+## Σ becomes a weighted power mean (2026-08-28)
+Following the Grounded Duality Theory comparison (`related-theories.md`), Σ generalized from the
+plain weighted sum to a **weighted power (Hölder) mean**:
+Σ = (∑ w₀(ℓ) Φ_ℓ^ρ)^(1/ρ), with w₀ a **probability weight** (∑ w₀ = 1) and **ρ ∈ ℝ** a
+complementarity parameter. ρ = 1 recovers the previous Σ exactly (weighted average — the toy
+example is unchanged at 0.740); ρ → 0 geometric mean; ρ → −∞ weakest-weighted-layer minimum;
+ρ → +∞ maximum. Rationale: the linear form silently assumed layers fully substitute; ρ makes
+that choice explicit, and ρ ≤ 1 (some complementarity) is the plausible regime for subjecthood.
+Consequences:
+- Σ is now bounded: min_ℓ Φ_ℓ ≤ Σ ≤ max_ℓ Φ_ℓ. Axiom A1 (w₀ ≥ 0 for Σ ≥ 0) is subsumed — Σ ≥ 0
+  falls out of Φ_ℓ ≥ 0 plus a probability weight.
+- Γ stays a **sum** (a total, extensive), deliberately asymmetric with Σ (an effective level,
+  intensive). A unchanged.
+- The demoted competing-layers direction can no longer get Σ < 0 via the weighting; it would
+  have to suppress Φ_ℓ directly (the rejected §7.1 route). Both `.tex` and the working-draft §7
+  header updated to say so.
+- dΣ/dt: the clean two-term separation holds only at ρ = 1; noted.
+- New AI-section point: "is Σ high for a frozen LLM?" is ρ-dependent — high under arithmetic
+  aggregation, → 0 under complementary aggregation because the homeostatic layer carries Φ ≈ 0.
+`examples/toy_example.py` now sweeps ρ and asserts monotonicity + the profile bound.
+GDT is not cited in the paper (self-published); attribution lives in the notes.
+
 ## Restructure: the paper leads with the triple, demotes §7 (2026-08-28)
 After a candid self-assessment (the (Σ,Γ,A) separation and the constitutive/descriptive
 criterion are the real contribution; the exclusion mechanism, Σ<0 and the boundary theorems

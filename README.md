@@ -36,13 +36,15 @@ working conceptual synthesis developed in dialogue with Claude (Anthropic), Augu
 ## Project status
 
 An internally consistent conceptual synthesis. Core: the state triple **(Σ, Γ, A)** over a
-small fixed set of functional layers — integrated information, constitutive self-correction
-activity (self-prediction error that drives an online parameter update, not merely a report),
-and their alignment — built from disjoint variables. Sharpest consequence: Γ ≡ 0 for any
-frozen-weight LLM at inference, by definition. Plus a readout channel R_ℓ, a numerical example,
-and a literature review. The competing-layers / Σ<0 material is kept only as a sketched
-direction. **Not peer-reviewed; no empirical instantiation; inherits IIT's foundational
-problems.**
+small fixed set of functional layers — Σ = the *effective integration level* (a weighted power
+mean of the layer profile, with a complementarity knob ρ; ρ=1 = weighted average); Γ = the
+*total* constitutive self-correction activity (self-prediction error that drives an online
+parameter update, not merely a report); A = their alignment — all built from disjoint
+variables. Sharpest consequence: Γ ≡ 0 for any frozen-weight LLM at inference, by definition.
+Plus a criterion for deriving the layers (timescale bands + predict/error flow), a readout
+channel R_ℓ, a numerical example, and a literature review. The competing-layers / Σ<0 material
+is kept only as a sketched direction. **Not peer-reviewed; no empirical instantiation;
+inherits IIT's foundational problems.**
 
 ## Open threads
 

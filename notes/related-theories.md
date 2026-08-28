@@ -44,12 +44,17 @@ borrowed grounding; corporations as the example).
 4. Both use conditional-entropy reduction as the self-model's payoff (cf. $R_\ell$, $e_\ell$).
 5. Both lean on split-brain / corpus callosum and DID.
 
-**What's worth borrowing.** The **power-mean-with-$\rho$** as an alternative to $\Sigma$'s
-plain weighted sum: it makes explicit whether layers *substitute* for each other ($\rho=1$) or
-whether the system is only as integrated as its weakest critical layer ($\rho\to-\infty$).
-Model $\Sigma$ currently just asserts linearity. A one-line generalization:
-$\Sigma_\rho = \big(\sum_\ell w_0(\ell)\,\Phi_\ell^{\rho}\big)^{1/\rho}$, recovering the current
-$\Sigma$ at $\rho=1$. Not adopted yet — flagged as a candidate refinement.
+**Borrowed (adopted 2026-08-28).** The **power-mean-with-$\rho$** aggregation. $\Sigma$ is now
+$\big(\sum_\ell w_0(\ell)\,\Phi_\ell^{\rho}\big)^{1/\rho}$ with $w_0$ a probability weight
+($\sum w_0 = 1$) and $\rho\in\mathbb R$ a complementarity parameter: $\rho=1$ recovers the
+previous weighted average (layers substitute), $\rho\to0$ the geometric mean, $\rho\to-\infty$
+the weakest-weighted-layer minimum. This makes explicit a modeling choice the linear form hid,
+gives $\Sigma$ the clean bound $\min_\ell\Phi_\ell\le\Sigma\le\max_\ell\Phi_\ell$, and removes
+axiom A1 (non-negativity of $\Sigma$ now follows from $\Phi_\ell\ge0$). Side effect: the
+demoted competing-layers direction can no longer produce $\Sigma<0$ via the weighting --- it
+would have to suppress $\Phi_\ell$ directly, which is the rejected §7.1 route. Attribution to
+GDT recorded here and in `layer-decomposition.md`; GDT itself is not cited in the paper
+(self-published).
 
 **Caveats.** Idiosyncratic terminology, no external validation, and — like Model $\Sigma$ —
 mostly a vocabulary rather than a predictive theory. Its clinical predictions (anosognosia as
