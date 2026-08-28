@@ -1,8 +1,11 @@
 # Model Σ — a hierarchical, functionally-weighted extension of IIT (Φ)
 
-> **This file is the source of truth.** Polish translation: [`model_sigma.pl.md`](model_sigma.pl.md)
-> (English wins on any divergence). A condensed, contiguously-renumbered version for print is
-> [`sigma_model_en.tex`](sigma_model_en.tex).
+> **This is the full working draft** — the complete record of everything considered, in its
+> accreted order. The *paper* is [`sigma_model_en.tex`](sigma_model_en.tex): a leaner,
+> restructured version that leads with the $(\Sigma,\Gamma,A)$ triple and the AI argument and
+> demotes the competing-layers / $\Sigma<0$ material (§7 here) to a one-paragraph "direction".
+> Where the two differ on substance, the paper's editorial choices are the current position.
+> Polish translation of this draft: [`model_sigma.pl.md`](model_sigma.pl.md).
 
 Working document collecting the formalism developed so far: from motivation through the full
 static and dynamic formalism, proven boundary properties, the competition/exclusion mechanism
@@ -243,9 +246,13 @@ IIT's canonical exclusion postulate.** This is a deliberate, explicit departure 
 be named outright in any future write-up so a reviewer does not read it as a misunderstanding
 of the formalism.
 
-**The canonical version remains the one from §7** (w=w₊−w₋, continuous Jaccard index,
-w₋=γ·overlap·Φ, with the exact threshold γ_crit = Σ₊/K from §7) — it allows Σ<0, which is
-treated here as a feature of the model, not a bug.
+**Status in the paper.** `sigma_model_en.tex` demotes this whole competing-layers thread to a
+single "direction" paragraph and does **not** claim it as a result: the functional form of w₋
+is a guess with a free parameter, "negative integrated information" has no worked
+phenomenological interpretation, and none of it is needed for the (Σ,Γ,A) triple. What follows
+is the fuller exploration this working draft records; treat it as exploratory. Within it, the
+§7 form (w=w₊−w₋, continuous Jaccard, w₋=γ·overlap·Φ, threshold γ_crit = Σ₊/K) is the one kept
+over §7.1, because it can express Σ<0.
 
 **What Σ<0 does and does not claim.** "Whole-minus-parts" integrated-information measures
 already take negative values (Barrett & Mediano 2019; the Integrated Information Decomposition

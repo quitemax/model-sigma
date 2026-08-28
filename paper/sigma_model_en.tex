@@ -14,7 +14,7 @@
 \newtheorem*{remark}{Remark}
 \newtheorem{proposition}{Proposition}
 
-\title{\textbf{$\Sigma$: A Hierarchical, Functionally-Weighted\\ Extension of Integrated Information Theory}}
+\title{\textbf{$(\Sigma,\Gamma,A)$: Separating Integration from\\ Constitutive Self-Modeling}}
 \author{[Author]\\ \small in dialogue with Claude (Anthropic)}
 \date{August 2026 --- working draft}
 
@@ -22,7 +22,7 @@
 \maketitle
 
 \begin{abstract}
-Integrated Information Theory (IIT) reduces a system's degree of consciousness to a single scalar, $\Phi$, obtained by minimizing a distance measure over system partitions. This collapses two questions IIT cannot separately answer: how integrated a system is, and where in its architecture that integration is functionally significant for self-modeling. We propose $\Sigma$, a hierarchical extension in which $\Phi$ is computed as a profile over functional layers $\ell=1,\dots,L$ and combined through a functional weight $w(\ell)$, inspired by Ag\"uera y Arcas's claim that \emph{what} a system computes matters, not only its causal structure. We further introduce a self-prediction-error-driven dynamic component, distinguishing descriptive from constitutive self-modeling (the latter requiring online parameter updates, not merely fluent self-report), and formalize system state as a triple $(\Sigma,\Gamma,A)$: integrated information, constitutive self-correction activity, and their spatial alignment. We prove boundary properties for all three quantities, extend the model with a soft competition/exclusion mechanism for interfering sub-systems (with an explicit, motivated departure from IIT's canonical binary exclusion postulate), work a numerical example, and map the framework onto current AI architectures, sharpening the distinction between constitutive world-modeling (as in test-time memory architectures) and constitutive self-modeling proper. This is a working synthesis, not yet peer-reviewed; a preliminary literature survey is included.
+Integrated Information Theory (IIT) reduces a system's degree of consciousness to one scalar, $\Phi$. This conflates two questions it cannot separately answer: how integrated a system is, and whether --- and where --- that integration is coupled to an active, self-correcting loop rather than to fluent but inert self-report. We describe system state as a triple $(\Sigma,\Gamma,A)$ over a small, fixed set of functional layers: $\Sigma$ is architecturally-weighted integrated information; $\Gamma$ is the amount of \emph{constitutive} self-correction actually occurring, where ``constitutive'' means the self-prediction error drives an online parameter update, not merely a report; $A$ measures whether $\Gamma$ is co-located with $\Sigma$. The three are built from disjoint variables, so a correlation among them in a real system is an empirical finding, not an artifact. The sharpest consequence is for artificial systems: a frozen-weight transformer at inference has $\Gamma\equiv0$ by definition, however self-aware its outputs sound, and the triple separates constitutive \emph{world}-modeling (test-time memory architectures) from constitutive \emph{self}-modeling. We state the boundary behaviour of the three quantities, work a small numerical example, add a readout channel separating internal state from behavioural observability, and sketch --- as a direction, not a result --- how IIT's exclusion postulate might be softened. This is a conceptual synthesis, not peer-reviewed, with no empirical instantiation yet; it inherits IIT's unresolved foundational problems and its dependence on a contested base measure.
 \end{abstract}
 
 \section{Introduction}
@@ -31,173 +31,86 @@ Standard IIT defines integrated information via
 \[
 \varphi_P(s) = D\big(p(s'\mid s)\,\|\,p(s'\mid s)|_P\big), \qquad \Phi(s) = \min_{P\in\mathcal P}\varphi_P(s),
 \]
-where $D$ is a distance measure (e.g.\ earth mover's distance) between the system's actual transition distribution and the distribution after cutting it according to partition $P$. A recurring criticism (echoing Aaronson's informal objection \cite{aaronson2014}, and Cerullo's more formal one \cite{cerullo2015}) is that $\Phi$ collapses a rich causal structure into one number, with no distinction of \emph{kind} or \emph{location} of integration. The base measure is itself contested: $\Phi$ is not well-defined for general physical systems \cite{barrett2019}, and candidate $\Phi$ variants disagree markedly in simulation \cite{mediano2019}. $\Sigma$ inherits this dependency. This is conceptually related to, but distinct from, Wolfram's computational irreducibility --- the idea that some computations admit no shortcut and must be run step by step to know their outcome.
+with $D$ a distance measure between the system's actual transition distribution and the distribution after cutting it along partition $P$. A recurring objection (Aaronson's informal one \cite{aaronson2014}, Cerullo's more formal one \cite{cerullo2015}) is that $\Phi$ collapses a rich causal structure into one number, with no distinction of \emph{kind} or \emph{location} of integration. The base measure is itself contested: $\Phi$ is not well-defined for general physical systems \cite{barrett2019} and candidate variants disagree markedly in simulation \cite{mediano2019}. Everything below inherits this dependency.
 
-This paper develops a hierarchical, functionally-weighted extension, $\Sigma$, motivated by three additional considerations: (i) different functional layers of a system (homeostasis, perception/motor control, world-modeling, self-modeling) plausibly contribute differently to subjecthood even at equal $\Phi$; (ii) self-report fluency is not evidence of a genuine self-modeling loop (the split-brain confabulation literature, via Gazzaniga's interpreter, is the paradigm case); (iii) competing, overlapping candidate sub-systems may not simply not-exist (as IIT's exclusion postulate has it) but may actively degrade the parent system's integration --- a possibility IIT's binary exclusion cannot represent.
+We keep the intuition that integration matters but separate it from two questions it usually absorbs. First, self-report fluency is not evidence of a self-modeling loop --- Gazzaniga's split-brain interpreter is the paradigm: confident narration of causes to which the narrator has no access. What should count instead is whether the system's self-prediction error \emph{drives a change in the system}. Second, even a system doing real self-correction may be doing it in the wrong place --- in a shallow layer, decoupled from where its integration lives. These give a second and third quantity alongside $\Sigma$.
 
 \subsection*{Contributions}
 \begin{itemize}[leftmargin=*]
-\item A hierarchical profile $\Phi(s,\ell,t)$ combined via functional weight $w(\ell)$ into $\Sigma(t)$, with an exact decomposition of its time-derivative.
-\item A self-prediction-error term $e_\ell(t)$ and constitutive gate $g_\ell(t)$ formalizing the descriptive/constitutive distinction, yielding a second quantity $\Gamma(t)$ independent of $\Sigma$ by construction.
-\item A third diagnostic, $A(t)\in[-1,1]$, measuring spatial alignment between integration and self-correction, with a Cauchy--Schwarz proof of its bound.
-\item Proven boundary properties for all three quantities, including an explicit axiom ($w_0\ge 0$) needed for $\Sigma\ge 0$.
-\item A soft competition/exclusion mechanism for overlapping, interfering layers, with an exact critical threshold, and an explicit, argued departure from IIT's canonical binary exclusion.
-\item A worked numerical example and a mapping onto current AI architectures.
+\item The state triple $(\Sigma,\Gamma,A)$ --- integrated information, constitutive self-correction activity, and their alignment --- built from disjoint variables so that a measured correlation is informative.
+\item A functional criterion for genuine self-modeling: the self-prediction error must drive an online parameter update (constitutive), not merely a report (descriptive), formalized by a gate $g_\ell$.
+\item The consequence for AI: $\Gamma\equiv0$ for any frozen-weight LLM at inference, and a $2\times2$ (prediction target $\times$ update timing) that places current architectures.
+\item Boundary behaviour of the three quantities, and a readout channel $R_\ell$ separating internal state from observability.
+\item An explicit account of what the framework inherits unresolved from IIT, and of the competing-layers extension as a direction rather than a claim.
 \end{itemize}
 
 \section{Related Work}
 
-\textbf{IIT 4.0} \cite{albantakis2023} formalizes exclusion as strictly binary: among overlapping candidate substrates, only the one with maximal $\varphi_s$ exists; all others are excluded entirely (contribute nothing), not gradually suppressed. This matters for \S\ref{sec:exclusion}.
+\textbf{Multidimensional consciousness.} Bayne, Hohwy \& Owen \cite{bayne2016} argue consciousness is better described by several dimensions than by a single ``level''; $(\Sigma,\Gamma,A)$ is an IIT-grounded, dynamical instance of that programme. \textbf{Integrated World Modeling Theory} \cite{safron2020} combines IIT, Global Neuronal Workspace, and the free-energy principle --- the nearest analogue of this framework's ambition, but as a conceptual architecture rather than a formal triple. \textbf{Nested Observer Windows} \cite{riddle2024} compute $\Phi$ separately at nested hierarchical levels --- close to the layered profile here, but without functional weighting or the $\Gamma/A$ split. \textbf{Consciousness as Uncommon Self-Knowledge} \cite{usk2026} isolates the synergistic, self-directed component of information and predicts a gap between high $\Phi$ and no self-model --- an independent convergence on the intuition behind $\Gamma$.
 
-\textbf{Nested Observer Windows} \cite{riddle2024} independently propose computing $\Phi$ separately at nested hierarchical levels and examining the ratio between levels as a test between panpsychist and emergentist readings of consciousness --- close in spirit to our layered profile $\Phi(s,\ell,t)$, though without functional weighting or dynamics.
+\textbf{Predictive processing and active inference} \cite{friston2010,deane2021} motivate the self-prediction-error formalism; the IIT/predictive-processing adversarial collaboration \cite{intrepid2026} confirms bridging the two is unresolved. \textbf{Higher-order theories} \cite{rosenthal2005} ask a similar question to the descriptive/constitutive distinction (is self-report evidence of higher-order access?) but answer it by the existence of a higher-order representation rather than by whether an error drives an update. \textbf{Ag\"uera y Arcas's} notion of living matter as \emph{functional} matter --- what a system computes, not only its causal structure --- motivates the functional weight $w_0(\ell)$.
 
-\textbf{Consciousness as Uncommon Self-Knowledge} \cite{usk2026} proposes that only the \emph{synergistic, self-directed} component of information matters, predicting that systems with high $\Phi$ but no self-model score near zero under their measure --- an independent convergence on the intuition behind our $\Gamma/A$ split.
+\textbf{The exclusion postulate}, on which the competing-layers sketch (\S\ref{sec:exclusion}) bears, is contested: IIT~4.0 \cite{albantakis2023} makes it strictly binary (only the maximal-$\varphi$ substrate exists), and it renders $\Phi$ non-unique \cite{hanson2023}.
 
-\textbf{Predictive processing and active inference} \cite{friston2010,deane2021} motivate the self-prediction-error formalism; the IIT/predictive-processing adversarial collaboration \cite{intrepid2026} confirms that bridging the two remains an open research question.
+\section{The State Triple $(\Sigma,\Gamma,A)$}
 
-\textbf{Higher-order theories} \cite{rosenthal2005} serve as a contrastive reference point: our descriptive/constitutive distinction addresses a similar question (is a mental state's self-report evidence of genuine higher-order access?) via a functional criterion (does the error drive an update?) rather than the mere existence of a higher-order representation.
-
-\textbf{Ag\"uera y Arcas's} notion of living matter as \emph{functional} matter --- what a system computes, not only its causal structure --- directly motivates the functional weight $w(\ell)$.
-
-\textbf{Multidimensional consciousness.} Bayne, Hohwy \& Owen \cite{bayne2016} argue consciousness is better described by several dimensions than by a single ``level''; $(\Sigma,\Gamma,A)$ is an IIT-grounded, dynamical instance of that programme. \textbf{Integrated World Modeling Theory} \cite{safron2020} combines IIT, Global Neuronal Workspace, and the free-energy principle --- the nearest analogue of $\Sigma$'s ambition, but as a conceptual architecture rather than a formalism with proven boundary properties. The \textbf{exclusion postulate} is independently troubled: it makes $\Phi$ non-unique \cite{hanson2023}, which is further reason to replace rather than reinterpret it (\S\ref{sec:exclusion}).
-
-No prior work known to us combines hierarchical $\Phi$, functional weighting, self-prediction-error-driven dynamics, and soft exclusion with an exact threshold into one formalism with proven boundary properties; the synthesis appears original, though every component has independent precedent.
-
-\section{The $\Sigma$ Formalism}
-
-\subsection{Hierarchical profile and functional weight}
-A system $S$ is divided into functional layers $\ell=1,\dots,L$ (e.g.\ homeostasis $\to$ perception/motor $\to$ world-model $\to$ self-model). The layer index is inherently discrete: $L$ is a small finite integer --- a handful of functional strata, not a continuum --- and there is no $L\to\infty$ limit. Instead of one scalar, we obtain a profile $\Phi(s)=(\Phi_1(s),\dots,\Phi_L(s))$, collapsed via a functional weight into the finite sum
+\subsection{Functional layers and $\Sigma$}
+Divide a system into a small, fixed set of functional layers $\ell=1,\dots,L$ (homeostasis, perception/motor, world-model, self-model). \emph{This decomposition is stipulated, not derived} --- a limitation we return to in \S\ref{sec:discussion}. Each layer has an integrated-information value $\Phi(s,\ell,t)\ge0$ (in practice a tractable proxy, e.g.\ the decoding-based measure of \cite{oizumi2016}), weighted by a static functional weight $w_0(\ell)\ge0$:
 \[
-\Sigma(t) = \sum_{\ell=1}^{L} w(\ell,t)\,\Phi(s,\ell,t).
+\Sigma(t) = \sum_{\ell=1}^{L} w_0(\ell)\,\Phi(s,\ell,t).
 \]
-Each per-layer $\Phi_\ell$ would in practice be estimated via a tractable proxy such as the decoding-based measure of \cite{oizumi2016}. Inter-layer terms $\Phi_{\ell,\ell-1}$ (structural coupling between adjacent layers, computed via the same distance measure as base $\Phi$) are non-negative by construction, being themselves a distance.
+$w_0(\ell)$ encodes how much a layer's integration matters for subjecthood. The layer index is discrete: $L$ is small, and there is no continuum limit.
 
-\subsection{Temporal dynamics}
-Differentiating $\Sigma(t)$ under the general (time-varying) weight yields
+\subsection{Constitutive vs.\ descriptive self-modeling}
+Take the distinguishing feature of a genuine self-model to be whether the system's self-prediction error drives a change in the system. Define a self-prediction error and a normalized constitutive gate:
 \[
-\frac{d\Sigma}{dt} = \sum_{\ell=1}^{L} \left[\frac{\partial w(\ell,t)}{\partial t}\,\Phi(s,\ell,t) + w(\ell,t)\,\frac{\partial \Phi(s,\ell,t)}{\partial t}\right],
+e_\ell(t) = \big\|\hat s_\ell(t+\Delta t\mid t) - s_\ell(t+\Delta t)\big\|^2 \ge 0, \qquad
+g_\ell(t) = \left|\frac{\partial \theta_\ell(t)}{\partial e_\ell(t)}\right| \in [0,1].
 \]
-separating change due to shifting functional relevance from change due to shifting integration itself.
+$e_\ell$ is zero for a layer with no self-prediction mechanism. $g_\ell=0$ marks a layer that computes the error but does not act on it (descriptive); $g_\ell=1$ marks a full online parameter update driven by the error (constitutive).
 
-\subsection{Self-prediction error and the constitutive gate}
-Following the descriptive/constitutive distinction (fluent self-report, as in Gazzaniga's split-brain interpreter, is not evidence of a genuine feedback loop), we define a self-prediction error
+\subsection{$\Gamma$ and $A$}
 \[
-e_\ell(t) = \big\|\hat s_\ell(t+\Delta t\mid t) - s_\ell(t+\Delta t)\big\|^2 \ge 0
+\Gamma(t) = \sum_{\ell=1}^{L} g_\ell(t)\,e_\ell(t)
 \]
-(zero for layers with no self-prediction mechanism), and a normalized constitutive gate
+is the total constitutive self-correction in the system. Because $w_0$ shares no variable with $g_\ell$ or $e_\ell$, $\Sigma$ and $\Gamma$ are independent by construction: a measured correlation between them is informative, not built in. (A weight $w_0(\ell)+\beta g_\ell(t)e_\ell(t)$ would make them correlate tautologically.)
+
+A third quantity asks whether the self-correction is where the integration is:
 \[
-g_\ell(t) = \left|\frac{\partial \theta_\ell(t)}{\partial e_\ell(t)}\right| \in [0,1],
+A(t) = \frac{\mathrm{Cov}_\ell(t)}{\sigma_\Phi(t)\,\sigma_{ge}(t)} \in [-1,1], \qquad
+\mathrm{Cov}_\ell(t) = \frac{1}{L}\sum_{\ell=1}^{L}\big[\Phi(s,\ell,t)-\bar\Phi(t)\big]\big[g_\ell(t)e_\ell(t)-\overline{ge}(t)\big],
 \]
-where $g_\ell=0$ marks a layer that computes the error but does not act on it (descriptive), and $g_\ell=1$ marks full constitutive feedback.
+a correlation across layers between the $\Phi$ profile and the $ge$ profile ($A:=0$ when either is uniform). $A\approx-1$ with high $\Sigma,\Gamma$ is the architectural signature of the Gazzaniga interpreter: active self-correction confined to a shallow layer, decoupled from the integrative core. With $L$ small, $A$ is a correlation over few points and correspondingly sensitive to the layer decomposition.
 
-\subsection{State as a triple $(\Sigma,\Gamma,A)$}
-The weight is static, $w(\ell,t)=w_0(\ell)$. System state is then a triple of scalars built from disjoint variables:
-\[
-\Sigma(t) = \sum_{\ell=1}^{L} w_0(\ell)\,\Phi(s,\ell,t), \qquad \Gamma(t) = \sum_{\ell=1}^{L} g_\ell(t)\,e_\ell(t).
-\]
-$\Sigma$ is architecturally-weighted integrated information; $\Gamma$ is total constitutive self-correction activity. Since $w_0$ does not depend on $g_\ell$ or $e_\ell$, the two share no term: any measured correlation between them in a real system is an empirical finding, not a definitional artifact. (A weight coupled as $w_0(\ell)+\beta g_\ell(t)e_\ell(t)$ would make $\Sigma$ and $\Gamma$ correlate tautologically.) Consciousness as several dimensions rather than one scalar follows \cite{bayne2016}; $(\Sigma,\Gamma,A)$ is an IIT-grounded, dynamical instance of that programme.
+\section{Boundary Behaviour}\label{sec:bounds}
 
-A third quantity captures whether self-correction occurs \emph{where} integration is:
-\[
-A(t) = \frac{\mathrm{Cov}_\ell(t)}{\sigma_\Phi(t)\sigma_{ge}(t)} \in [-1,1], \qquad \mathrm{Cov}_\ell(t)=\frac{1}{L}\sum_{\ell=1}^{L}\big[\Phi(s,\ell,t)-\bar\Phi(t)\big]\big[g_\ell(t)e_\ell(t)-\overline{ge}(t)\big],
-\]
-with the convention $A(t):=0$ when either profile is uniform (variance zero). A negative $A$ despite high $\Sigma,\Gamma$ is the architectural signature of a Gazzaniga interpreter: fluent, active self-correction confined to a shallow layer, decoupled from the system's integrative core.
+These check the quantities behave sanely under their definitions. They are consequences of the definitional choices, not empirical claims.
 
-\section{Proven Boundary Properties}
+\begin{itemize}[leftmargin=*]
+\item $\Sigma(t)\ge0$ iff $w_0(\ell)\ge0$ for all $\ell$ (assumption A1) --- a sum of non-negative products. Under A1, $\partial\Sigma/\partial\Phi_\ell = w_0(\ell)\ge0$.
+\item $\Gamma(t)\ge0$ unconditionally ($g_\ell\in[0,1]$, $e_\ell\ge0$), with $\partial\Gamma/\partial g_\ell = e_\ell\ge0$ and $\partial\Gamma/\partial e_\ell = g_\ell\ge0$.
+\item Finite, discrete: $\Sigma,\Gamma,A$ are sums over a fixed small $L$; there is no $L\to\infty$ or integral form.
+\end{itemize}
 
-\begin{axiom}[A1]
-$w_0(\ell)\ge 0$ for all $\ell$.
-\end{axiom}
-
-\begin{theorem}[Non-negativity of $\Sigma$]
-Under A1, $\Sigma(t)\ge 0$.
-\end{theorem}
-\begin{proof}
-$\Phi(s,\ell,t)\ge 0$ (a distance) and $w_0(\ell)\ge 0$ by A1; a sum of products of non-negative terms is non-negative.
-\end{proof}
-
-\begin{theorem}[Non-negativity of $\Gamma$, unconditional]
-$\Gamma(t)\ge 0$ always.
-\end{theorem}
-\begin{proof}
-$g_\ell(t)\in[0,1]$ and $e_\ell(t)\ge 0$ (a squared norm); no axiom is needed.
-\end{proof}
-
-\begin{theorem}[Bound on $A$]
-$A(t)\in[-1,1]$, with equality iff $g_\ell e_\ell$ is an increasing (resp.\ decreasing) affine function of $\Phi(s,\ell,t)$ over $\ell$.
-\end{theorem}
-\begin{proof}
-Let $f(\ell)=\Phi(s,\ell,t)-\bar\Phi(t)$ and $h(\ell)=g_\ell(t)e_\ell(t)-\overline{ge}(t)$. Then $\frac1L\sum_{\ell}(\sigma_{ge}f(\ell)-\sigma_\Phi h(\ell))^2 \ge 0$ expands to $2\sigma_{ge}^2\sigma_\Phi^2 \ge 2\sigma_\Phi\sigma_{ge}\,\mathrm{Cov}_\ell$, giving $\mathrm{Cov}_\ell\le\sigma_\Phi\sigma_{ge}$, i.e.\ $A\le1$; the symmetric argument with $\frac1L\sum_{\ell}(\sigma_{ge}f(\ell)+\sigma_\Phi h(\ell))^2\ge0$ gives $A\ge-1$. Equality holds exactly when the two profiles are affinely related (Cauchy--Schwarz equality condition).
-\end{proof}
-
-\begin{theorem}[Monotonicity]
-$\partial\Gamma/\partial g_\ell = e_\ell\ge0$, $\partial\Gamma/\partial e_\ell=g_\ell\ge0$, and $\partial\Sigma/\partial\Phi(\ell)=w_0(\ell)\ge0$ under A1: no counter-intuitive sign effects in either quantity's response to its inputs.
-\end{theorem}
-
-\begin{remark}[Discreteness]
-$\Sigma$, $\Gamma$ and $A$ are finite sums over a fixed, small set of functional layers. The layer axis is not a continuum: there is no $L\to\infty$ idealization and no integral form. (An earlier draft carried one; its $L\to0$ behaviour, $\Sigma\to0$ irrespective of how concentrated the integration is, was a pure artifact of the vanishing integration measure and is absent here.)
-\end{remark}
-
-\subsection{Discrete dynamics: an asymmetry between $\Sigma$ and $\Gamma$}
-Because $w_0(\ell)$ is static under the canonical choice, $\Delta\Sigma=\sum_\ell w_0(\ell)\Delta\Phi(\ell)$ exactly, with no correction term, for arbitrarily large (non-infinitesimal) time steps. $\Gamma=\sum_\ell g_\ell e_\ell$, however, is a product of two time-varying quantities, so
-\[
-\Delta(g_\ell e_\ell) = \Delta g_\ell\cdot e_\ell(t_0) + g_\ell(t_0)\cdot\Delta e_\ell + \Delta g_\ell\cdot\Delta e_\ell,
-\]
-and the cross term vanishes only in the infinitesimal limit. In a numerical dissociation scenario (\S\ref{sec:example}) this cross term accounted for roughly a third of a single layer's total change --- non-negligible for discrete, event-scale simulation (e.g.\ a dissociative episode), where the continuous approximation $\partial\Gamma/\partial t$ would systematically underestimate $\Gamma$'s variability.
-
-\section{Competing Layers: A Soft Exclusion Mechanism}\label{sec:exclusion}
-
-Can a layer actively \emph{degrade} global integration, rather than merely fail to contribute (a metaphorical parallel to the sign-ambiguity of the cosmological constant)? Candidate phenomena: competing sub-narratives in dissociation, or Gazzaniga's interpreter operating in an \emph{overwriting}, distorting mode rather than a merely passive-descriptive one.
-
-We split the weight into two non-negative components, $w(\ell)=w_+(\ell)-w_-(\ell)$, grounded in IIT's exclusion postulate (the maximally irreducible candidate wins):
-\[
-\ell^*(t) = \arg\max_\ell \Phi(s,\ell,t), \qquad \text{overlap}(\ell,\ell^*) = \frac{|S_\ell\cap S_{\ell^*}|}{|S_\ell\cup S_{\ell^*}|}\in[0,1]\ \text{(Jaccard index on substrate sets)},
-\]
-\[
-w_-(\ell,t) = \begin{cases} 0 & \ell=\ell^*(t) \\ \gamma\cdot\text{overlap}(\ell,\ell^*(t))\cdot\Phi(s,\ell,t) & \ell\neq\ell^*(t)\end{cases}, \quad \gamma\ge0.
-\]
-
-\begin{proposition}[Exact linear threshold]
-$\Sigma(\gamma) = \Sigma_+ - \gamma K$, where $K=\sum_{\ell\neq\ell^*}\text{overlap}(\ell,\ell^*)\Phi(\ell)^2\ge0$ (note the square: the contribution removed from a layer is $w_-(\ell)\Phi(\ell)=\gamma\cdot\text{overlap}\cdot\Phi(\ell)^2$), and $\Sigma_+$ is the competition-free value ($\gamma=0$). Net fragmentation ($\Sigma<0$) is reachable \emph{iff} $\gamma>\gamma_{\text{crit}}=\Sigma_+/K$ --- a single scalar comparison, not a range (if $K=0$, no non-winner layer overlaps $\ell^*$, so $\Sigma\equiv\Sigma_+$ and fragmentation is unreachable). Replacing each overlap by its maximum $1$ gives only the loose bracket $\Sigma_+-\gamma\sum_{\ell\neq\ell^*}\Phi(\ell)^2\le\Sigma(\gamma)\le\Sigma_+$, tight only for fully nested substrates.
+\begin{proposition}[Bound on $A$]
+$A(t)\in[-1,1]$, with $A=\pm1$ iff $g_\ell e_\ell$ is an increasing (resp.\ decreasing) affine function of $\Phi(s,\ell,t)$ over $\ell$.
 \end{proposition}
+\begin{proof}
+With $f(\ell)=\Phi(s,\ell,t)-\bar\Phi(t)$, $h(\ell)=g_\ell(t)e_\ell(t)-\overline{ge}(t)$, the inequality $\frac1L\sum_\ell(\sigma_{ge}f\mp\sigma_\Phi h)^2\ge0$ gives $\mp\mathrm{Cov}_\ell\le\sigma_\Phi\sigma_{ge}$, i.e.\ $A\in[-1,1]$; equality is the Cauchy--Schwarz equality condition.
+\end{proof}
 
-\begin{remark}[Discontinuity at a switch of $\ell^*$]
-$\ell^*(t)$ is an $\arg\max$, so when the maximal layer changes, $\ell^*$ --- and hence $w_-$ and $\Sigma(t)$ --- jump (\S\ref{sec:example} exhibits one such switch). This is intended: an abrupt change in which complex ``wins'' is exactly the dissociative event the mechanism is meant to represent, not a non-smoothness to be regularized away.
+\begin{remark}[$\Sigma$ vs.\ $\Gamma$ under finite time steps]
+With static $w_0$, $\Delta\Sigma=\sum_\ell w_0(\ell)\,\Delta\Phi_\ell$ exactly, for any step size. $\Gamma$ is bilinear in $g$ and $e$, so $\Delta(g_\ell e_\ell)$ carries a cross term $\Delta g_\ell\,\Delta e_\ell$ that vanishes only in the infinitesimal limit and is non-negligible for step-like events (a dissociative switch): a continuous $\partial\Gamma/\partial t$ then underestimates $\Gamma$'s variability.
 \end{remark}
 
-\subsection*{A rejected, more IIT-faithful alternative}
-We also formalized a version grounded more directly in IIT's actual (binary) exclusion machinery: a binary overlap gate plus a smooth relaxation of the competition itself, $s(\ell,t)=\tanh\!\big(\tfrac{\kappa}{2}[\Phi(\ell^*,t)-\Phi(\ell,t)]\big)$, suppressing $\Phi$ directly (as canonical IIT does) rather than the weight. This mechanism provably forbids $\Sigma<0$ (the suppression factor lies in $(0,1]$) and recovers canonical hard exclusion exactly as $\kappa\to\infty$. We deliberately reject it: the ability to represent net fragmentation is judged more valuable than strict fidelity to IIT's binary postulate, which is why the $w_+-w_-$ mechanism above is retained as canonical. This is a conscious, motivated departure from IIT, not a misreading of it, and should be stated as such in any future write-up.
+\section{Application to AI Architectures}\label{sec:ai}
 
-\begin{remark}[What $\Sigma<0$ claims]
-Whole-minus-parts integrated-information measures already take negative values \cite{barrett2019,phiid2019}, where negative means the whole is \emph{reducible} (net redundancy). $\Sigma<0$ here is different: no $\Phi_\ell$ goes negative (each $\Phi_\ell\ge0$); the deficit comes from a competing layer's anti-weight $w_-$ subtracting more architectural weight than the other layers contribute. The novelty claimed is the anti-weight mechanism and its exact threshold, not negative integrated information as such. That the exclusion postulate is itself formally troubled \cite{hanson2023} is independent support for replacing it.
-\end{remark}
+This is where the triple earns its keep. A standard, frozen-weight transformer at inference has $g_\ell(t)\equiv0$ (no online parameter update), hence $\Gamma(t)\equiv0$ \emph{by definition}, regardless of self-report fluency, and $A(t):=0$ (no variance in an identically-zero profile). The framework thus makes ``does this model have a real self-model?'' a structural question, not a matter of how self-aware its text sounds. It does \emph{not} answer whether high $\Sigma$ with $\Gamma=0$ is itself a form of consciousness --- it sharpens that question rather than dissolving it. Fine-tuning an LLM to monitor its own reliability \cite{predmetacog2026} improves calibration but the update is training-time, so $\Gamma$ stays zero at deployment.
 
-\section{Worked Example}\label{sec:example}
+\textbf{Titans} \cite{behrouz2024} updates a memory module at test time via a ``surprise'' signal (the gradient of an associative-memory loss w.r.t.\ input), $S_t=\arg\min_S\frac12\|Sk_t-v_t\|^2+\frac1{2\eta}\|S-S_{t-1}\|^2$ --- a working instance of $e_\ell>0$ driving $g_\ell>0$. But it predicts \emph{context content}, not the system's own internal state.
 
-Three layers (homeostasis, world-model, self-model) with $\Phi=(0.2,0.6,0.9)$, $w_0=(0.1,0.3,0.6)$, $e=(0,0.4,0.8)$, $g=(0,0.3,0.9)$.
-
-\begin{center}
-\begin{tabular}{@{}lccc@{}}
-\toprule
-& $\Sigma$ & $\Gamma$ & $A$ \\
-\midrule
-No competition & 0.740 & 0.840 & 0.90 \\
-With competition ($\gamma=0.5$, substrate overlap$(2,3)=0.4$) & 0.668 & --- & --- \\
-\bottomrule
-\end{tabular}
-\end{center}
-With substrate sets giving Jaccard overlaps $\{0,0.4\}$, $K=0.4\times0.6^2=0.144$, so the exact identity gives $\Sigma(0.5)=0.740-0.5\times0.144=0.668$ (the loose bracket $[0.34,0.74]$ contains it but is slack, since $\text{overlap}(1,3)=0$), and $\gamma_{\text{crit}}=0.740/0.144\approx5.14$ --- numerically confirmed ($\Sigma(5.14)\approx0$, $\Sigma(6)=-0.124$). Net fragmentation here needs a competition strength $\sim5\times$ the baseline self-model weight.
-
-A two-timestep dissociation scenario (a competing sub-narrative in layer 2 overtakes layer 3 as $\ell^*$) gives $(\Sigma,\Gamma,A)$: $(0.740,0.840,0.90)\to(0.575,0.680,0.96)$. Notably $A$ \emph{increases} even as $\Sigma,\Gamma$ both fall --- illustrating that $A$ answers a distinct question (does self-correction track the current integrative center?) from the magnitude questions $\Sigma,\Gamma$ answer.
-
-\section{Application to Transformer Architectures}
-
-A standard, frozen-weight transformer at inference has $g_\ell(t)\equiv0$ (no online parameter update), hence $\Gamma(t)\equiv0$ by definition, regardless of self-report fluency, and $A(t):=0$ by the boundary convention (no variance in an identically-zero profile). Fine-tuning an LLM to monitor its own reliability \cite{predmetacog2026} improves calibration but does not by itself make the update online, so $\Gamma$ stays zero at deployment.
-
-\textbf{Titans} \cite{behrouz2024}, a neural long-term memory module updated at test time via a ``surprise'' signal (the gradient of an associative-memory loss with respect to input) driving an online update $S_t=\arg\min_S\frac12\|Sk_t-v_t\|^2+\frac1{2\eta}\|S-S_{t-1}\|^2$, is a concrete, working instance of $e_\ell(t)>0$ driving $g_\ell(t)>0$. However, Titans predicts \emph{context content} (keys/values derived from input), not the system's own internal state --- a genuine ambiguity we resolve below.
-
-\subsection*{Resolving self- vs.\ world-modeling: two independent conditions}
-(a) \emph{Target}: is the predicted quantity an internal representational state ($h_\ell$, hidden activations) or externally observable behavior (a token) --- even if that token is self-authored? (b) \emph{Timing}: does the update occur online at deployment, or only during training (after which weights freeze)?
+\subsection*{Two independent conditions}
+(a) \emph{Target}: internal representational state ($h_\ell$) or externally observable behavior (a token)? (b) \emph{Timing}: online at deployment, or training-only?
 
 \begin{center}
 \small
@@ -205,96 +118,61 @@ A standard, frozen-weight transformer at inference has $g_\ell(t)\equiv0$ (no on
 \toprule
  & \textbf{Training-time only} & \textbf{Online at deployment} \\
 \midrule
-Target = external behavior & ordinary predictive training & \textbf{Titans}: constitutive, but \emph{world}-modeling \\[4pt]
-Target = internal state & self-modelling as auxiliary loss \cite{premakumar2026} & \textbf{Temporal Self-Model} \cite{tsm2026}: full match \\
+Target = external behavior & ordinary predictive training & \textbf{Titans} \cite{behrouz2024}: constitutive \emph{world}-modeling \\[4pt]
+Target = internal state & self-modeling as auxiliary loss \cite{premakumar2026}: descriptive at deployment & \textbf{Temporal Self-Model} \cite{tsm2026}: full match (pending confirmation the update is genuinely online) \\
 \bottomrule
 \end{tabular}
 \end{center}
-Only the bottom-right cell satisfies our full definition of constitutive self-modeling. Titans, despite its prominence, lands elsewhere. \cite{premakumar2026} show a network trained with an auxiliary hidden-state self-prediction loss becomes simpler and more regularized --- but the update is frozen after training, hence descriptive at deployment. \cite{tsm2026} describes a module explicitly predicting the agent's own future hidden states, with a delayed-comparison self-prediction loss --- the closest match to our definition, though whether its update is genuinely online (rather than trained via standard backpropagation) requires further confirmation.
+Only the bottom-right cell is constitutive self-modeling in this sense. An intermediate case is in-context learning as implicit gradient descent \cite{oswald2023}: a forward pass can implement a step like gradient descent on an internal objective, but nothing persists past the context window --- neither fully descriptive nor constitutive. Separately, a \textbf{homeostatic layer} is confirmed absent from mainstream transformers (interoception-inspired regulatory work \cite{interoceptive2026} is marginal), and \textbf{genuine recurrence} (a state evolving independently of new tokens) is present in state-space models and Titans-style hybrids but not in pure attention.
 
-An intermediate case is \emph{in-context learning as implicit gradient descent} \cite{oswald2023}: a single forward pass through attention can implement a step structurally equivalent to gradient descent on an internal objective, but the induced change does not persist beyond the context window (no lasting update to $\theta$) --- neither fully descriptive nor fully constitutive in our sense.
+\section{Worked Example}\label{sec:example}
 
-Separately: a \textbf{homeostatic layer} is confirmed absent from mainstream transformer architectures; interoception-inspired regulatory frameworks for AI \cite{interoceptive2026} exist only as a marginal research direction. \textbf{Genuine recurrence} (a persisting internal state evolving independently of new tokens) is present in state-space models (Mamba) and Titans-style hybrids, but absent from pure attention (the KV-cache is context memory, not a dynamical loop).
+Three layers with $\Phi=(0.2,0.6,0.9)$, $w_0=(0.1,0.3,0.6)$, $e=(0,0.4,0.8)$, $g=(0,0.3,0.9)$ give $\Sigma=0.740$, $\Gamma=0.840$, $A\approx0.90$. A two-step scenario where layer 2's $\Phi$ rises and layer 3's falls ($\Phi\to(0.2,0.85,0.5)$, with $g,e$ shifting accordingly) gives $(\Sigma,\Gamma,A)\to(0.575,0.680,0.96)$: $\Sigma$ and $\Gamma$ both fall while $A$ \emph{rises}, because $A$ asks a different question (is self-correction tracking the current centre of integration?) from the magnitude questions. All numbers are reproduced by \texttt{examples/toy\_example.py}.
 
-\section{Hypothesis: Two Independent Mechanisms of Anesthesia in $(\Sigma,\Gamma,A)$}\label{sec:anesthesia}
+\section{The Readout Channel: Internal State vs.\ Observability}\label{sec:readout}
 
-At constant integration, self-referentiality could in principle be reduced in two qualitatively different ways: (1) $\Gamma$ drops directly, in place, or (2) it is displaced toward a region of lower integration (a drop in $A$, not necessarily $\Gamma$). Anesthesiology literature offers two separate cases plausibly matching this distinction.
-
-\textbf{Mechanism 1 ($\Gamma$ drops in place).} Propofol and sevoflurane impair the \emph{posterior hot zone} \cite{hotzone2021} --- the region IIT proponents specifically identify as the primary substrate of consciousness (as opposed to GNW's preferred frontoparietal locus) --- while simultaneously disrupting frontoparietal feedback connectivity (front-to-back) \cite{lee2013disruption}, associated with higher-order processing. Integration and self-correction collapse together, in the same place. Behaviorally: total loss of consciousness, no report at all --- consistent with $\Sigma$ and $\Gamma$ falling together.
-
-\textbf{Mechanism 2 ($\Gamma$ persists, $A$ drops).} Subanesthetic ketamine produces dissociation --- responsiveness and often vivid, rich experience can persist, but with a disrupted sense of self. It desegregates the salience network (``minimal,'' bodily self) and the DMN (``narrative,'' biographical self) separately \cite{ketaminemodel2022} --- two tiers of self-modeling reasonably mapping onto layers $\ell$ in this model. Overall experiential richness does not collapse the way it does under propofol (hence ketamine's often vivid, ``psychedelic''-quality reports) --- self-correction does not vanish, it decouples from wherever integration currently resides: a drop in $A$, not necessarily in $\Sigma$ or $\Gamma$.
-
-\textbf{Status:} a plausible, anatomically grounded hypothesis, not a confirmed result --- no one has computed $(\Sigma,\Gamma,A)$ directly on EEG/fMRI data from either anesthetic. A concrete, testable prediction follows: the $(\Sigma,\Gamma,A)$ profile should clearly distinguish propofol/sevoflurane ($\Sigma\downarrow,\Gamma\downarrow$ together) from ketamine ($\Sigma,\Gamma$ relatively preserved, $A\downarrow$), even though both ``switch off'' some form of normal functioning.
-
-\section{The Readout Channel: Separating Internal State from Observability}\label{sec:readout}
-
-The anesthesia hypothesis above (\S\ref{sec:anesthesia}) exposes an axis the formalism previously lacked: $(\Sigma,\Gamma,A)$ describes \emph{internal} state, but says nothing about whether that state is legible from behavior. This is precisely the clinical problem that motivated the Perturbational Complexity Index --- a measure explicitly designed to be ``independent of sensory processing and behavior'' \cite{casali2013}.
-
-\subsection*{Definition}
-Let $M(t)$ be a distinct efferent substrate (motor/communicative output units), separate from layers $\ell$. Define a readout channel from layer $\ell$ to $M$, using the same distance measure $D$ as base $\Phi$:
+$(\Sigma,\Gamma,A)$ describes \emph{internal} state and says nothing about whether that state is legible from behavior --- the clinical problem the Perturbational Complexity Index was built for \cite{casali2013}. Let $M(t)$ be a distinct efferent substrate (motor/communicative units). Define a readout channel from layer $\ell$ to $M$ using the same distance measure $D$ as base $\Phi$:
 \[
 R_\ell(t) = D\big(p(m'\mid s_\ell,m)\,\|\,p(m'\mid m)\big),
 \]
-i.e.\ how much knowing layer $\ell$'s state changes the predictability of the effectors' future state, beyond knowing the effectors' current state alone. Structurally identical to $\Phi_{\ell,\ell-1}$ (\S3.1), just directed at a layer$\to$output channel. $R_L(t)$ --- the channel from the topmost, self-modeling layer to the effectors --- is of particular interest.
+i.e.\ how much knowing layer $\ell$'s state adds to the predictability of the effectors' next state. $R_L$ --- from the topmost self-modeling layer --- is of particular interest.
 
 \begin{proposition}[Readout properties]
-$R_\ell(t)\ge0$ (a divergence), and $R_\ell(t)=0$ iff $s_\ell(t)\perp m'\mid m(t)$ --- the readout vanishes exactly when the layer is conditionally irrelevant to the effectors' next state given their current one, i.e.\ has no channel to output at all. If $D$ is read as a KL divergence (so $R_\ell=I(s_\ell;m'\mid m)$), a data-processing inequality holds: if every causal path from layer $\ell$ to $M$ passes through some layer $\ell'$, then $R_\ell\le R_{\ell'}$.
+$R_\ell(t)\ge0$, and $R_\ell(t)=0$ iff $s_\ell(t)\perp m'\mid m(t)$ (the layer has no channel to output at all). If $D$ is a KL divergence, so $R_\ell=I(s_\ell;m'\mid m)$, a data-processing inequality holds: if every causal path from $\ell$ to $M$ runs through some layer $\ell'$, then $R_\ell\le R_{\ell'}$.
 \end{proposition}
 
-\subsection*{Observed vs.\ actual}
-What a clinician observes ($\Sigma_{\text{obs}}$ --- ``visible'' consciousness, inferred from behavior) is bottlenecked by $R_L$, independent of actual $\Sigma$:
+What a clinician infers from behavior ($\Sigma_{\text{obs}}$) is bottlenecked by $R_L$:
 \[
-\Sigma_{\text{obs}}(t) \le \beta\big(R_L(t)\big), \qquad \beta:[0,\infty)\to[0,\infty)\ \text{non-decreasing},\ \beta(0)=0,
+\Sigma_{\text{obs}}(t) \le \beta\big(R_L(t)\big), \qquad \beta \text{ non-decreasing},\ \beta(0)=0.
 \]
-the visible level dominated by a non-decreasing function of the readout that vanishes with it. The shape of $\beta$ is left open (it depends on how behavior is scored); the load-bearing consequence is the endpoint: $R_L(t)=0 \Rightarrow \Sigma_{\text{obs}}(t)=0$ \emph{regardless of how high actual $\Sigma(t)$ is} --- a formalization of the risk of conflating $\Sigma_{\text{obs}}$ with $\Sigma$. (An earlier draft wrote $\Sigma_{\text{obs}}\le\kappa\cdot R_L$ ``for some $\kappa>0$'', which is vacuous.)
+The shape of $\beta$ depends on how behavior is scored; the load-bearing consequence is the endpoint: $R_L(t)=0 \Rightarrow \Sigma_{\text{obs}}(t)=0$ regardless of actual $\Sigma(t)$. \textbf{Locked-in syndrome}: $\Sigma,\Gamma,A$ normal, $R_L\approx0$ from efferent damage. \textbf{REM sleep}: $\Sigma,\Gamma,A$ preserved (PCI $\approx$ wake), $R_L$ suppressed by atonia. \textbf{Cognitive motor dissociation}: $R_L$ partial. \textbf{True vegetative state}: both $\Sigma$ and $R_L$ low.
 
-\subsection*{Clinical mapping}
-\textbf{Locked-in syndrome:} $\Sigma,\Gamma,A$ normal; $R_L\approx0$ from structural damage to efferent pathways (e.g.\ ventral pontine stroke) $\to\Sigma_{\text{obs}}\approx0$ despite high $\Sigma$. \textbf{REM sleep:} $\Sigma,\Gamma,A$ relatively preserved (PCI$\approx$wakefulness); $R_L$ actively suppressed by a known, reversible physiological mechanism --- REM atonia, subcoeruleus-mediated inhibition of spinal motor neurons --- confirming $R_\ell$ has a real neural substrate, not just theoretical convenience. \textbf{Cognitive motor dissociation} (a subset of vegetative-state patients, per Owen-style paradigms): $R_L$ partial --- sufficient to modulate a neuroimaging response to command, insufficient to reach muscle. \textbf{True vegetative state (no covert awareness):} both $\Sigma$ and $R_L$ low --- the distinction PCI was built to resolve.
+\section{Predictions and Extensions (Speculative)}\label{sec:speculative}
 
-\section{Context-Sensitivity of the Constitutive Gate: Context Blindness and an ``Intense World''}
+\subsection{Two mechanisms of anaesthesia}
+At constant $\Sigma$, self-referentiality could drop in two ways: $\Gamma$ falls in place, or $\Gamma$ is displaced to a region of lower integration ($A$ falls, not necessarily $\Gamma$). Propofol/sevoflurane strike the posterior hot zone \cite{hotzone2021} and disrupt frontoparietal feedback \cite{lee2013disruption} --- integration and self-correction collapse together ($\Sigma\downarrow,\Gamma\downarrow$). Subanaesthetic ketamine desegregates the salience network and the DMN separately \cite{ketaminemodel2022} --- two tiers of self-modeling --- while overall experiential richness persists ($\Gamma$ roughly preserved, $A\downarrow$). \emph{Prediction}: the $(\Sigma,\Gamma,A)$ profiles differ. \emph{Caveat}: nobody has computed the triple on data, and $g_\ell$ --- whether the error drives a parameter update --- is likely not recoverable from EEG, so this is a thought experiment for now.
 
-A source discussing Friston's free-energy principle in relation to autism \cite{vandecruys2014} states the point sharply: processing context requires the brain to give its expectations the right weight; if expectations are given too little weight, or prediction errors remain too rigidly large, integrating context fails. Van de Cruys et al.\ propose \emph{aberrant precision} as a mechanism in autism --- prediction errors receive too rigidly high weight, independent of context. \cite{qela2025} map related predictive-mechanism deviations across autism, schizophrenia, and depression.
+\subsection{Context-sensitivity of the gate}
+Make the gate context-dependent, $g_\ell(t)=h(e_\ell(t),C(t))$, and let $\chi_\ell(t)=|\partial g_\ell/\partial C|\ge0$ measure how strongly context modulates the error's weight. $\chi_\ell\approx0$ is ``context blindness'': $g_\ell$ becomes a rigid function of the error alone --- the formal counterpart of aberrant precision in autism \cite{vandecruys2014,qela2025} and of an ``intense world.'' Because $g_\ell\in[0,1]$, along any context path on which $g_\ell$ is monotone $\int\chi_\ell\,dC=|\Delta g_\ell|\le1$: context-sensitivity is a finite budget --- sharp gating over one range of contexts forces relative context-blindness elsewhere. Consequence: under repeated, contextually irrelevant stimulation a typical system's contribution to $\Gamma$ drops twice over (via $e_\ell$ and via $g_\ell$); under context blindness only the first mechanism operates, so $\Gamma$ stays elevated in low-novelty environments --- a qualitatively testable difference.
 
-\subsection*{A closing gap in the model}
-``Weight given to expectations'' is, in predictive-processing vocabulary, \emph{precision} --- structurally exactly our $g_\ell(t)$. The formalism so far had no place for \emph{context} to normally modulate that weight. Extension:
+\subsection{Competing layers: a direction}\label{sec:exclusion}
+IIT's exclusion postulate --- among overlapping substrates only the maximal-$\varphi$ one exists \cite{albantakis2023} --- is contested \cite{hanson2023}. One could soften it by splitting the functional weight, $w(\ell)=w_+(\ell)-w_-(\ell)$, with an anti-weight $w_-$ that grows with a competing layer's substrate overlap with the current maximum $\ell^*(t)=\arg\max_\ell\Phi(s,\ell,t)$:
 \[
-g_\ell(t) = h\big(e_\ell(t), C(t)\big), \qquad \chi_\ell(t) = \left|\frac{\partial g_\ell}{\partial C}\right| \ge 0,
+w_-(\ell,t) = \gamma\cdot\text{overlap}(\ell,\ell^*)\cdot\Phi(s,\ell,t) \quad (\ell\neq\ell^*), \qquad \gamma\ge0,
 \]
-where $C(t)$ is a contextual signal and $\chi_\ell(t)$ --- a new parameter --- measures how strongly context modulates the error's weight. $\chi_\ell(t)\ge0$ trivially.
+with $\text{overlap}$ the Jaccard index on substrate sets. Since $w_-$ is linear in $\gamma$, so is $\Sigma$: $\Sigma(\gamma)=\Sigma_+-\gamma K$ with $K=\sum_{\ell\neq\ell^*}\text{overlap}(\ell,\ell^*)\Phi(\ell)^2$, so $\Sigma$ can go negative once $\gamma>\Sigma_+/K$ --- ``net fragmentation,'' a layer subtracting from subjecthood rather than merely failing to contribute (alien-hand syndrome and diagonistic dyspraxia are candidate illustrations). This is not the redundancy-driven negative value that whole-minus-parts $\Phi$ measures already take \cite{barrett2019,phiid2019}: there $\Phi_\ell$ itself is negative; here each $\Phi_\ell\ge0$ and the deficit is in the weighting.
 
-\begin{proposition}[Bounded total modulation]
-Because $g_\ell\in[0,1]$, along any context path $C_0\to C_1$ on which $g_\ell$ is monotone, $\int_{C_0}^{C_1}\chi_\ell\,dC = |g_\ell(C_1)-g_\ell(C_0)|\le 1$. Context-sensitivity is a finite budget: high $\chi_\ell$ over one span forces low $\chi_\ell$ (relative context-blindness) elsewhere once $g_\ell$ saturates at $0$ or $1$.
-\end{proposition}
+We flag this as the \emph{least-developed} part of the framework. The functional form of $w_-$ is a guess with a free parameter $\gamma$; ``negative integrated information'' has no worked phenomenological or causal interpretation; and $\ell^*(t)$ being an $\arg\max$ makes $\Sigma(t)$ discontinuous at a switch. It is not required for the triple, and we do not claim it as a result.
 
-\subsection*{Two regimes}
-\textbf{Normal, context-sensitive precision} ($\chi_\ell>0$): familiar, contextually irrelevant signals are automatically down-weighted --- $g_\ell$ drops regardless of the raw magnitude of $e_\ell$. \textbf{Context blindness} ($\chi_\ell\approx0$): $g_\ell(t)\approx\hat g_\ell(e_\ell(t))$, a rigid function of the error alone; context changes nothing. Effect: signals context would normally suppress keep receiving full weight --- the formal counterpart of an ``intense world'' (Intense World Theory, Markram \& Markram 2010): nothing is defaultly discounted as ``already expected in this context.''
+\section{Discussion}\label{sec:discussion}
 
-\subsection*{Consequence for $\Gamma$}
-Typically, repeated, contextually irrelevant stimulation lowers both $e_\ell$ (via predictive learning --- repetition suppression) and $g_\ell$ (via active contextual suppression, $\chi_\ell>0$) --- a compounded drop in contribution to $\Gamma$. Under context blindness only the first mechanism operates (if at all) --- $\Gamma(t)$ stays elevated/variable even in low-novelty environments. A formalizable, at least qualitatively testable difference in $\Gamma$'s dynamics between typical and ``aberrant precision'' cases --- though no one has measured it directly in these terms.
+\paragraph{What is new.} The triple as a package --- integration, constitutive self-correction, and their alignment, kept independent by construction --- and the functional (update-driven) criterion for self-modeling. The consequence for AI ($\Gamma\equiv0$ for frozen models; the target-$\times$-timing placement of current architectures) is, we think, the most useful part.
 
-\section{Further Considerations (Informal --- No Proofs, Lower Confidence Than the Rest)}
+\paragraph{What is inherited, unresolved.} $\Phi$ is contested at the foundations \cite{barrett2019,hanson2023} and this framework builds a per-layer version on top of it. The layer decomposition is stipulated, and $A$ --- a correlation over $L$ points --- is only as meaningful as that decomposition. The multidimensional move is Bayne, Hohwy \& Owen \cite{bayne2016}; the IIT + predictive-processing + functional synthesis is close to Safron's Integrated World Modeling Theory \cite{safron2020}, differing by being a formal triple rather than a conceptual architecture.
 
-\subsection*{Scale: from a single cell to the whole universe}
+\paragraph{What is untested.} Everything. There is no empirical instantiation. $g_\ell$ is directly observable in an artificial system but likely not recoverable from neural data, which limits the anaesthesia prediction to a thought experiment. The proofs in \S\ref{sec:bounds} are about definitions, not about minds.
 
-\textbf{Lower bound.} Bare IIT is permissive: ``Minimal physicalism as a scale-free substrate for cognition and consciousness'' (2021) argues gene-regulatory and signal-transduction networks at the single-cell level have positive $\Phi$. \textbf{Our model is more restrictive} --- positive $\Phi$ is not enough; $\Gamma>0$ is required, a real, online self-prediction loop. A single cell has homeostasis, not a self-model in the sense of \S3. \emph{C. elegans} (302 neurons, mostly feedforward connectome, little recurrence) is a good test case: plausibly low/zero $\Gamma$ despite nonzero $\Phi$.
-
-\textbf{Upper bound.} ``Upper bounds for integrated information'' (2024) shows $\Phi$ can grow hyper-exponentially with unit count --- no mathematical ceiling. But: (1) the exclusion postulate does not allow stacking upward --- a larger system wins only if it has \emph{higher} $\Phi$, not more units; (2) large-scale systems (internet, biosphere, society) have sparse, slow connectivity relative to neurons, so empirically they do not outcompete the brain.
-
-\textbf{The whole universe --- a ``double no''.} This is literally the combination problem of panpsychism, taken to its limit. Two independent lines of reasoning converge on the same conclusion: (1) \emph{structurally}, Koch and Tononi's answer to Searle's ``smeared like jam'' objection --- ``my consciousness, your consciousness, but nothing in between'' --- the universe is a mosaic of local maxima (``ontological dust''), never a superordinate whole, because an aggregate (e.g.\ a brain plus the rest of the cosmos) has lower $\Phi$ than its more densely connected parts; (2) \emph{physically}, regions beyond each other's cosmological horizons have never been in causal contact --- there is no transition matrix to even compute $\Phi$ over. Under $\Sigma$ a third reason follows: no unified $\Gamma$ exists at cosmological scale. A speculative, unrigorous aside: since integration requires dense, fast structure, and the universe is diluting toward heat death, we may be closer to the peak achievable integration density in cosmic history than to it lying in the far future.
-
-\textbf{Overarching caveat:} IIT itself, on which all of this rests, is scientifically contested (2023: an open letter signed by 124 researchers, including Dennett, calling IIT pseudoscience; the COGITATE/Templeton adversarial collaboration --- an inconclusive result against GNW).
-
-\subsection*{Alien hand syndrome as an illustration of net fragmentation (\S5)}
-
-The cleanest found illustration of $\Sigma<0$. With damage to the corpus callosum --- reduced $\Phi_{\ell,\ell-1}$ between hemispheres --- two candidate motor-intentional complexes not only stop cooperating but actively oppose each other: ``diagonistic dyspraxia'' --- one hand literally undoes what the other just did. This is integration below zero, not merely its absence --- exactly the mechanism of \S5, and the same line of research (split-brain, corpus callosum) that motivated the Gazzaniga interpreter at the very start of this paper.
-
-\textbf{A weaker, partial match: dissociative identity disorder (DID).} Well documented: distinct, compartmentalized neural signatures for different identity states, connectivity shifts during switches --- fits $\ell^*(t)$ changing over time (the dissociation scenario of \S6). Less well documented: whether one state \emph{actively degrades} another's integration (true $\Sigma<0$) or merely replaces it (amnesia barriers look more like lack of access than active interference in the $w_-$ sense). DID's status as a diagnostic category is itself a matter of genuine, unresolved scientific debate (trauma model vs.\ sociocognitive model).
-
-\section{Discussion and Open Questions}
-
-
-
-This is a self-consistent conceptual synthesis, not an empirically validated theory. On the exclusion mechanism (\S\ref{sec:exclusion}) the choice is settled: the soft $w_+-w_-$ form is canonical and reachable $\Sigma<0$ (net fragmentation) is kept as an intended feature, not a defect; the binary, $\Sigma\ge0$ alternative is retained only as the documented, rejected option. Open items: a systematic (not merely search-driven) literature review; and empirical instantiation on architectures beyond the toy example, particularly to test whether $(\Sigma,\Gamma,A)$ trajectories track known markers of integration (e.g.\ the Perturbational Complexity Index under anesthesia).
+\paragraph{Open.} A systematic literature review (PhilPapers/PhilSci-Archive not swept); one worked empirical case; a principled account of the layer decomposition; and whether the competing-layers direction (\S\ref{sec:exclusion}) is worth developing at all.
 
 % Citations verified against primary sources, 2026-08-28 (two passes). A few
 % volume/article numbers on the second-pass additions still need a final check

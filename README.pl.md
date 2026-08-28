@@ -7,9 +7,8 @@ robocza synteza koncepcyjna wypracowana w dialogu z Claude (Anthropic), sierpie�
 
 ## Nawigacja
 
-- **Zacznij tu:** [`paper/model_sigma.md`](paper/model_sigma.md) — pełna wersja robocza (19 sekcji), **źródło prawdy** (angielski)
-- Tłumaczenie polskie: [`paper/model_sigma.pl.md`](paper/model_sigma.pl.md)
-- Wersje sformatowane: [PDF EN](paper/sigma_model_en.pdf) · [PDF PL](paper/sigma_model_pl.pdf) (źródła: [`sigma_model_en.tex`](paper/sigma_model_en.tex) · [`sigma_model_pl.tex`](paper/sigma_model_pl.tex))
+- **Praca:** [`paper/sigma_model_en.tex`](paper/sigma_model_en.tex) — leaner, argumentowana wersja (prowadzi trójką $(\Sigma,\Gamma,A)$ i argumentem o AI; warstwy konkurujące / $\Sigma<0$ to jeden akapit). PDF-y: [EN](paper/sigma_model_en.pdf) · [PL](paper/sigma_model_pl.pdf) (źródło PL: [`sigma_model_pl.tex`](paper/sigma_model_pl.tex))
+- **Pełna wersja robocza** (wszystko, co rozważono): [`paper/model_sigma.md`](paper/model_sigma.md) · pol.: [`paper/model_sigma.pl.md`](paper/model_sigma.pl.md)
 - Dlaczego tak, a nie inaczej: [`notes/decisions.md`](notes/decisions.md) · mapa literatury: [`notes/literature.md`](notes/literature.md)
 - Bibliografia z abstraktami: [`references/`](references/) ([indeks](references/README.md)) · audyt cytowań: [`notes/citations.md`](notes/citations.md)
 - Liczby z pracy, wykonywalne: [`examples/toy_example.py`](examples/toy_example.py)
@@ -18,10 +17,10 @@ robocza synteza koncepcyjna wypracowana w dialogu z Claude (Anthropic), sierpie�
 ## Struktura repo
 
 - [`paper/`](paper/)
-  - [`model_sigma.md`](paper/model_sigma.md) — pełna wersja robocza (19 sekcji), **źródło prawdy** (angielski)
-  - [`model_sigma.pl.md`](paper/model_sigma.pl.md) — tłumaczenie polskie (nadążać za `model_sigma.md`)
-  - [`sigma_model_en.tex`](paper/sigma_model_en.tex) / [`sigma_model_pl.tex`](paper/sigma_model_pl.tex) — źródła LaTeX (EN / PL), wersja skrócona i przenumerowana
-  - [`sigma_model_en.pdf`](paper/sigma_model_en.pdf) / [`sigma_model_pl.pdf`](paper/sigma_model_pl.pdf) — skompilowane PDF-y, artefakty builda (regenerować przez `make`)
+  - [`sigma_model_en.tex`](paper/sigma_model_en.tex) / [`sigma_model_pl.tex`](paper/sigma_model_pl.tex) — **praca** (EN / PL): leaner, argumentowana wersja
+  - [`model_sigma.md`](paper/model_sigma.md) — pełna wersja robocza, angielski (wszystko, co rozważono, w porządku narastania); przy rozbieżnościach obowiązują decyzje redakcyjne pracy
+  - [`model_sigma.pl.md`](paper/model_sigma.pl.md) — tłumaczenie polskie wersji roboczej
+  - [`sigma_model_en.pdf`](paper/sigma_model_en.pdf) / [`sigma_model_pl.pdf`](paper/sigma_model_pl.pdf) — skompilowane PDF-y, artefakty builda; **obecnie nieaktualne** (sprzed przebudowy) — regenerować przez `make` albo CI `build-paper`
   - [`Makefile`](paper/Makefile) — `make` buduje oba PDF-y, `make clean` czyści pliki pomocnicze
 - [`notes/`](notes/)
   - [`decisions.md`](notes/decisions.md) — log kluczowych rozstrzygnięć (dlaczego, nie tylko co)
@@ -34,20 +33,25 @@ robocza synteza koncepcyjna wypracowana w dialogu z Claude (Anthropic), sierpie�
 
 ## Stan projektu
 
-Spójna wewnętrznie synteza koncepcyjna: pełny formalizm statyczny i dynamiczny (Σ, Γ, A) —
-skończone sumy po warstwach, bez formy całkowej — dowiedzione własności brzegowe, mechanizm
-konkurencji/wykluczenia (miękki w = w₊ − w₋, dopuszcza Σ<0 jako zamierzoną cechę), kanał odczytu
-R_ℓ, wrażliwość kontekstowa bramki g_ℓ, przykład numeryczny, wstępny przegląd literatury,
-zastosowanie do architektur transformerowych. **Niezweryfikowana recenzyjnie.**
+Spójna wewnętrznie synteza koncepcyjna. Rdzeń: trójka stanu **(Σ, Γ, A)** po małym, ustalonym
+zbiorze warstw funkcjonalnych — zintegrowana informacja, aktywność konstytutywnej samo-korekty
+(błąd samo-predykcji, który napędza aktualizację parametrów online, nie tylko raport) oraz ich
+wyrównanie — zbudowane z rozłącznych zmiennych. Najostrzejsza konsekwencja: Γ ≡ 0 dla dowolnego
+zamrożonego LLM przy inferencji, z definicji. Do tego kanał odczytu R_ℓ, przykład numeryczny,
+przegląd literatury. Materiał o warstwach konkurujących / Σ<0 zostaje tylko jako szkicowany
+kierunek. **Niezweryfikowana recenzyjnie; bez instancji empirycznej; dziedziczy problemy
+fundamentalne IIT.**
 
 ## Otwarte wątki
 
-- Systematyczny (nie tylko wyszukiwarkowy) przegląd literatury
-- Empiryczna instancja poza toy example — np. przeliczenie (Σ,Γ,A) na realnych danych EEG/fMRI
-  (propofol vs. ketamina, PCI pod znieczuleniem) — patrz hipoteza w §16 pracy
+- Systematyczny (nie tylko wyszukiwarkowy) przegląd literatury — PhilPapers / PhilSci-Archive
+- Jedna przeliczona instancja empiryczna — np. (Σ,Γ,A) na realnych danych EEG/fMRI
+  (propofol vs. ketamina), choć g_ℓ może nie być odtwarzalne z danych neuronalnych
+- Zasadnicze uzasadnienie podziału na warstwy (obecnie przyjęty)
 
-Zamknięte: §7 vs §7.1 (zachowano §7, Σ<0 jako cecha), weryfikacja cytowań
-([`notes/citations.md`](notes/citations.md)), usunięcie formy całkowej. Pełny log decyzji
+Zamknięte: praca (`sigma_model_en.tex`) prowadzi trójką + argumentem o AI i sprowadza warstwy
+konkurujące do jednego akapitu; weryfikacja cytowań
+([`notes/citations.md`](notes/citations.md)); usunięcie formy całkowej. Pełny log decyzji
 i uzasadnień: [`notes/decisions.md`](notes/decisions.md).
 
 ## Kompilacja PDF-ów ze źródeł

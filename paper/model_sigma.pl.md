@@ -1,7 +1,10 @@
 # Model Σ — hierarchiczne, funkcjonalnie ważone rozszerzenie IIT (Φ)
 
-> Tłumaczenie [`model_sigma.md`](model_sigma.md) (angielski = źródło prawdy; przy rozbieżności
-> wygrywa wersja angielska).
+> Tłumaczenie pełnej wersji roboczej [`model_sigma.md`](model_sigma.md). *Praca* (leaner,
+> przestrukturyzowana; prowadzi trójką $(\Sigma,\Gamma,A)$ i argumentem o AI, a materiał o
+> warstwach konkurujących / $\Sigma<0$ z §7 sprowadza do jednego akapitu-kierunku) to
+> [`sigma_model_en.tex`](sigma_model_en.tex). Przy rozbieżnościach merytorycznych obowiązują
+> decyzje redakcyjne pracy.
 
 Dokument roboczy zbierający formalizm wypracowany do tej pory: od motywacji przez pełny formalizm statyczny i dynamiczny, dowiedzione własności brzegowe, mechanizm konkurencji/wykluczenia (z jawnie nazwaną, świadomą rozbieżnością wobec kanonicznego IIT), toy example, wstępny przegląd literatury, i zastosowanie do architektur transformerowych. Status: spójna wewnętrznie synteza koncepcyjna, niezweryfikowana recenzyjnie. Przed jakąkolwiek próbą publikacji potrzebne: systematyczny (nie tylko wyszukiwarkowy) przegląd literatury oraz empiryczna instancja poza toy example. Rozstrzygnięte: zachowano §7 (dopuszcza Σ<0 jako zamierzoną cechę), §7.1 zostaje wyłącznie jako udokumentowana, odrzucona alternatywa; weryfikacja cytowań źródłowo zrobiona (`notes/citations.md`); usunięto formę całkową na rzecz sum skończonych.
 
@@ -147,7 +150,7 @@ Rozważono wersję ściślej uziemioną w kanonicznym postulacie wykluczenia IIT
 
 **Odrzucona świadomie**, bo strukturalnie **wyklucza Σ<0** (przegrywający kandydat ma najwyżej φ=0, nigdy φ<0 — tak jak w prawdziwym IIT). To wprost sprzeczne z tym, co chcemy zachować: możliwość "netto fragmentacji" systemu (analogia ze stałą kosmologiczną, warstwy realnie *odejmujące* od podmiotowości, nie tylko tracące swój wkład). Decyzja: **priorytet ma zdolność modelu do wyrażenia zjawiska, nie ścisła wierność kanonicznemu postulatowi wykluczenia IIT.** To świadome, jawne odejście od IIT — do wprost nazwania w każdej przyszłej pracy, żeby recenzent nie odczytał tego jako nieporozumienie formalizmu.
 
-**Kanoniczna pozostaje wersja z §7** (w=w₊−w₋, ciągły indeks Jaccarda, w₋=γ·overlap·Φ, z dokładnym progiem γ_crit = Σ₊/K z §7) — dopuszcza Σ<0, co jest tu traktowane jako cecha modelu, nie usterka.
+**Status w pracy.** `sigma_model_en.tex` sprowadza cały wątek warstw konkurujących do jednego akapitu-kierunku i **nie** traktuje go jako wyniku: postać w₋ to zgadywanka z wolnym parametrem, „ujemna zintegrowana informacja" nie ma opracowanej interpretacji fenomenologicznej, a nic z tego nie jest potrzebne dla trójki (Σ,Γ,A). Poniżej jest pełniejsza eksploracja, którą ta wersja robocza rejestruje; traktować jako eksploracyjne. W jej obrębie postać z §7 (w=w₊−w₋, ciągły Jaccard, w₋=γ·overlap·Φ, próg γ_crit = Σ₊/K) jest zachowana nad §7.1, bo potrafi wyrazić Σ<0.
 
 **Co Σ<0 twierdzi, a czego nie.** Miary zintegrowanej informacji typu „całość minus części" już przyjmują wartości ujemne (Barrett & Mediano 2019; Integrated Information Decomposition — Mediano, Rosas i in.), gdzie ujemne oznacza, że całość jest *redukowalna* — netto redundancja, części łącznie niosą więcej niż całość. Σ<0 tutaj to inny obiekt: nie bierze się z tego, że Φ_ℓ schodzi poniżej zera (każde Φ_ℓ ≥ 0 przez cały czas), tylko z tego, że anti-waga w₋ konkurującej warstwy odejmuje więcej wagi architektonicznej niż wnoszą pozostałe warstwy. Deklarowaną nowością jest **mechanizm anti-wagi i jego dokładny próg**, nie ujemna zintegrowana informacja jako taka.
 

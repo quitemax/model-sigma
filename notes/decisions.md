@@ -3,6 +3,26 @@
 A chronological record of the calls made, so they don't have to be reconstructed from memory on
 every return to the project.
 
+## Restructure: the paper leads with the triple, demotes §7 (2026-08-28)
+After a candid self-assessment (the (Σ,Γ,A) separation and the constitutive/descriptive
+criterion are the real contribution; the exclusion mechanism, Σ<0 and the boundary theorems
+dress definitional choices as derived results), `sigma_model_en.tex` / `sigma_model_pl.tex`
+were rewritten as a lean **paper**:
+- New title/abstract lead with the triple and the AI consequence (Γ≡0 for frozen LLMs).
+- Order: Intro → Related Work → The State Triple → Boundary Behaviour → **Application to AI** →
+  Worked Example → Readout Channel → Predictions & Extensions (speculative) → Discussion.
+- "Proven Boundary Properties" → "Boundary Behaviour", framed as *consequences of the
+  definitions, not empirical claims*; only the A bound keeps a proof.
+- Competing layers / Σ<0 / §7.1: compressed to one subsection under "Predictions & Extensions",
+  explicitly "a direction, not a result".
+- Cut from the paper: the cell-to-universe scale section, the standalone discrete-dynamics
+  section (folded to one remark), the alien-hand illustration (compressed into the direction).
+- Discussion now separates what is new / inherited-unresolved / untested, and states plainly
+  that the layer decomposition is stipulated and g_ℓ is likely unmeasurable in brains.
+
+`model_sigma.md` / `.pl.md` stay as the **full working draft** (the complete exploration,
+accreted order) with a header pointing to the paper; §7.1 there is re-marked exploratory.
+
 ## State description: two-dimensional, then three-dimensional
 Considered w(ℓ,t) coupled to g·e (option 1, Σ and Γ tautologically correlated) vs. w(ℓ,t)=w₀(ℓ)
 static (option 2, Σ and Γ independent by construction). **Option 2 adopted** — a correlation
@@ -16,12 +36,12 @@ Two versions were considered:
 - **§7.1 (considered, rejected):** binary overlap gate + tanh relaxation of the Φ difference,
   grounded directly in IIT's canonical (binary) exclusion postulate. Provably forbids Σ<0.
 
-**Decision (settled, 2026-08-28):** keep §7 as canonical. Reachable Σ<0 ("net fragmentation")
-stays as an **intended feature of the model, not a bug** — the ability to express it was judged
-more valuable than strict fidelity to IIT's binary postulate. §7.1 stays in the paper only as a
-documented, rejected variant. This is a deliberate, named departure from IIT — not a
-misunderstanding of the formalism; to be flagged outright in any future write-up. Closed topic,
-no longer an open question to resolve before publication.
+**Decision (2026-08-28):** within the competing-layers thread, keep the §7 form over §7.1
+(§7 can express Σ<0; §7.1 forbids it). But see the later "Restructure" entry above: the
+**paper demotes the whole thread to a one-paragraph "direction"** and does not claim it as a
+result — the w₋ functional form is a guess with a free parameter, "negative integrated
+information" has no worked interpretation, and none of it is needed for the (Σ,Γ,A) triple. The
+full exploration lives in `model_sigma.md` §7 as an exploratory record.
 
 ## The layer axis is discrete — the integral form was removed (2026-08-28)
 Σ, Γ, A had been written with an integral variant ∫₀ᴸ … dℓ as a "continuum idealization". The
