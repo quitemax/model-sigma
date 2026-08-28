@@ -1,6 +1,6 @@
 # Model Σ — hierarchiczne, funkcjonalnie ważone rozszerzenie IIT (Φ)
 
-Dokument roboczy zbierający formalizm wypracowany do tej pory: 15 sekcji, od motywacji przez pełny formalizm statyczny i dynamiczny, dowiedzione własności brzegowe, mechanizm konkurencji/wykluczenia (z jawnie nazwaną, świadomą rozbieżnością wobec kanonicznego IIT), toy example, wstępny przegląd literatury, i zastosowanie do architektur transformerowych. Status: spójna wewnętrznie synteza koncepcyjna, niezweryfikowana recenzyjnie. Przed jakąkolwiek próbą publikacji potrzebne: systematyczny (nie tylko wyszukiwarkowy) przegląd literatury, weryfikacja cytowań źródłowo, oraz decyzja, czy §7 (dopuszcza Σ<0) czy §7.1 (odrzucona alternatywa, wierniejsza IIT) lepiej służy zamierzonemu zastosowaniu.
+Dokument roboczy zbierający formalizm wypracowany do tej pory: od motywacji przez pełny formalizm statyczny i dynamiczny, dowiedzione własności brzegowe, mechanizm konkurencji/wykluczenia (z jawnie nazwaną, świadomą rozbieżnością wobec kanonicznego IIT), toy example, wstępny przegląd literatury, i zastosowanie do architektur transformerowych. Status: spójna wewnętrznie synteza koncepcyjna, niezweryfikowana recenzyjnie. Przed jakąkolwiek próbą publikacji potrzebne: systematyczny (nie tylko wyszukiwarkowy) przegląd literatury oraz empiryczna instancja poza toy example. Rozstrzygnięte: zachowano §7 (dopuszcza Σ<0 jako zamierzoną cechę), §7.1 zostaje wyłącznie jako udokumentowana, odrzucona alternatywa; weryfikacja cytowań źródłowo zrobiona (`notes/citations.md`); usunięto formę całkową na rzecz sum skończonych.
 
 ---
 
@@ -301,6 +301,6 @@ Najczystsza znaleziona ilustracja Σ<0. Przy uszkodzeniu spoidła wielkiego (cor
 ## 20. Otwarte wątki
 
 - Toy example — policzony (§9); przegląd literatury — wstępnie zrobiony (§12), ale niesystematyczny (brak przeszukania PhilPapers/PhilSci-Archive i prac 2015–2023 poza znalezionymi)
-- Weryfikacja cytowań źródłowo (część dat/tytułów z pamięci rozmowy/wyszukiwań, nie sprawdzana słowo w słowo z oryginałami)
+- Weryfikacja cytowań źródłowo — zrobiona 2026-08-28, patrz `notes/citations.md` (zostało kilka numerów tomów/stron do potwierdzenia)
 - Zastosowanie do architektur transformerowych: czego brakuje (warstwa homeostatyczna, prawdziwa rekurencja, pętla konstytutywna) — częściowo poruszone, nie sformalizowane
 - Miejsca publikacji rozważane wcześniej: LessWrong/Alignment Forum, PhilSci-Archive (niska bariera), arXiv q-bio.NC/cs.AI (wymaga endorsementu), Journal of Consciousness Studies, Entropy (MDPI), Neuroscience of Consciousness (Oxford)
