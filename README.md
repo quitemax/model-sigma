@@ -7,8 +7,8 @@ working conceptual synthesis developed in dialogue with Claude (Anthropic), Augu
 
 ## Navigation
 
-- **Start here:** [`paper/model_sigma.md`](paper/model_sigma.md) — the full working draft (19 sections), the source of truth (Polish)
-- 1:1 English translation: [`paper/sigma_model_en.md`](paper/sigma_model_en.md)
+- **Start here:** [`paper/model_sigma.md`](paper/model_sigma.md) — the full working draft (19 sections), **the source of truth**
+- Polish translation: [`paper/model_sigma.pl.md`](paper/model_sigma.pl.md)
 - Typeset versions: [PDF EN](paper/sigma_model_en.pdf) · [PDF PL](paper/sigma_model_pl.pdf) (sources: [`sigma_model_en.tex`](paper/sigma_model_en.tex) · [`sigma_model_pl.tex`](paper/sigma_model_pl.tex))
 - Why it is the way it is: [`notes/decisions.md`](notes/decisions.md)
 - Bibliography with abstracts: [`references/`](references/) ([index](references/README.md)) · citation audit: [`notes/citations.md`](notes/citations.md)
@@ -18,8 +18,8 @@ working conceptual synthesis developed in dialogue with Claude (Anthropic), Augu
 ## Repository layout
 
 - [`paper/`](paper/)
-  - [`model_sigma.md`](paper/model_sigma.md) — the full working draft (19 sections), **the source of truth** (PL)
-  - [`sigma_model_en.md`](paper/sigma_model_en.md) — 1:1 English translation (keep in sync with `model_sigma.md`)
+  - [`model_sigma.md`](paper/model_sigma.md) — the full working draft (19 sections), **the source of truth** (English)
+  - [`model_sigma.pl.md`](paper/model_sigma.pl.md) — Polish translation (keep in sync with `model_sigma.md`)
   - [`sigma_model_en.tex`](paper/sigma_model_en.tex) / [`sigma_model_pl.tex`](paper/sigma_model_pl.tex) — LaTeX sources (EN / PL), a condensed and contiguously renumbered version
   - [`sigma_model_en.pdf`](paper/sigma_model_en.pdf) / [`sigma_model_pl.pdf`](paper/sigma_model_pl.pdf) — compiled PDFs, build artifacts (regenerate with `make`)
   - [`Makefile`](paper/Makefile) — `make` builds both PDFs, `make clean` removes auxiliary files

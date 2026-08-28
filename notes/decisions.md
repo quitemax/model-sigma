@@ -1,53 +1,57 @@
-# Log decyzji — model Σ
+# Decision log — Model Σ
 
-Chronologiczny zapis rozstrzygnięć, żeby nie trzeba było ich odtwarzać z pamięci przy każdym powrocie do projektu.
+A chronological record of the calls made, so they don't have to be reconstructed from memory on
+every return to the project.
 
-## Stan opisu systemu: dwuwymiarowy, potem trójwymiarowy
-Rozważono w(ℓ,t) sprzężone z g·e (opcja 1, Σ i Γ tautologicznie skorelowane) vs. w(ℓ,t)=w₀(ℓ) statyczne
-(opcja 2, Σ i Γ niezależne z konstrukcji). **Przyjęto opcję 2** — korelacja zmierzona w realnym systemie
-jest wtedy odkryciem empirycznym, nie artefaktem definicji. Dodano trzecią wielkość A(t) (wyrównanie
-przestrzenne) jako osobny, ortogonalny wymiar diagnostyczny.
+## State description: two-dimensional, then three-dimensional
+Considered w(ℓ,t) coupled to g·e (option 1, Σ and Γ tautologically correlated) vs. w(ℓ,t)=w₀(ℓ)
+static (option 2, Σ and Γ independent by construction). **Option 2 adopted** — a correlation
+measured in a real system is then an empirical finding, not a definitional artifact. Added a
+third quantity A(t) (spatial alignment) as a separate, orthogonal diagnostic dimension.
 
-## Mechanizm konkurencji/wykluczenia: §7 vs §7.1
-Rozważono dwie wersje:
-- **§7 (kanoniczna):** w = w₊ − w₋, ciągły indeks Jaccarda, w₋ = γ·overlap·Φ. Dopuszcza Σ<0
-  ("netto fragmentacja"). Własny wynalazek inspirowany IIT, nie wyprowadzenie z niego.
-- **§7.1 (rozważona, odrzucona):** binarna bramka overlap + tanh relaksacja różnicy Φ, uziemiona
-  bezpośrednio w kanonicznym (binarnym) postulacie wykluczenia IIT. Dowodliwie wyklucza Σ<0.
+## Competition/exclusion mechanism: §7 vs §7.1
+Two versions were considered:
+- **§7 (canonical):** w = w₊ − w₋, continuous Jaccard index, w₋ = γ·overlap·Φ. Allows Σ<0
+  ("net fragmentation"). Our own construction, inspired by IIT, not derived from it.
+- **§7.1 (considered, rejected):** binary overlap gate + tanh relaxation of the Φ difference,
+  grounded directly in IIT's canonical (binary) exclusion postulate. Provably forbids Σ<0.
 
-**Decyzja (przesądzona, 2026-08-28):** zachować §7 jako kanoniczne. Osiągalne Σ<0 ("netto
-fragmentacja") zostaje jako **zamierzona cecha modelu, nie usterka** — zdolność do jej wyrażenia
-uznano za cenniejszą niż ścisła wierność binarnemu postulatowi IIT. §7.1 zostaje w pracy wyłącznie
-jako udokumentowany, odrzucony wariant. To świadome, nazwane odejście od IIT — nie nieporozumienie
-formalizmu; do jawnego zaznaczenia w każdej przyszłej pracy. Temat zamknięty, nie jest już
-przedmiotem otwartego rozstrzygnięcia przed publikacją.
+**Decision (settled, 2026-08-28):** keep §7 as canonical. Reachable Σ<0 ("net fragmentation")
+stays as an **intended feature of the model, not a bug** — the ability to express it was judged
+more valuable than strict fidelity to IIT's binary postulate. §7.1 stays in the paper only as a
+documented, rejected variant. This is a deliberate, named departure from IIT — not a
+misunderstanding of the formalism; to be flagged outright in any future write-up. Closed topic,
+no longer an open question to resolve before publication.
 
-## Przestrzeń warstw jest dyskretna — usunięto formę całkową (2026-08-28)
-Σ, Γ, A były zapisywane z wariantem całkowym ∫₀ᴸ … dℓ jako "idealizacją ciągłą". Uznano, że oś
-warstw funkcjonalnych ℓ **nie jest** continuum (L to kilka pięter: homeostaza → model świata →
-model siebie), więc forma całkowa wprowadzała fałszywą ogólność i sztuczny artefakt L→0. Wszystkie
-definicje są teraz skończonymi sumami ∑_{ℓ=1}^{L}. Dawną "Patologię L→0" zastąpiono uwagą
-"Dyskretność". Dotyczy `model_sigma.md` §2/§3/§5/§5.1/§6/§7 oraz obu plików .tex.
+## The layer axis is discrete — the integral form was removed (2026-08-28)
+Σ, Γ, A had been written with an integral variant ∫₀ᴸ … dℓ as a "continuum idealization". The
+functional-layer axis ℓ is **not** a continuum (L is a handful of strata: homeostasis →
+world-model → self-model), so the integral form introduced false generality and an artificial
+L→0 artifact. All definitions are now finite sums ∑_{ℓ=1}^{L}. The former "L→0 pathology" is
+replaced by a "Discreteness" remark. Affects `model_sigma.md` §2/§3/§5/§5.1/§6/§7 and both
+`.tex` files.
 
-## Self- vs. world-modeling (§4.1)
-Dwa niezależne warunki dla genuine self-modelingu: (a) cel predykcji wewnętrzny (stan h_ℓ) vs.
-zewnętrzny (token/zachowanie), (b) moment aktualizacji: online przy wdrożeniu vs. tylko trening.
-Tylko przecięcie obu warunków spełnia pełną definicję e_ℓ, g_ℓ z §4. Titans ląduje w komórce
-(zewnętrzny cel × online) — konstytutywne, ale world-modeling, nie self-modeling.
+## Self- vs. world-modelling (§4.1)
+Two independent conditions for genuine self-modelling: (a) prediction target internal (state
+h_ℓ) vs. external (token/behaviour), (b) update timing: online at deployment vs. training only.
+Only the intersection of both conditions satisfies the full definition of e_ℓ, g_ℓ from §4.
+Titans lands in the cell (external target × online) — constitutive, but world-modelling, not
+self-modelling.
 
-## Kanał odczytu R_ℓ (§17)
-Dodany po dyskusji o różnych typach utraty przytomności (omdlenie, napad, sen REM, locked-in
-syndrome). (Σ,Γ,A) opisuje stan wewnętrzny, ale nic nie mówi o obserwowalności z zewnątrz — stąd
-R_ℓ(t) i nierówność Σ_obs(t) ≤ κ·R_L(t). Bezpośrednia inspiracja: Perturbational Complexity Index
-(Casali i in. 2013), zaprojektowane dokładnie po to, żeby rozdzielić te dwa pytania klinicznie.
+## Readout channel R_ℓ (§17)
+Added after a discussion of different types of loss of consciousness (fainting, seizure, REM
+sleep, locked-in syndrome). (Σ,Γ,A) describes the internal state but says nothing about
+observability from the outside — hence R_ℓ(t) and the inequality Σ_obs(t) ≤ κ·R_L(t). Direct
+inspiration: the Perturbational Complexity Index (Casali et al. 2013), designed precisely to
+separate those two clinical questions.
 
-## Wrażliwość kontekstowa bramki g_ℓ (§18)
-Dodana po natrafieniu na źródło łączące Fristona (2010) z Intense World Theory i "context
-blindness" w autyzmie. g_ℓ(t) = h(e_ℓ(t), C(t)), χ_ℓ(t) = |∂g_ℓ/∂C| ≥ 0 jako nowy parametr
-mierzący, jak silnie kontekst moduluje wagę błędu. Context blindness = χ_ℓ≈0.
+## Context-sensitivity of the gate g_ℓ (§18)
+Added after coming across a source linking Friston (2010) to Intense World Theory and "context
+blindness" in autism. g_ℓ(t) = h(e_ℓ(t), C(t)), χ_ℓ(t) = |∂g_ℓ/∂C| ≥ 0 as a new parameter
+measuring how strongly context modulates the error's weight. Context blindness = χ_ℓ≈0.
 
-## Status ogólny
-Spójna wewnętrznie synteza koncepcyjna, niezweryfikowana recenzyjnie. Otwarte: systematyczny
-przegląd literatury, instancja empiryczna poza toy example. Zamknięte: §7 vs §7.1 (zachowano §7,
-patrz wyżej), weryfikacja cytowań źródłowo (zrobiona 2026-08-28, patrz `notes/citations.md`),
-usunięcie formy całkowej (patrz wyżej).
+## Overall status
+An internally consistent conceptual synthesis, not peer-reviewed. Open: a systematic literature
+review, an empirical instance beyond the toy example. Settled: §7 vs §7.1 (§7 kept, see above),
+source verification of citations (done 2026-08-28, see [`citations.md`](citations.md)), removal
+of the integral form (see above).

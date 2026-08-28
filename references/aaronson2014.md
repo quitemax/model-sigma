@@ -6,16 +6,16 @@
 - Type: blog post (widely cited in the consciousness-science literature)
 - Open access: yes
 
-## Streszczenie (nie dosłowne)
-Aaronson argumentuje, że IIT zawodzi, bo przypisuje wysokie Φ systemom bez żadnego
-inteligentnego zachowania. Konstrukcyjnie pokazuje, że macierz Vandermonde'a (obliczająca
-wielomiany w ustalonych punktach) — a także kody korekcji błędów czy "expander graphs" —
-osiąga Φ potencjalnie wyższe niż mózg. Wniosek: wysokie Φ **nie jest warunkiem wystarczającym**
-świadomości; IIT myli integrację informacji ze świadomością i nie rozwiązuje "Pretty-Hard
-Problem" (które fizyczne układy są świadome).
+## Summary (not verbatim)
+Aaronson argues that IIT fails because it assigns high Φ to systems with no intelligent
+behaviour at all. He constructs a case showing that a Vandermonde matrix (which just evaluates
+polynomials at fixed points) — as well as error-correcting codes and expander graphs — reaches
+Φ potentially higher than the brain's. Conclusion: high Φ is **not a sufficient condition** for
+consciousness; IIT conflates information integration with consciousness and does not solve the
+"Pretty-Hard Problem" (which physical systems are conscious).
 
-## Rola w Model Σ
-Cytowane we Wstępie jako "nieformalny zarzut Aaronsona": Φ zwija bogatą strukturę
-przyczynowo-skutkową do jednej liczby, bez rozróżnienia *rodzaju* ani *lokalizacji* integracji.
-Bezpośrednia motywacja dla przejścia od skalarnego Φ do profilu hierarchicznego Φ(s,ℓ,t)
-i wagi funkcjonalnej w(ℓ).
+## Role in Model Σ
+Cited in the Introduction as "Aaronson's informal objection": Φ collapses a rich cause–effect
+structure into a single number, with no distinction of the *kind* or the *location* of
+integration. Direct motivation for moving from scalar Φ to the hierarchical profile Φ(s,ℓ,t)
+and the functional weight w(ℓ).

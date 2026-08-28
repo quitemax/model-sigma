@@ -4,17 +4,17 @@
 
 - DOI: https://doi.org/10.1371/journal.pcbi.1004286
 - Type: journal article
-- Open access: yes (summary below is not verbatim)
+- Open access: yes (the summary below is not verbatim)
 
-## Streszczenie (nie dosłowne)
-Formalna krytyka IIT. Cerullo argumentuje, że (1) postulat wykluczenia informacji nie ma
-niezależnego uzasadnienia; (2) trywialna konkurencyjna teoria ma taką samą moc wyjaśniającą
-jak IIT; (3) IIT jest podatna na klasyczne argumenty filozoficzne (fading/dancing qualia);
-(4) IIT mierzy raczej "protoświadomość" niż świadomość poznawczą badaną przez neuronaukę.
-Konkluzja: "nadzwyczajne twierdzenia wymagają nadzwyczajnych dowodów", a IIT ich nie dostarcza.
+## Summary (not verbatim)
+A formal critique of IIT. Cerullo argues that (1) the information exclusion postulate has no
+independent justification; (2) a trivial competing theory has the same explanatory power as
+IIT; (3) IIT is vulnerable to classic philosophical arguments (fading/dancing qualia); (4) IIT
+measures "protoconsciousness" rather than the cognitive consciousness studied by neuroscience.
+Conclusion: "extraordinary claims require extraordinary evidence", and IIT does not supply it.
 
-## Rola w Model Σ
-Cytowane we Wstępie obok Aaronsona jako **bardziej formalny** zarzut wobec Φ: brak uzasadnienia
-dla postulatu wykluczenia i podatność na trywialne kontrprzykłady. Motywuje zarówno przejście
-do profilu Φ(s,ℓ,t), jak i świadome, nazwane przeformułowanie wykluczenia w §7 (miękkie
-w = w₊ − w₋ zamiast binarnego "zwycięzca bierze wszystko").
+## Role in Model Σ
+Cited in the Introduction alongside Aaronson as a **more formal** objection to Φ: no
+justification for the exclusion postulate and vulnerability to trivial counterexamples. It
+motivates both the move to the profile Φ(s,ℓ,t) and the deliberate, named reformulation of
+exclusion in §7 (soft w = w₊ − w₋ instead of a binary "winner takes all").

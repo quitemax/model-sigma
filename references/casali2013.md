@@ -4,19 +4,18 @@
 
 - DOI: https://doi.org/10.1126/scitranslmed.3006294
 - Type: journal article
-- Open access: no (summary below is not verbatim)
+- Open access: no (the summary below is not verbatim)
 
-## Streszczenie (nie dosłowne)
-Wprowadza i testuje **Perturbational Complexity Index (PCI)** — teorią-motywowaną miarę
-poziomu świadomości. PCI liczy się z 60-kanałowego EEG jako złożoność (kompresowalność
-Lempela–Ziva) korowej odpowiedzi na impuls TMS: odpowiedź musi być jednocześnie
-**zintegrowana** (rozproszona między współdziałające obszary) i **zróżnicowana** w czasie
-i przestrzeni. PCI rozróżnia czuwanie, sen, znieczulenie i stany po uszkodzeniu mózgu,
-w tym część pacjentów z ukrytą świadomością — niezależnie od przetwarzania sensorycznego
-i zachowania.
+## Summary (not verbatim)
+Introduces and tests the **Perturbational Complexity Index (PCI)** — a theory-driven measure of
+the level of consciousness. PCI is computed from a 60-channel EEG as the complexity (Lempel–Ziv
+compressibility) of the cortical response to a TMS pulse: the response must be at once
+**integrated** (distributed across interacting areas) and **differentiated** in time and space.
+PCI discriminates wakefulness, sleep, anaesthesia and post-brain-damage states, including some
+patients with covert awareness — independently of sensory processing and behaviour.
 
-## Rola w Model Σ
-Bezpośrednia inspiracja dla **kanału odczytu R_ℓ(t)** (§17): (Σ,Γ,A) opisuje stan wewnętrzny,
-ale nic nie mówi o obserwowalności z zewnątrz — a PCI zaprojektowano dokładnie po to, żeby te
-dwa pytania rozdzielić klinicznie. W §16 PCI jest też punktem odniesienia dla przewidywań
-(Σ,Γ,A) pod znieczuleniem (PCI ≈ czuwanie w śnie REM i przy dysocjacji ketaminowej).
+## Role in Model Σ
+The direct inspiration for the **readout channel R_ℓ(t)** (§17): (Σ,Γ,A) describes the internal
+state but says nothing about observability from the outside — and PCI was designed precisely to
+separate those two clinical questions. In §16 PCI is also the reference point for the (Σ,Γ,A)
+predictions under anaesthesia (PCI ≈ wakefulness in REM sleep and under ketamine dissociation).

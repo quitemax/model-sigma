@@ -6,16 +6,16 @@
 - Type: book (collected essays)
 - Open access: no
 
-## Streszczenie (nie dosłowne)
-Kanoniczny zbiór esejów rozwijających **higher-order thought (HOT) theory** świadomości:
-stan mentalny jest świadomy wtedy, gdy podmiot ma o nim odpowiednią myśl wyższego rzędu
-(nietowarzyszącą mu inferencyjnie ani obserwacyjnie). Rosenthal broni tezy, że świadomość
-fenomenalna nie wymaga niczego więcej niż reprezentacji wyższego rzędu, i odpiera zarzuty
-o regres oraz o "puste" reprezentacje wyższego rzędu.
+## Summary (not verbatim)
+The canonical collection of essays developing **higher-order thought (HOT) theory** of
+consciousness: a mental state is conscious when the subject has a suitable higher-order thought
+about it (one not arrived at by inference or observation). Rosenthal defends the claim that
+phenomenal consciousness requires nothing beyond a higher-order representation, and rebuts
+objections about regress and about "empty" higher-order representations.
 
-## Rola w Model Σ
-Punkt odniesienia **kontrastowy**, nie źródło formalizmu. Rozróżnienie
-deskryptywne/konstytutywne (§2.7) stawia podobne pytanie co HOT — czy autoraport stanu jest
-dowodem realnego dostępu wyższego rzędu — ale odpowiada przez kryterium **funkcjonalne**
-(czy błąd napędza aktualizację parametrów online, tj. g_ℓ > 0), nie przez samo *istnienie*
-reprezentacji wyższego rzędu.
+## Role in Model Σ
+A **contrastive** reference point, not a source of formalism. The descriptive/constitutive
+distinction (§2.7) raises a similar question to HOT — whether a state's self-report is evidence
+of genuine higher-order access — but answers it via a **functional** criterion (does the error
+drive an online parameter update, i.e. g_ℓ > 0), not via the mere *existence* of a higher-order
+representation.

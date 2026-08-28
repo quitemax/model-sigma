@@ -7,8 +7,8 @@ robocza synteza koncepcyjna wypracowana w dialogu z Claude (Anthropic), sierpie�
 
 ## Nawigacja
 
-- **Zacznij tu:** [`paper/model_sigma.md`](paper/model_sigma.md) — pełna wersja robocza (19 sekcji), źródło prawdy
-- Tłumaczenie angielskie 1:1: [`paper/sigma_model_en.md`](paper/sigma_model_en.md)
+- **Zacznij tu:** [`paper/model_sigma.md`](paper/model_sigma.md) — pełna wersja robocza (19 sekcji), **źródło prawdy** (angielski)
+- Tłumaczenie polskie: [`paper/model_sigma.pl.md`](paper/model_sigma.pl.md)
 - Wersje sformatowane: [PDF EN](paper/sigma_model_en.pdf) · [PDF PL](paper/sigma_model_pl.pdf) (źródła: [`sigma_model_en.tex`](paper/sigma_model_en.tex) · [`sigma_model_pl.tex`](paper/sigma_model_pl.tex))
 - Dlaczego tak, a nie inaczej: [`notes/decisions.md`](notes/decisions.md)
 - Bibliografia z abstraktami: [`references/`](references/) ([indeks](references/README.md)) · audyt cytowań: [`notes/citations.md`](notes/citations.md)
@@ -18,8 +18,8 @@ robocza synteza koncepcyjna wypracowana w dialogu z Claude (Anthropic), sierpie�
 ## Struktura repo
 
 - [`paper/`](paper/)
-  - [`model_sigma.md`](paper/model_sigma.md) — pełna wersja robocza (19 sekcji), **źródło prawdy** (PL)
-  - [`sigma_model_en.md`](paper/sigma_model_en.md) — tłumaczenie angielskie 1:1 (nadążać za `model_sigma.md`)
+  - [`model_sigma.md`](paper/model_sigma.md) — pełna wersja robocza (19 sekcji), **źródło prawdy** (angielski)
+  - [`model_sigma.pl.md`](paper/model_sigma.pl.md) — tłumaczenie polskie (nadążać za `model_sigma.md`)
   - [`sigma_model_en.tex`](paper/sigma_model_en.tex) / [`sigma_model_pl.tex`](paper/sigma_model_pl.tex) — źródła LaTeX (EN / PL), wersja skrócona i przenumerowana
   - [`sigma_model_en.pdf`](paper/sigma_model_en.pdf) / [`sigma_model_pl.pdf`](paper/sigma_model_pl.pdf) — skompilowane PDF-y, artefakty builda (regenerować przez `make`)
   - [`Makefile`](paper/Makefile) — `make` buduje oba PDF-y, `make clean` czyści pliki pomocnicze
