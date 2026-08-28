@@ -104,15 +104,15 @@ $$w(\ell) = w_+(\ell) - w_-(\ell), \qquad w_+,w_- \geq 0$$
 
 Oparte na **postulacie wykluczenia IIT** (wygrywa maksymalnie nieredukowalny kompleks):
 
-$$\ell^*(t) = \arg\max_\ell \Phi(s,\ell,t)$$
+$$\ell^{\ast}(t) = \arg\max_\ell \Phi(s,\ell,t)$$
 
-$$\text{overlap}(\ell,\ell^*) = \frac{|S_\ell\cap S_{\ell^*}|}{|S_\ell\cup S_{\ell^*}|}\in[0,1] \quad\text{(indeks Jaccarda na substratach)}$$
+$$\text{overlap}(\ell,\ell^{\ast}) = \frac{|S_\ell\cap S_{\ell^{\ast}}|}{|S_\ell\cup S_{\ell^{\ast}}|}\in[0,1] \quad\text{(indeks Jaccarda na substratach)}$$
 
-$$w_-(\ell,t) = \begin{cases}0 & \ell=\ell^*(t)\\ \gamma\cdot\text{overlap}(\ell,\ell^*(t))\cdot\Phi(s,\ell,t) & \ell\neq\ell^*(t)\end{cases}, \quad \gamma\geq 0$$
+$$w_-(\ell,t) = \begin{cases}0 & \ell=\ell^{\ast}(t)\\ \gamma\cdot\text{overlap}(\ell,\ell^{\ast}(t))\cdot\Phi(s,\ell,t) & \ell\neq\ell^{\ast}(t)\end{cases}, \quad \gamma\geq 0$$
 
 **Ograniczenie na Σ(t) z konkurencją:**
 
-$$\sum_{\ell\neq\ell^*}[w_+(\ell)-\gamma]\Phi(\ell,t) + w_+(\ell^*)\Phi(\ell^*,t) \;\leq\; \Sigma(t) \;\leq\; \Sigma_+(t)$$
+$$\sum_{\ell\neq\ell^{\ast}}[w_+(\ell)-\gamma]\Phi(\ell,t) + w_+(\ell^{\ast})\Phi(\ell^{\ast},t) \;\leq\; \Sigma(t) \;\leq\; \Sigma_+(t)$$
 
 (γ=0 odtwarza stare, bezkonkurencyjne Σ₊ jako przypadek graniczny — sanity check).
 
@@ -148,7 +148,7 @@ Warstwy: ℓ=1 (homeostaza), ℓ=2 (model świata), ℓ=3 (model siebie).
 
 Ponieważ w₋(ℓ)=γ·overlap(ℓ,ℓ\*)·Φ(ℓ) jest liniowe w γ, Σ(γ) jest **dokładnie liniowe**, nie tylko ograniczone:
 
-$$\Sigma(\gamma) = \Sigma_+ - \gamma\sum_{\ell\neq\ell^*}\text{overlap}(\ell,\ell^*)\,\Phi(\ell)^2, \qquad \gamma_{\text{krit}} = \frac{\Sigma_+}{\sum_{\ell\neq\ell^*}\text{overlap}(\ell,\ell^*)\Phi(\ell)^2}$$
+$$\Sigma(\gamma) = \Sigma_+ - \gamma\sum_{\ell\neq\ell^{\ast}}\text{overlap}(\ell,\ell^{\ast})\,\Phi(\ell)^2, \qquad \gamma_{\text{krit}} = \frac{\Sigma_+}{\sum_{\ell\neq\ell^{\ast}}\text{overlap}(\ell,\ell^{\ast})\Phi(\ell)^2}$$
 
 (uwaga: odejmowany człon to w₋(ℓ)·Φ(ℓ) = γ·overlap·Φ(ℓ)², czyli Φ do kwadratu — nie do pierwszej potęgi). Dla przykładu: γ_krit = 0.74/(0.4×0.6²) = 0.74/0.144 ≈ **5.139**, potwierdzone numerycznie (Σ(5.139)=0, Σ(6)=−0.124). To ostrzejszy wynik niż same nierówności — przy znanym profilu overlap można podać dokładny próg fragmentacji, nie tylko widełki.
 
