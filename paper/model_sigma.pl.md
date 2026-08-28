@@ -72,14 +72,15 @@ Zgodnie z kryterium konstytutywnym z §2.7:
 
 Genuine self-modeling wymaga **dwóch niezależnych warunków**, nie jednego: (a) cel predykcji musi być **wewnętrznym stanem reprezentacyjnym** (h_ℓ — aktywacje), nie zewnętrznie obserwowalnym zachowaniem/tokenem — nawet jeśli ten token jest autorstwa samego systemu; (b) aktualizacja musi zachodzić **online, przy wdrożeniu**, nie tylko jako zamrożony efekt treningu (to już §2.7, deskryptywne vs. konstytutywne). Krzyżując oba warunki dostajemy 2×2 (rozwinięte w §14 na przykładach architektonicznych) — tylko komórka (cel=wewnętrzny) × (aktualizacja=online) spełnia pełną definicję e_ℓ(t),g_ℓ(t) z tej sekcji.
 
-## 5. Decyzja: opis stanu dwuwymiarowy (Σ, Γ), następnie trójwymiarowy (Σ, Γ, A)
+## 5. Trójka stanu (Σ, Γ, A)
 
-Rozważono dwie opcje dla w(ℓ,t):
-
-- **Opcja 1** — w(ℓ,t) = w₀(ℓ) + β·g_ℓ(t)e_ℓ(t): Σ i Γ dzielą składnik, korelacja *tautologiczna* (wbudowana w definicję)
-- **Opcja 2 (przyjęta jako kanoniczna)** — w(ℓ,t) = w₀(ℓ), statyczne: Σ i Γ formalnie niezależne (budowane z rozłącznych zmiennych), więc zmierzona korelacja między nimi w realnym systemie jest odkryciem empirycznym, nie artefaktem definicji
+Waga funkcjonalna jest statyczna, w(ℓ,t) = w₀(ℓ). Stan systemu to wtedy trójka skalarów zbudowanych z rozłącznych zmiennych:
 
 $$\Sigma(t) = \sum_{\ell=1}^{L} w_0(\ell)\,\Phi(s,\ell,t), \qquad \Gamma(t) = \sum_{\ell=1}^{L} g_\ell(t)\,e_\ell(t)$$
+
+Σ to architektonicznie ważona zintegrowana informacja; Γ to całkowita aktywność konstytutywnej samo-korekty. Ponieważ w₀ nie zależy od g_ℓ ani e_ℓ, Σ i Γ nie dzielą żadnego składnika: każda korelacja między nimi zmierzona w realnym systemie jest odkryciem empirycznym, nie artefaktem definicyjnym. (Waga sprzężona jako w₀(ℓ) + β·g_ℓ(t)e_ℓ(t) sprawiłaby, że Σ i Γ korelują tautologicznie — stąd forma statyczna.)
+
+Świadomość jako kilka wymiarów, a nie jedna liczba, idzie za Bayne, Hohwy & Owen (2016); (Σ, Γ, A) to ugruntowana w IIT, dynamiczna instancja tego programu.
 
 ### 5.1 Trzecia wielkość — wyrównanie przestrzenne A(t)
 
@@ -147,6 +148,8 @@ Rozważono wersję ściślej uziemioną w kanonicznym postulacie wykluczenia IIT
 **Odrzucona świadomie**, bo strukturalnie **wyklucza Σ<0** (przegrywający kandydat ma najwyżej φ=0, nigdy φ<0 — tak jak w prawdziwym IIT). To wprost sprzeczne z tym, co chcemy zachować: możliwość "netto fragmentacji" systemu (analogia ze stałą kosmologiczną, warstwy realnie *odejmujące* od podmiotowości, nie tylko tracące swój wkład). Decyzja: **priorytet ma zdolność modelu do wyrażenia zjawiska, nie ścisła wierność kanonicznemu postulatowi wykluczenia IIT.** To świadome, jawne odejście od IIT — do wprost nazwania w każdej przyszłej pracy, żeby recenzent nie odczytał tego jako nieporozumienie formalizmu.
 
 **Kanoniczna pozostaje wersja z §7** (w=w₊−w₋, ciągły indeks Jaccarda, w₋=γ·overlap·Φ, z dokładnym progiem γ_crit = Σ₊/K z §7) — dopuszcza Σ<0, co jest tu traktowane jako cecha modelu, nie usterka.
+
+**Co Σ<0 twierdzi, a czego nie.** Miary zintegrowanej informacji typu „całość minus części" już przyjmują wartości ujemne (Barrett & Mediano 2019; Integrated Information Decomposition — Mediano, Rosas i in.), gdzie ujemne oznacza, że całość jest *redukowalna* — netto redundancja, części łącznie niosą więcej niż całość. Σ<0 tutaj to inny obiekt: nie bierze się z tego, że Φ_ℓ schodzi poniżej zera (każde Φ_ℓ ≥ 0 przez cały czas), tylko z tego, że anti-waga w₋ konkurującej warstwy odejmuje więcej wagi architektonicznej niż wnoszą pozostałe warstwy. Deklarowaną nowością jest **mechanizm anti-wagi i jego dokładny próg**, nie ujemna zintegrowana informacja jako taka.
 
 ## 9. Toy example — układ 3-warstwowy
 

@@ -136,14 +136,21 @@ already §2.7, descriptive vs. constitutive). Crossing the two conditions gives 
 out in §14 on architectural examples) — only the cell (target = internal) × (update = online)
 satisfies the full definition of e_ℓ(t), g_ℓ(t) from this section.
 
-## 5. Decision: a two-dimensional state description (Σ, Γ), then three-dimensional (Σ, Γ, A)
+## 5. The state triple (Σ, Γ, A)
 
-Two options for w(ℓ,t) were considered:
-
-- **Option 1** — w(ℓ,t) = w₀(ℓ) + β·g_ℓ(t)e_ℓ(t): Σ and Γ share a term, correlation *tautological* (built into the definition)
-- **Option 2 (adopted as canonical)** — w(ℓ,t) = w₀(ℓ), static: Σ and Γ are formally independent (built from disjoint variables), so a measured correlation between them in a real system is an empirical finding, not a definitional artifact
+The functional weight is static, w(ℓ,t) = w₀(ℓ). System state is then a triple of scalars built
+from disjoint variables:
 
 $$\Sigma(t) = \sum_{\ell=1}^{L} w_0(\ell)\,\Phi(s,\ell,t), \qquad \Gamma(t) = \sum_{\ell=1}^{L} g_\ell(t)\,e_\ell(t)$$
+
+Σ is architecturally-weighted integrated information; Γ is total constitutive self-correction
+activity. Because w₀ does not depend on g_ℓ or e_ℓ, Σ and Γ share no term: any correlation
+between them measured in a real system is an empirical finding, not a definitional artifact. (A
+weight coupled as w₀(ℓ) + β·g_ℓ(t)e_ℓ(t) would make Σ and Γ correlate tautologically, which is
+why the static form is used.)
+
+Consciousness as several dimensions rather than one scalar follows Bayne, Hohwy & Owen (2016);
+(Σ, Γ, A) is an IIT-grounded, dynamical instance of that programme.
 
 ### 5.1 The third quantity — spatial alignment A(t)
 
@@ -239,6 +246,15 @@ of the formalism.
 **The canonical version remains the one from §7** (w=w₊−w₋, continuous Jaccard index,
 w₋=γ·overlap·Φ, with the exact threshold γ_crit = Σ₊/K from §7) — it allows Σ<0, which is
 treated here as a feature of the model, not a bug.
+
+**What Σ<0 does and does not claim.** "Whole-minus-parts" integrated-information measures
+already take negative values (Barrett & Mediano 2019; the Integrated Information Decomposition
+of Mediano, Rosas et al.), where negative means the whole is *reducible* — net redundancy, the
+parts jointly carry more than the whole. Σ<0 here is a different object: it does not arise from
+Φ_ℓ going negative (each Φ_ℓ ≥ 0 throughout) but from a competing layer's anti-weight w₋
+subtracting more architectural weight than the remaining layers contribute. The claimed novelty
+is the **anti-weight mechanism and its exact threshold**, not negative integrated information as
+such.
 
 ## 9. Toy example — a 3-layer system
 

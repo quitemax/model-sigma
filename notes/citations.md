@@ -39,6 +39,17 @@ and wrong keys / metadata corrected.
 preprint arXiv:2407.10188) · `casali2013` (Sci Transl Med 5(198):198ra105) ·
 `vandecruys2014` (Psychol Rev 121(4):649–675).
 
+## Second batch — added 2026-08-28 (from the literature review)
+
+Nine entries added from `literature.md`, cited in the paper: `bayne2016`, `safron2020`,
+`hanson2023`, `barrett2019`, `mediano2019`, `phiid2019`, `oizumi2016`, `intrepid2026`,
+`predmetacog2026`. Well-established ones (Bayne, Oizumi, Mediano/Barrett, Safron, Hanson) are
+solid; still to confirm against the publisher record:
+- `barrett2019` — whether it has a journal version beyond arXiv (JCS?).
+- `phiid2019` — the *Entropy* volume/issue if it was published there.
+- `intrepid2026` — the *Neurosci. Biobehav. Rev.* article number (106742) and DOI.
+- `predmetacog2026` — volume / article number (only the DOI is confirmed).
+
 ## Local library
 
 Full notes for each entry (details, link, abstract, "Role in Model Σ") live in `references/` —

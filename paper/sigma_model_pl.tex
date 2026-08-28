@@ -31,7 +31,7 @@ Standardowe IIT definiuje zintegrowaną informację przez
 \[
 \varphi_P(s) = D\big(p(s'\mid s)\,\|\,p(s'\mid s)|_P\big), \qquad \Phi(s) = \min_{P\in\mathcal P}\varphi_P(s),
 \]
-gdzie $D$ to miara odległości (np. earth mover's distance) między faktycznym rozkładem przejść systemu a rozkładem po przecięciu go wg partycji $P$. Powracająca krytyka (bliska nieformalnemu zarzutowi Aaronsona \cite{aaronson2014} i bardziej formalnemu zarzutowi Cerullo \cite{cerullo2015}) mówi, że $\Phi$ zaciera bogatą strukturę przyczynowo-skutkową do jednej liczby, bez rozróżnienia \emph{rodzaju} czy \emph{lokalizacji} integracji. Jest to koncepcyjnie pokrewne, lecz odrębne od nieredukowalności obliczeniowej Wolframa --- idei, że niektóre obliczenia nie dają się skrócić i trzeba je przeprowadzić krok po kroku, by poznać wynik.
+gdzie $D$ to miara odległości (np. earth mover's distance) między faktycznym rozkładem przejść systemu a rozkładem po przecięciu go wg partycji $P$. Powracająca krytyka (bliska nieformalnemu zarzutowi Aaronsona \cite{aaronson2014} i bardziej formalnemu zarzutowi Cerullo \cite{cerullo2015}) mówi, że $\Phi$ zaciera bogatą strukturę przyczynowo-skutkową do jednej liczby, bez rozróżnienia \emph{rodzaju} czy \emph{lokalizacji} integracji. Sama miara bazowa jest sporna: $\Phi$ nie jest dobrze zdefiniowane dla ogólnych układów fizycznych \cite{barrett2019}, a warianty $\Phi$ silnie się rozjeżdżają w symulacji \cite{mediano2019}. $\Sigma$ dziedziczy tę zależność. Jest to koncepcyjnie pokrewne, lecz odrębne od nieredukowalności obliczeniowej Wolframa --- idei, że niektóre obliczenia nie dają się skrócić i trzeba je przeprowadzić krok po kroku, by poznać wynik.
 
 Ta praca rozwija hierarchiczne, funkcjonalnie ważone rozszerzenie, $\Sigma$, motywowane trzema dodatkowymi względami: (i) różne warstwy funkcjonalne systemu (homeostaza, percepcja/motoryka, model świata, model siebie) prawdopodobnie różnie przyczyniają się do podmiotowości nawet przy równym $\Phi$; (ii) płynność autonarracji nie jest dowodem realnej pętli samo-modelującej (literatura o konfabulacji przy rozdzielonych półkulach, via interpreter Gazzanigi, to paradygmatyczny przypadek); (iii) konkurujące, nakładające się kandydackie podsystemy mogą nie tylko \emph{nie istnieć} (jak w postulacie wykluczenia IIT), ale aktywnie degradować integrację systemu nadrzędnego --- możliwość, której binarne wykluczenie IIT nie potrafi wyrazić.
 
@@ -53,13 +53,15 @@ Ta praca rozwija hierarchiczne, funkcjonalnie ważone rozszerzenie, $\Sigma$, mo
 
 \textbf{Consciousness as Uncommon Self-Knowledge} \cite{usk2026} proponuje, że liczy się tylko \emph{synergiczny, samo-skierowany} komponent informacji, przewidując, że systemy o wysokim $\Phi$ ale bez self-modelu wypadają blisko zera pod ich miarą --- niezależna zbieżność z intuicją stojącą za naszym rozdziałem $\Gamma/A$.
 
-\textbf{Predictive processing i active inference} \cite{friston2010,deane2021} motywują formalizm błędu samo-predykcji; trwająca formalna adwersarialna współpraca między obozami IIT i predictive processing (INTREPID, Templeton World Charity Foundation) potwierdza, że połączenie obu pozostaje otwartym, aktywnym pytaniem badawczym.
+\textbf{Predictive processing i active inference} \cite{friston2010,deane2021} motywują formalizm błędu samo-predykcji; adwersarialna współpraca IIT vs. predictive processing \cite{intrepid2026} potwierdza, że połączenie obu pozostaje otwartym pytaniem badawczym.
 
 \textbf{Teorie wyższego rzędu} \cite{rosenthal2005} służą jako punkt kontrastowy: nasze rozróżnienie deskryptywne/konstytutywne adresuje podobne pytanie (czy autonarracja stanu mentalnego jest dowodem realnego dostępu wyższego rzędu?) przez kryterium funkcjonalne (czy błąd napędza aktualizację?), nie przez samo istnienie reprezentacji wyższego rzędu.
 
 Postulat Ag\"uera y Arcasa, że żywa materia jest materią \emph{funkcjonalną} --- liczy się to, co system oblicza, nie tylko jego struktura przyczynowo-skutkowa --- bezpośrednio motywuje wagę funkcjonalną $w(\ell)$.
 
-Nie znamy wcześniejszej pracy łączącej hierarchiczne $\Phi$, ważenie funkcjonalne, dynamikę napędzaną błędem samo-predykcji i miękkie wykluczenie w jeden formalizm z dowiedzionymi własnościami brzegowymi; ta synteza wydaje się oryginalna, choć każdy komponent ma niezależny precedens.
+\textbf{Wielowymiarowa świadomość.} Bayne, Hohwy \& Owen \cite{bayne2016} argumentują, że świadomość lepiej opisać kilkoma wymiarami niż jednym ,,poziomem''; $(\Sigma,\Gamma,A)$ to ugruntowana w IIT, dynamiczna instancja tego programu. \textbf{Integrated World Modeling Theory} \cite{safron2020} łączy IIT, Global Neuronal Workspace i zasadę wolnej energii --- najbliższy odpowiednik ambicji $\Sigma$, ale jako architektura koncepcyjna, nie formalizm z dowiedzionymi własnościami brzegowymi. \textbf{Postulat wykluczenia} jest niezależnie problematyczny: czyni $\Phi$ nie-jednoznacznym \cite{hanson2023}, co jest dodatkowym powodem, by go zastąpić, a nie reinterpretować (\S\ref{sec:exclusion}).
+
+Nie znamy wcześniejszej pracy łączącej hierarchiczne $\Phi$, ważenie funkcjonalne, dynamikę napędzaną błędem samo-predykcji i miękkie wykluczenie z dokładnym progiem w jeden formalizm z dowiedzionymi własnościami brzegowymi; ta synteza wydaje się oryginalna, choć każdy komponent ma niezależny precedens.
 
 \section{Formalizm $\Sigma$}
 
@@ -68,7 +70,7 @@ System $S$ dzielimy na warstwy funkcjonalne $\ell=1,\dots,L$ (np. homeostaza $\t
 \[
 \Sigma(t) = \sum_{\ell=1}^{L} w(\ell,t)\,\Phi(s,\ell,t).
 \]
-Człony międzywarstwowe $\Phi_{\ell,\ell-1}$ (sprzężenie strukturalne między sąsiednimi warstwami, liczone tą samą miarą odległości co bazowe $\Phi$) są nieujemne z konstrukcji, będąc same odległością.
+Każde $\Phi_\ell$ w praktyce szacowano by przez wykonalny proxy, np. miarę dekodowalności z \cite{oizumi2016}. Człony międzywarstwowe $\Phi_{\ell,\ell-1}$ (sprzężenie strukturalne między sąsiednimi warstwami, liczone tą samą miarą odległości co bazowe $\Phi$) są nieujemne z konstrukcji, będąc same odległością.
 
 \subsection{Dynamika czasowa}
 Różniczkując $\Sigma(t)$ przy ogólnej (czasowo zmiennej) wadze otrzymujemy
@@ -89,11 +91,11 @@ g_\ell(t) = \left|\frac{\partial \theta_\ell(t)}{\partial e_\ell(t)}\right| \in 
 gdzie $g_\ell=0$ oznacza warstwę liczącą błąd, ale nic z nim nie robiącą (deskryptywne), a $g_\ell=1$ --- pełne sprzężenie konstytutywne.
 
 \subsection{Stan jako trójka $(\Sigma,\Gamma,A)$}
-Rozważono dwie konstrukcje wagi: (1) $w(\ell,t)=w_0(\ell)+\beta g_\ell(t)e_\ell(t)$, w której $\Sigma$ i miara samo-korekty dzielą składnik i są przez to tautologicznie skorelowane z konstrukcji; (2) $w(\ell,t)=w_0(\ell)$, statyczna, przy której
+Waga jest statyczna, $w(\ell,t)=w_0(\ell)$. Stan systemu to wtedy trójka skalarów zbudowanych z rozłącznych zmiennych:
 \[
-\Sigma(t) = \sum_{\ell=1}^{L} w_0(\ell)\,\Phi(s,\ell,t), \qquad \Gamma(t) = \sum_{\ell=1}^{L} g_\ell(t)\,e_\ell(t)
+\Sigma(t) = \sum_{\ell=1}^{L} w_0(\ell)\,\Phi(s,\ell,t), \qquad \Gamma(t) = \sum_{\ell=1}^{L} g_\ell(t)\,e_\ell(t).
 \]
-są niezależne z konstrukcji, więc każda zmierzona korelacja między nimi w realnym systemie jest odkryciem empirycznym, nie artefaktem definicyjnym. Przyjmujemy (2) jako kanoniczne.
+$\Sigma$ to architektonicznie ważona zintegrowana informacja; $\Gamma$ to całkowita aktywność konstytutywnej samo-korekty. Ponieważ $w_0$ nie zależy od $g_\ell$ ani $e_\ell$, obie nie dzielą żadnego składnika: każda zmierzona korelacja między nimi w realnym systemie jest odkryciem empirycznym, nie artefaktem definicyjnym. (Waga sprzężona jako $w_0(\ell)+\beta g_\ell(t)e_\ell(t)$ sprawiłaby, że $\Sigma$ i $\Gamma$ korelują tautologicznie.) Świadomość jako kilka wymiarów, a nie jedna liczba, idzie za \cite{bayne2016}; $(\Sigma,\Gamma,A)$ to ugruntowana w IIT, dynamiczna instancja tego programu.
 
 Trzecia wielkość wychwytuje, czy samo-korekta zachodzi \emph{tam}, gdzie jest integracja:
 \[
@@ -166,6 +168,10 @@ $\ell^*(t)$ to $\arg\max$, więc gdy zmienia się warstwa maksymalna, $\ell^*$ -
 \subsection*{Odrzucona, wierniejsza IIT alternatywa}
 Sformalizowaliśmy też wersję uziemioną bezpośrednio w rzeczywistym (binarnym) mechanizmie wykluczenia IIT: binarna bramka nakładania się plus gładka relaksacja samej konkurencji, $s(\ell,t)=\tanh\!\big(\tfrac{\kappa}{2}[\Phi(\ell^*,t)-\Phi(\ell,t)]\big)$, tłumiąca bezpośrednio $\Phi$ (jak w kanonicznym IIT), nie wagę. Ten mechanizm dowodliwie wyklucza $\Sigma<0$ (czynnik tłumienia leży w $(0,1]$) i dokładnie odtwarza kanoniczne, twarde wykluczenie przy $\kappa\to\infty$. Świadomie go odrzucamy: zdolność modelu do wyrażenia netto fragmentacji uznajemy za cenniejszą niż ścisła wierność binarnemu postulatowi IIT, dlatego mechanizm $w_+-w_-$ powyżej pozostaje kanoniczny. To świadome, uzasadnione odejście od IIT, nie jego nieporozumienie, i tak należy je nazwać w każdej przyszłej pracy.
 
+\begin{remark}[Co twierdzi $\Sigma<0$]
+Miary zintegrowanej informacji typu ,,całość minus części'' już przyjmują wartości ujemne \cite{barrett2019,phiid2019}, gdzie ujemne oznacza, że całość jest \emph{redukowalna} (netto redundancja). $\Sigma<0$ tutaj to co innego: żadne $\Phi_\ell$ nie schodzi poniżej zera (każde $\Phi_\ell\ge0$); deficyt bierze się z tego, że anti-waga $w_-$ konkurującej warstwy odejmuje więcej wagi architektonicznej niż wnoszą pozostałe warstwy. Deklarowaną nowością jest mechanizm anti-wagi i jego dokładny próg, nie ujemna zintegrowana informacja jako taka. To, że sam postulat wykluczenia jest formalnie problematyczny \cite{hanson2023}, jest niezależnym wsparciem dla jego zastąpienia.
+\end{remark}
+
 \section{Przykład numeryczny}\label{sec:example}
 
 Trzy warstwy (homeostaza, model świata, model siebie) z $\Phi=(0{,}2;0{,}6;0{,}9)$, $w_0=(0{,}1;0{,}3;0{,}6)$, $e=(0;0{,}4;0{,}8)$, $g=(0;0{,}3;0{,}9)$.
@@ -186,7 +192,7 @@ Dwuchwilowy scenariusz dysocjacji (konkurująca podnarracja w warstwie 2 przejmu
 
 \section{Zastosowanie do architektur transformerowych}
 
-Standardowy, zamrożony transformer przy inferencji ma $g_\ell(t)\equiv0$ (brak aktualizacji parametrów online), stąd $\Gamma(t)\equiv0$ z definicji, niezależnie od płynności autonarracji, a $A(t):=0$ z konwencji brzegowej (brak wariancji w tożsamościowo zerowym profilu).
+Standardowy, zamrożony transformer przy inferencji ma $g_\ell(t)\equiv0$ (brak aktualizacji parametrów online), stąd $\Gamma(t)\equiv0$ z definicji, niezależnie od płynności autonarracji, a $A(t):=0$ z konwencji brzegowej (brak wariancji w tożsamościowo zerowym profilu). Dostrojenie LLM do monitorowania własnej wiarygodności \cite{predmetacog2026} poprawia kalibrację, ale samo w sobie nie czyni aktualizacji online, więc $\Gamma$ pozostaje zerowe przy wdrożeniu.
 
 \textbf{Titans} \cite{behrouz2024}, moduł neuronowej pamięci długoterminowej aktualizowany w czasie inferencji przez sygnał ,,zaskoczenia'' (gradient straty pamięci asocjacyjnej względem wejścia) napędzający aktualizację online $S_t=\arg\min_S\frac12\|Sk_t-v_t\|^2+\frac1{2\eta}\|S-S_{t-1}\|^2$, jest konkretną, działającą instancją $e_\ell(t)>0$ napędzającego $g_\ell(t)>0$. Jednak Titans przewiduje \emph{treść kontekstu} (klucze/wartości z wejścia), nie własny stan wewnętrzny systemu --- realna niejasność, którą rozstrzygamy poniżej.
 
@@ -290,7 +296,9 @@ Najczystsza znaleziona ilustracja $\Sigma<0$. Przy uszkodzeniu spoidła wielkieg
 
 To jest spójna wewnętrznie synteza koncepcyjna, nie empirycznie zweryfikowana teoria. W sprawie mechanizmu wykluczenia (\S\ref{sec:exclusion}) wybór jest przesądzony: kanoniczna jest miękka postać $w_+-w_-$, a osiągalne $\Sigma<0$ (netto fragmentacja) zostaje jako zamierzona cecha, nie usterka; binarna alternatywa z $\Sigma\ge0$ pozostaje wyłącznie jako udokumentowany, odrzucony wariant. Otwarte punkty: systematyczny (nie tylko oparty na wyszukiwarce) przegląd literatury; oraz empiryczne zastosowanie na architekturach poza przykładem zabawkowym, zwłaszcza żeby sprawdzić, czy trajektorie $(\Sigma,\Gamma,A)$ śledzą znane markery integracji (np. Perturbational Complexity Index pod znieczuleniem).
 
-% Cytowania zweryfikowane ze źródłami pierwotnymi, 2026-08-28.
+% Cytowania zweryfikowane ze źródłami pierwotnymi, 2026-08-28 (dwie tury).
+% Kilka numerów tomów/artykułów z drugiej tury wymaga jeszcze potwierdzenia
+% u wydawcy --- patrz notes/literature.md.
 \begin{thebibliography}{99}
 \bibitem{aaronson2014} Aaronson, S. (2014). Why I am not an integrated information theorist (or, the unconscious expander). \emph{Shtetl-Optimized} (blog), 21 maja 2014. \url{https://scottaaronson.blog/?p=1799}
 \bibitem{albantakis2023} Albantakis, L., Barbosa, L., Findlay, G., Grasso, M., Haun, A. M., Marshall, W., Mayner, W. G. P., Zaeemzadeh, A., Boly, M., Juel, B. E., Sasai, S., Fujii, K., David, I., Hendren, J., Lang, J. P., \& Tononi, G. (2023). Integrated information theory (IIT) 4.0: Formulating the properties of phenomenal existence in physical terms. \emph{PLOS Computational Biology}, 19(10), e1011465.
@@ -311,6 +319,15 @@ To jest spójna wewnętrznie synteza koncepcyjna, nie empirycznie zweryfikowana 
 \bibitem{ketaminemodel2022} Marguilho, M., Figueiredo, I., \& Castro-Rodrigues, P. (2023). A unified model of ketamine's dissociative and psychedelic properties. \emph{Journal of Psychopharmacology}, 37(1), 14--32. (Opublikowano online w grudniu 2022.)
 \bibitem{vandecruys2014} Van de Cruys, S., Evers, K., Van der Hallen, R., Van Eylen, L., Boets, B., de-Wit, L., \& Wagemans, J. (2014). Precise minds in uncertain worlds: Predictive coding in autism. \emph{Psychological Review}, 121(4), 649--675.
 \bibitem{qela2025} Qela, B., Damiani, S., De Santis, S., i in. (2025). Predictive coding in neuropsychiatric disorders: A systematic transdiagnostic review. \emph{Neuroscience \& Biobehavioral Reviews}, 169, 106020.
+\bibitem{bayne2016} Bayne, T., Hohwy, J., \& Owen, A. M. (2016). Are there levels of consciousness? \emph{Trends in Cognitive Sciences}, 20(6), 405--413.
+\bibitem{safron2020} Safron, A. (2020). An Integrated World Modeling Theory (IWMT) of consciousness: Combining integrated information and global neuronal workspace theories with the free energy principle and active inference framework. \emph{Frontiers in Artificial Intelligence}, 3, 30.
+\bibitem{hanson2023} Hanson, J. R., \& Walker, S. I. (2023). On the non-uniqueness problem in integrated information theory. \emph{Neuroscience of Consciousness}, 2023(1), niad014.
+\bibitem{barrett2019} Barrett, A. B., \& Mediano, P. A. M. (2019). The $\Phi$ measure of integrated information is not well-defined for general physical systems. \emph{arXiv:1902.04321}.
+\bibitem{mediano2019} Mediano, P. A. M., Seth, A. K., \& Barrett, A. B. (2019). Measuring integrated information: Comparison of candidate measures in theory and simulation. \emph{Entropy}, 21(1), 17.
+\bibitem{phiid2019} Mediano, P. A. M., Rosas, F. E., Carhart-Harris, R. L., Seth, A. K., \& Barrett, A. B. (2019). Beyond integrated information: A taxonomy of information dynamics phenomena. \emph{arXiv:1909.02297}.
+\bibitem{oizumi2016} Oizumi, M., Amari, S., Yanagawa, T., Fujii, N., \& Tsuchiya, N. (2016). Measuring integrated information from the decoding perspective. \emph{PLOS Computational Biology}, 12(1), e1004654.
+\bibitem{intrepid2026} Corcoran, A. W., Haun, A. M., Dorman, R., Tononi, G., Friston, K. J., Pennartz, C. M. A., \& the TWCF:INTREPID Consortium. (2026). Integrated information and predictive processing theories of consciousness: An adversarial collaborative review. \emph{Neuroscience \& Biobehavioral Reviews}, 187, 106742. Preprint: arXiv:2509.00555.
+\bibitem{predmetacog2026} Luo, W., \& Jho, H. (2026). Predictive metacognition: A neuro-computational framework for self-monitoring in large language models. \emph{Scientific Reports}. \url{https://doi.org/10.1038/s41598-026-54840-2}
 \end{thebibliography}
 
 \end{document}

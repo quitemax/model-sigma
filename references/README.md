@@ -28,3 +28,12 @@ Citation keys match `\bibitem{...}` in the LaTeX sources. Citation-accuracy audi
 | [`ketaminemodel2022`](ketaminemodel2022.md) | Marguilho et al. (2023), *A unified model of ketamine's dissociative and psychedelic properties*, J. Psychopharmacol. | §16 — Mechanism 2 (SN vs DMN) |
 | [`vandecruys2014`](vandecruys2014.md) | Van de Cruys et al. (2014), *Precise minds in uncertain worlds (HIPPEA)*, Psychol. Rev. | §18 — aberrant precision, χ_ℓ |
 | [`qela2025`](qela2025.md) | Qela et al. (2025), *Predictive coding in neuropsychiatric disorders*, Neurosci. Biobehav. Rev. | §18 — transdiagnostic backdrop |
+| [`bayne2016`](bayne2016.md) | Bayne, Hohwy & Owen (2016), *Are there levels of consciousness?*, Trends Cogn. Sci. | §5.1, §12 — multidimensional consciousness (precedent for Σ,Γ,A) |
+| [`safron2020`](safron2020.md) | Safron (2020), *Integrated World Modeling Theory*, Front. AI | §12 — nearest analogue of Σ's ambition |
+| [`hanson2023`](hanson2023.md) | Hanson & Walker (2023), *On the non-uniqueness problem in IIT*, Neurosci. Conscious. | §7, §12 — exclusion postulate makes Φ non-unique |
+| [`barrett2019`](barrett2019.md) | Barrett & Mediano (2019), *The Φ measure … is not well-defined*, arXiv | §1, §7 — Φ ill-defined for general systems |
+| [`mediano2019`](mediano2019.md) | Mediano, Seth & Barrett (2019), *Measuring Integrated Information*, Entropy | §1, §7 — candidate Φ's disagree; negative values |
+| [`phiid2019`](phiid2019.md) | Mediano, Rosas et al. (2019), *Beyond integrated information (ΦID)*, arXiv | §7 — negative Φ = redundancy, distinct from Σ<0 |
+| [`oizumi2016`](oizumi2016.md) | Oizumi et al. (2016), *Measuring integrated information from the decoding perspective*, PLOS Comput. Biol. | §2.1 — tractable Φ_ℓ proxy |
+| [`intrepid2026`](intrepid2026.md) | Corcoran et al. (2026), *IIT & predictive processing: an adversarial collaborative review*, Neurosci. Biobehav. Rev. | §12 — replaces the loose INTREPID mention |
+| [`predmetacog2026`](predmetacog2026.md) | Luo & Jho (2026), *Predictive metacognition … in LLMs*, Sci. Rep. | §14 — self-monitoring LLM, still Γ≡0 at deployment |
