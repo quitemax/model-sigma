@@ -40,7 +40,11 @@ Inspiracja rozszerzenia: postulat Agüera y Arcasa, że "to, co system oblicza, 
 
 ## 2. Profil hierarchiczny i pierwsza wersja Σ
 
-System *S* dzielimy na warstwy funkcjonalne ℓ = 1,...,L (homeostaza → percepcja/motoryka → model świata → model siebie). Indeks warstwy jest z natury dyskretny: L to mała, skończona liczba pięter funkcjonalnych, nie continuum — nie ma i nie potrzeba granicy L→∞. Zamiast jednej liczby — profil:
+System *S* dzielimy na warstwy funkcjonalne ℓ = 1,...,L (homeostaza → percepcja/motoryka → model świata → model siebie). Indeks warstwy jest z natury dyskretny: L to mała, skończona liczba pięter funkcjonalnych, nie continuum — nie ma i nie potrzeba granicy L→∞.
+
+**Podział ma być wyprowadzony, nie przyjęty** (`notes/layer-decomposition.md`): skupiamy jednostki w pasma według charakterystycznej skali czasowej — hierarchia „temporal receptive windows", od szybkiej sensoryki do wolnego kontekstu (Hasson i in. 2008; Kiebel, Daunizeau & Friston 2008) — a potem porządkujemy pasma według kierunku przepływu predykcji vs. błędu predykcji (warstwa ℓ przewiduje warstwę ℓ−1). Warstwa jest warstwą *modelu siebie* wtw. gdy jej predykcje dotyczą stanów wewnętrznych innych warstw, nie wejścia zewnętrznego — tj. gdy e_ℓ (§4) jest dla niej niezdegenerowane. To kryterium, nie gotowa procedura; nic poniżej nie jest niezmiennicze względem podziału, więc zgrubny podział wspiera tylko porządkowe twierdzenia o Σ i Γ, a A trzeba czytać względem jednego ustalonego podziału.
+
+Zamiast jednej liczby — profil:
 
 $$\Phi(s) = \big(\Phi_1(s),\dots,\Phi_L(s)\big)$$
 
@@ -335,5 +339,7 @@ Najczystsza znaleziona ilustracja Σ<0. Przy uszkodzeniu spoidła wielkiego (cor
 
 - Toy example — policzony (§9); przegląd literatury — wstępnie zrobiony (§12), ale niesystematyczny (brak przeszukania PhilPapers/PhilSci-Archive i prac 2015–2023 poza znalezionymi)
 - Weryfikacja cytowań źródłowo — zrobiona 2026-08-28, patrz `notes/citations.md` (zostało kilka numerów tomów/stron do potwierdzenia)
+- Podział na warstwy — istnieje teraz *kryterium* (skupianie pasm czasowych + przepływ predykcji/błędu; `notes/layer-decomposition.md`), ale bez gotowej procedury ani testu na danych. Nic tutaj nie jest niezmiennicze względem podziału, więc to blokuje wszelkie porównania między systemami.
 - Zastosowanie do architektur transformerowych: czego brakuje (warstwa homeostatyczna, prawdziwa rekurencja, pętla konstytutywna) — częściowo poruszone, nie sformalizowane
+- Pokrewne frameworki self-published (Grounded Duality Theory) w `notes/related-theories.md`; jego agregacja średnią potęgową (Σ_ρ z gałką substytuowalności) to kandydat na uściślenie Σ
 - Miejsca publikacji rozważane wcześniej: LessWrong/Alignment Forum, PhilSci-Archive (niska bariera), arXiv q-bio.NC/cs.AI (wymaga endorsementu), Journal of Consciousness Studies, Entropy (MDPI), Neuroscience of Consciousness (Oxford)

@@ -37,3 +37,5 @@ Citation keys match `\bibitem{...}` in the LaTeX sources. Citation-accuracy audi
 | [`oizumi2016`](oizumi2016.md) | Oizumi et al. (2016), *Measuring integrated information from the decoding perspective*, PLOS Comput. Biol. | §2.1 — tractable Φ_ℓ proxy |
 | [`intrepid2026`](intrepid2026.md) | Corcoran et al. (2026), *IIT & predictive processing: an adversarial collaborative review*, Neurosci. Biobehav. Rev. | §12 — replaces the loose INTREPID mention |
 | [`predmetacog2026`](predmetacog2026.md) | Luo & Jho (2026), *Predictive metacognition … in LLMs*, Sci. Rep. | §14 — self-monitoring LLM, still Γ≡0 at deployment |
+| [`kiebel2008`](kiebel2008.md) | Kiebel, Daunizeau & Friston (2008), *A hierarchy of time-scales and the brain*, PLOS Comput. Biol. | §2/§3.1 — timescale-derived layer decomposition |
+| [`hasson2008`](hasson2008.md) | Hasson et al. (2008), *A hierarchy of temporal receptive windows in human cortex*, J. Neurosci. | §2/§3.1 — timescale-derived layer decomposition |

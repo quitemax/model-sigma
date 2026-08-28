@@ -55,7 +55,7 @@ Zachowujemy intuicję, że integracja się liczy, ale oddzielamy ją od dwóch p
 \section{Trójka stanu $(\Sigma,\Gamma,A)$}
 
 \subsection{Warstwy funkcjonalne i $\Sigma$}
-Dzielimy system na mały, ustalony zbiór warstw funkcjonalnych $\ell=1,\dots,L$ (homeostaza, percepcja/motoryka, model świata, model siebie). \emph{Ten podział jest przyjęty, nie wyprowadzony} --- ograniczenie, do którego wracamy w \S\ref{sec:discussion}. Każda warstwa ma wartość zintegrowanej informacji $\Phi(s,\ell,t)\ge0$ (w praktyce wykonalny proxy, np. miara dekodowalności z \cite{oizumi2016}), ważoną statyczną wagą funkcjonalną $w_0(\ell)\ge0$:
+Dzielimy system na mały zbiór warstw funkcjonalnych $\ell=1,\dots,L$ (homeostaza, percepcja/motoryka, model świata, model siebie). \emph{Podział ma być wyprowadzony z własnej dynamiki systemu, nie wybrany}: skupiamy jednostki w pasma według charakterystycznej skali czasowej --- hierarchia ,,temporal receptive windows'', od szybkiej sensoryki do wolnego kontekstu \cite{hasson2008,kiebel2008} --- a potem porządkujemy pasma według kierunku przepływu predykcji vs. błędu predykcji (warstwa $\ell$ przewiduje warstwę $\ell-1$ i odbiera jej błędy). Warstwa jest warstwą \emph{modelu siebie} wtedy i tylko wtedy, gdy jej predykcje dotyczą stanów wewnętrznych innych warstw, a nie wejścia zewnętrznego --- tj. gdy $e_\ell$ (poniżej) jest dla niej niezdegenerowane. To kryterium, nie gotowa procedura (\S\ref{sec:discussion}). Każda warstwa ma wartość zintegrowanej informacji $\Phi(s,\ell,t)\ge0$ (w praktyce wykonalny proxy, np. miara dekodowalności z \cite{oizumi2016}), ważoną statyczną wagą funkcjonalną $w_0(\ell)\ge0$:
 \[
 \Sigma(t) = \sum_{\ell=1}^{L} w_0(\ell)\,\Phi(s,\ell,t).
 \]
@@ -168,7 +168,7 @@ Zaznaczamy to jako \emph{najsłabiej rozwiniętą} część ram. Postać $w_-$ t
 
 \paragraph{Co jest nowe.} Trójka jako całość --- integracja, konstytutywna samo-korekta i ich wyrównanie, utrzymane niezależnymi z konstrukcji --- oraz funkcjonalne (napędzane aktualizacją) kryterium samo-modelowania. Konsekwencja dla AI ($\Gamma\equiv0$ dla zamrożonych modeli; lokowanie architektur w tabeli cel $\times$ moment) jest, jak sądzimy, najużyteczniejszą częścią.
 
-\paragraph{Co jest dziedziczone, nierozwiązane.} $\Phi$ jest sporne u fundamentów \cite{barrett2019,hanson2023}, a te ramy budują na nim wersję per-warstwa. Podział na warstwy jest przyjęty, a $A$ --- korelacja po $L$ punktach --- jest tyle warta, co ten podział. Ruch wielowymiarowy to Bayne, Hohwy \& Owen \cite{bayne2016}; synteza IIT + predictive processing + funkcjonalizm jest bliska Integrated World Modeling Theory Safrona \cite{safron2020}, różniąc się byciem formalną trójką, a nie architekturą koncepcyjną.
+\paragraph{Co jest dziedziczone, nierozwiązane.} $\Phi$ jest sporne u fundamentów \cite{barrett2019,hanson2023}, a te ramy budują na nim wersję per-warstwa. Podział na warstwy ma pochodzić ze skupiania pasm czasowych plus przepływu predykcji/błędu (\S3.1), ale tego nie uruchomiono na danych. Nic tutaj nie jest niezmiennicze względem zmiany podziału --- $\Phi_\ell$ to zintegrowana informacja wybranego bloku, $e_\ell$ to norma na stanie wybranej warstwy --- więc zgrubny podział wspiera tylko porządkowe twierdzenia o $\Sigma$ i $\Gamma$, a $A$ (korelacja po $L$ punktach) należy czytać względem jednego ustalonego, niezależnie umotywowanego podziału i nigdy nie porównywać między różnie podzielonymi systemami. Ruch wielowymiarowy to Bayne, Hohwy \& Owen \cite{bayne2016}; synteza IIT + predictive processing + funkcjonalizm jest bliska Integrated World Modeling Theory Safrona \cite{safron2020}, różniąc się byciem formalną trójką, a nie architekturą koncepcyjną.
 
 \paragraph{Co jest niesprawdzone.} Wszystko. Nie ma instancji empirycznej. $g_\ell$ jest bezpośrednio obserwowalne w systemie sztucznym, ale najpewniej nie do odtworzenia z danych neuronalnych, co ogranicza przewidywanie o znieczuleniu do eksperymentu myślowego. Dowody z \S\ref{sec:bounds} są o definicjach, nie o umysłach.
 
@@ -206,6 +206,8 @@ Zaznaczamy to jako \emph{najsłabiej rozwiniętą} część ram. Postać $w_-$ t
 \bibitem{oizumi2016} Oizumi, M., Amari, S., Yanagawa, T., Fujii, N., \& Tsuchiya, N. (2016). Measuring integrated information from the decoding perspective. \emph{PLOS Computational Biology}, 12(1), e1004654.
 \bibitem{intrepid2026} Corcoran, A. W., Haun, A. M., Dorman, R., Tononi, G., Friston, K. J., Pennartz, C. M. A., \& the TWCF:INTREPID Consortium. (2026). Integrated information and predictive processing theories of consciousness: An adversarial collaborative review. \emph{Neuroscience \& Biobehavioral Reviews}, 187, 106742. Preprint: arXiv:2509.00555.
 \bibitem{predmetacog2026} Luo, W., \& Jho, H. (2026). Predictive metacognition: A neuro-computational framework for self-monitoring in large language models. \emph{Scientific Reports}. \url{https://doi.org/10.1038/s41598-026-54840-2}
+\bibitem{kiebel2008} Kiebel, S. J., Daunizeau, J., \& Friston, K. J. (2008). A hierarchy of time-scales and the brain. \emph{PLoS Computational Biology}, 4(11), e1000209.
+\bibitem{hasson2008} Hasson, U., Yang, E., Vallines, I., Heeger, D. J., \& Rubin, N. (2008). A hierarchy of temporal receptive windows in human cortex. \emph{Journal of Neuroscience}, 28(10), 2539--2550.
 \end{thebibliography}
 
 \end{document}

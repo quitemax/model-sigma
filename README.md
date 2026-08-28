@@ -26,6 +26,8 @@ working conceptual synthesis developed in dialogue with Claude (Anthropic), Augu
   - [`decisions.md`](notes/decisions.md) — a log of the key decisions (the why, not just the what)
   - [`citations.md`](notes/citations.md) — citation audit (what was verified / corrected)
   - [`literature.md`](notes/literature.md) — claim-by-claim precedent map; what's new vs. already done
+  - [`layer-decomposition.md`](notes/layer-decomposition.md) — how the functional layers should be derived, not stipulated
+  - [`related-theories.md`](notes/related-theories.md) — notes on adjacent frameworks (e.g. Grounded Duality Theory)
 - [`references/`](references/) — one `.md` file per bibliography entry (details, link, abstract, role in Σ); [index](references/README.md)
 - [`examples/`](examples/)
   - [`toy_example.py`](examples/toy_example.py) — every numerical result from the paper, in one place

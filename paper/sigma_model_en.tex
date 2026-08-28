@@ -55,7 +55,7 @@ We keep the intuition that integration matters but separate it from two question
 \section{The State Triple $(\Sigma,\Gamma,A)$}
 
 \subsection{Functional layers and $\Sigma$}
-Divide a system into a small, fixed set of functional layers $\ell=1,\dots,L$ (homeostasis, perception/motor, world-model, self-model). \emph{This decomposition is stipulated, not derived} --- a limitation we return to in \S\ref{sec:discussion}. Each layer has an integrated-information value $\Phi(s,\ell,t)\ge0$ (in practice a tractable proxy, e.g.\ the decoding-based measure of \cite{oizumi2016}), weighted by a static functional weight $w_0(\ell)\ge0$:
+Divide a system into a small set of functional layers $\ell=1,\dots,L$ (homeostasis, perception/motor, world-model, self-model). \emph{The decomposition is meant to be derived from the system's own dynamics, not chosen}: cluster units into bands by characteristic timescale --- the ``temporal receptive window'' hierarchy, fast sensory to slow context \cite{hasson2008,kiebel2008} --- then order the bands by the direction of prediction vs.\ prediction-error flow (layer $\ell$ predicts layer $\ell-1$ and receives its errors). A layer is a \emph{self-model} layer iff its predictions target other layers' internal states rather than external input --- iff $e_\ell$ (below) is non-degenerate for it. This is a criterion, not yet a worked procedure (\S\ref{sec:discussion}). Each layer has an integrated-information value $\Phi(s,\ell,t)\ge0$ (in practice a tractable proxy, e.g.\ the decoding-based measure of \cite{oizumi2016}), weighted by a static functional weight $w_0(\ell)\ge0$:
 \[
 \Sigma(t) = \sum_{\ell=1}^{L} w_0(\ell)\,\Phi(s,\ell,t).
 \]
@@ -168,7 +168,7 @@ We flag this as the \emph{least-developed} part of the framework. The functional
 
 \paragraph{What is new.} The triple as a package --- integration, constitutive self-correction, and their alignment, kept independent by construction --- and the functional (update-driven) criterion for self-modeling. The consequence for AI ($\Gamma\equiv0$ for frozen models; the target-$\times$-timing placement of current architectures) is, we think, the most useful part.
 
-\paragraph{What is inherited, unresolved.} $\Phi$ is contested at the foundations \cite{barrett2019,hanson2023} and this framework builds a per-layer version on top of it. The layer decomposition is stipulated, and $A$ --- a correlation over $L$ points --- is only as meaningful as that decomposition. The multidimensional move is Bayne, Hohwy \& Owen \cite{bayne2016}; the IIT + predictive-processing + functional synthesis is close to Safron's Integrated World Modeling Theory \cite{safron2020}, differing by being a formal triple rather than a conceptual architecture.
+\paragraph{What is inherited, unresolved.} $\Phi$ is contested at the foundations \cite{barrett2019,hanson2023} and this framework builds a per-layer version on top of it. The layer decomposition is meant to come from timescale-band clustering plus predict/error flow (\S3.1), but that has not been run on data. Nothing here is decomposition-invariant --- $\Phi_\ell$ is the integrated information of a chosen block, $e_\ell$ a norm on a chosen layer's state --- so a rough partition supports only ordinal claims about $\Sigma$ and $\Gamma$, and $A$ (a correlation over $L$ points) must be read relative to one fixed, independently-motivated partition and never compared across differently-decomposed systems. The multidimensional move is Bayne, Hohwy \& Owen \cite{bayne2016}; the IIT + predictive-processing + functional synthesis is close to Safron's Integrated World Modeling Theory \cite{safron2020}, differing by being a formal triple rather than a conceptual architecture.
 
 \paragraph{What is untested.} Everything. There is no empirical instantiation. $g_\ell$ is directly observable in an artificial system but likely not recoverable from neural data, which limits the anaesthesia prediction to a thought experiment. The proofs in \S\ref{sec:bounds} are about definitions, not about minds.
 
@@ -206,6 +206,8 @@ We flag this as the \emph{least-developed} part of the framework. The functional
 \bibitem{oizumi2016} Oizumi, M., Amari, S., Yanagawa, T., Fujii, N., \& Tsuchiya, N. (2016). Measuring integrated information from the decoding perspective. \emph{PLOS Computational Biology}, 12(1), e1004654.
 \bibitem{intrepid2026} Corcoran, A. W., Haun, A. M., Dorman, R., Tononi, G., Friston, K. J., Pennartz, C. M. A., \& the TWCF:INTREPID Consortium. (2026). Integrated information and predictive processing theories of consciousness: An adversarial collaborative review. \emph{Neuroscience \& Biobehavioral Reviews}, 187, 106742. Preprint: arXiv:2509.00555.
 \bibitem{predmetacog2026} Luo, W., \& Jho, H. (2026). Predictive metacognition: A neuro-computational framework for self-monitoring in large language models. \emph{Scientific Reports}. \url{https://doi.org/10.1038/s41598-026-54840-2}
+\bibitem{kiebel2008} Kiebel, S. J., Daunizeau, J., \& Friston, K. J. (2008). A hierarchy of time-scales and the brain. \emph{PLoS Computational Biology}, 4(11), e1000209.
+\bibitem{hasson2008} Hasson, U., Yang, E., Vallines, I., Heeger, D. J., \& Rubin, N. (2008). A hierarchy of temporal receptive windows in human cortex. \emph{Journal of Neuroscience}, 28(10), 2539--2550.
 \end{thebibliography}
 
 \end{document}

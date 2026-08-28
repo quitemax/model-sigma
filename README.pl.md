@@ -26,6 +26,8 @@ robocza synteza koncepcyjna wypracowana w dialogu z Claude (Anthropic), sierpie�
   - [`decisions.md`](notes/decisions.md) — log kluczowych rozstrzygnięć (dlaczego, nie tylko co)
   - [`citations.md`](notes/citations.md) — audyt poprawności cytowań (co zweryfikowano / poprawiono)
   - [`literature.md`](notes/literature.md) — mapa literatury per-teza; co jest nowe, a co już zrobione
+  - [`layer-decomposition.md`](notes/layer-decomposition.md) — jak wyprowadzać warstwy funkcjonalne, a nie przyjmować
+  - [`related-theories.md`](notes/related-theories.md) — notatki o pokrewnych frameworkach (np. Grounded Duality Theory)
 - [`references/`](references/) — jeden plik `.md` na pozycję bibliografii (dane, link, abstrakt, rola w Σ); [indeks](references/README.md)
 - [`examples/`](examples/)
   - [`toy_example.py`](examples/toy_example.py) — wszystkie przeliczenia numeryczne z pracy, w jednym miejscu

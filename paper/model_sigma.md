@@ -88,8 +88,19 @@ just a structural one.
 
 We divide a system *S* into functional layers ℓ = 1,...,L (homeostasis → perception/motor →
 world-model → self-model). The layer index is inherently discrete: L is a small, finite number
-of functional strata, not a continuum — there is no L→∞ limit and none is needed. Instead of a
-single number — a profile:
+of functional strata, not a continuum — there is no L→∞ limit and none is needed.
+
+**The decomposition is meant to be derived, not stipulated** (`notes/layer-decomposition.md`):
+cluster units into bands by characteristic timescale — the "temporal receptive window"
+hierarchy, fast sensory to slow context (Hasson et al. 2008; Kiebel, Daunizeau & Friston 2008)
+— then order the bands by the direction of prediction vs. prediction-error flow (layer ℓ
+predicts layer ℓ−1). A layer is a *self-model* layer iff its predictions target other layers'
+internal states, not external input — iff e_ℓ (§4) is non-degenerate for it. This is a
+criterion, not yet a worked procedure; nothing below is decomposition-invariant, so a rough
+partition supports only ordinal claims about Σ and Γ, and A must be read relative to one fixed
+partition.
+
+Instead of a single number — a profile:
 
 $$\Phi(s) = \big(\Phi_1(s),\dots,\Phi_L(s)\big)$$
 
@@ -640,8 +651,13 @@ debate (trauma model vs. sociocognitive model) — unresolved.
   (no search of PhilPapers/PhilSci-Archive and 2015–2023 work beyond what was found)
 - Source verification of citations — done 2026-08-28, see `notes/citations.md` (a few
   volume/page numbers still flagged there)
+- Layer decomposition — a *criterion* now exists (timescale-band clustering + predict/error
+  flow; `notes/layer-decomposition.md`), but no worked procedure or dataset test. Nothing here
+  is decomposition-invariant, so this gates any cross-system comparison.
 - Application to transformer architectures: what is missing (a homeostatic layer, genuine
   recurrence, a constitutive loop) — partly touched on, not formalized
+- Related self-published frameworks (Grounded Duality Theory) noted in `notes/related-theories.md`;
+  its power-mean aggregation (Σ_ρ with a substitutability knob) is a candidate refinement of Σ
 - Publication venues considered earlier: LessWrong/Alignment Forum, PhilSci-Archive (low
   barrier), arXiv q-bio.NC/cs.AI (needs endorsement), Journal of Consciousness Studies, Entropy
   (MDPI), Neuroscience of Consciousness (Oxford)
